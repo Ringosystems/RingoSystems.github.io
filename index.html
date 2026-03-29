@@ -781,7 +781,7 @@ var projectData = {
     tagline: 'Your endpoint management co-pilot.',
     body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management \u2014 covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 2.5 Coder 14B</strong> \u2014 selected for its code generation capabilities and ability to run full GPU inference on 16GB VRAM.</p><p>Current corpus: <strong>6,235 documents, 8.26M tokens</strong>. Q&amp;A generation is actively running.</p>',
     tech: ['Qwen 2.5 Coder 14B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
-    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }]
+    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
   },
   intunegovernance: {
     title: 'IntuneGovernance',
