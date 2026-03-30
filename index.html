@@ -599,9 +599,9 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
       </div>
       <div class="project-card reveal reveal-delay-4" onclick="openModal('ringo')">
         <span class="project-status arch">Architecture</span>
-        <h3>RINGO Platform</h3>
-        <div class="project-tagline">DSC v3 Pull Architecture</div>
-        <p>Azure Function-based middleman for DSC v3 configuration delivery. SCEPman cert auth, tiered processing, and Proactive Remediation compliance bridge. Under $7 CAD/month.</p>
+        <h3>R.I.N.G.O. Platform</h3>
+        <div class="project-tagline">Resource Instrumentation Normalization &amp; Governance Orchestration</div>
+        <p>Azure Function-based middleman for DSC v3 configuration delivery. SCEPman cert auth, tiered processing, and Proactive Remediation compliance bridge. Typically under $7 CAD/month regardless of seat count.</p>
         <div class="project-tech"><span>Azure Functions</span><span>SCEPman</span><span>Blob Storage</span><span>DSC v3</span><span>Entra Groups</span></div>
         <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
       </div>
@@ -792,9 +792,9 @@ var projectData = {
     links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
   },
   ringo: {
-    title: 'RINGO Platform',
-    tagline: 'DSC v3 Pull Architecture',
-    body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base \u2192 Role \u2192 App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune\'s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <strong>under $7 CAD/month</strong>.</p>',
+    title: 'R.I.N.G.O. Platform',
+    tagline: 'Resource Instrumentation Normalization & Governance Orchestration',
+    body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base \u2192 Role \u2192 App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune\'s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <strong>typically under $7 CAD/month regardless of seat count</strong>.</p>',
     tech: ['Azure Functions', 'SCEPman', 'Azure Blob', 'DSC v3', 'Entra ID', 'Proactive Remediation', 'Device Certificates', 'Registry Sentinels'],
     links: []
   }
