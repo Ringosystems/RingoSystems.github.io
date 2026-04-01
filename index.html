@@ -448,6 +448,11 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
     <div class="hero-terminal">
       <span class="prompt">$&gt;</span> <span id="typedOutput"></span><span class="typed-text"></span>
     </div>
+    <div class="hero-agentic-badge" style="display:inline-flex;align-items:center;gap:0.75rem;padding:0.6rem 1.25rem;border:1px solid var(--border-glow);border-radius:8px;background:linear-gradient(135deg, var(--accent-dim) 0%, rgba(124,92,255,0.1) 100%);margin-bottom:2rem;opacity:0;transform:translateY(20px);animation:fadeInUp 0.8s var(--ease-out-expo) 0.8s forwards;">
+      <span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;">Now practicing:</span>
+      <span style="font-family:var(--font-display);font-size:0.95rem;font-weight:600;background:linear-gradient(135deg,var(--accent),#7C5CFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Agentic Engineering</span>
+      <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-secondary);">&#8212; AI as a collaborating infrastructure engineer</span>
+    </div>
     <div class="hero-cta-row">
       <a href="#projects" class="hero-cta primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg>
@@ -548,7 +553,13 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         <p>Fine-tuning domain-specific models, building local inference infrastructure on consumer GPUs, and integrating AI into operational workflows. Not chatbots &#8212; real utility.</p>
         <div class="skill-tags"><span class="skill-tag">Ollama</span><span class="skill-tag">QLoRA</span><span class="skill-tag">GGUF</span><span class="skill-tag">Claude API</span><span class="skill-tag">RTX 5080</span></div>
       </div>
-      <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-card reveal reveal-delay-1" style="border-color: var(--border-glow); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 212, 255, 0.04) 100%);">
+        <div class="skill-icon" style="background: linear-gradient(135deg, var(--accent-dim), rgba(124, 92, 255, 0.2)); border-color: rgba(124, 92, 255, 0.25);">&#9881;</div>
+        <h3>Agentic Engineering</h3>
+        <p>Designing AI-driven workflows where Claude acts as a collaborating engineer &#8212; not just a chatbot. Persistent project contexts, structured skill systems, tool orchestration, and iterative development loops that produce production-grade infrastructure code.</p>
+        <div class="skill-tags"><span class="skill-tag">Claude Projects</span><span class="skill-tag">MCP</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Tool Orchestration</span><span class="skill-tag">IaC Pipelines</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
         <div class="skill-icon">&#9729;</div>
         <h3>Cloud &amp; Hybrid Architecture</h3>
         <p>Azure-first infrastructure design. From hybrid public/private clouds at energy companies to Azure Functions for config delivery &#8212; always with cost discipline.</p>
@@ -595,6 +606,14 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         <div class="project-tagline">PowerShell module for Intune fleet operations</div>
         <p>A governance module for managing Intune at enterprise scale. Firewall remediation, fleet analysis, risk scoring, compliance reporting, and automated policy generation.</p>
         <div class="project-tech"><span>PowerShell</span><span>Graph API</span><span>Intune</span><span>JSON Export</span><span>Azure Blob</span></div>
+        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
+      </div>
+      <div class="project-card reveal reveal-delay-4" onclick="openModal('cisdscforge')">
+        <span class="project-status">Active</span>
+        <h3>CISDSCForge</h3>
+        <div class="project-tagline">Multi-Standard Security Baseline DSC v3 Generator</div>
+        <p>An agentic Claude Project that ingests CIS Benchmarks, Microsoft OSConfig baselines, HardeningKitty finding lists, and other hardening standards to generate production-ready DSC v3 YAML configurations. Extensible to new sources.</p>
+        <div class="project-tech"><span>Claude Project</span><span>DSC v3</span><span>CIS Benchmarks</span><span>OSConfig</span><span>HardeningKitty</span></div>
         <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
       </div>
       <div class="project-card reveal reveal-delay-4" onclick="openModal('ringo')">
@@ -709,7 +728,8 @@ document.addEventListener('mousemove', function(e) {
     'Shipping PowerShell modules that don\'t break things.',
     'Fine-tuning LLMs on endpoint management data.',
     'Designing hybrid clouds since before they had a name.',
-    'Making infrastructure manage itself since the late \'80s.'
+    'Making infrastructure manage itself since the late \'80s.',
+    'Practicing agentic engineering \u2014 AI as a collaborating architect.'
   ];
   var el = document.getElementById('typedOutput');
   var phraseIdx = 0, charIdx = 0, deleting = false;
@@ -790,6 +810,13 @@ var projectData = {
     body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale \u2014 the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management \u2014 where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that actually works at scale rather than looking good in a demo.</p>',
     tech: ['PowerShell', 'Microsoft Graph API', 'Intune', 'Windows Firewall', 'Azure Blob', 'JSON Export', 'Proactive Remediation'],
     links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
+  },
+  cisdscforge: {
+    title: 'CISDSCForge',
+    tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
+    body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project \u2014 a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> \u2014 The Center for Internet Security\u2019s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> \u2014 The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> \u2014 The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <strong>easily extensible</strong> \u2014 any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: AI as a collaborating infrastructure engineer, not just a text generator.</p>',
+    tech: ['Claude Project', 'DSC v3', 'CIS Benchmarks', 'OSConfig', 'HardeningKitty', 'YAML', 'Intune', 'Azure Machine Configuration', 'Agentic Engineering', 'Windows Hardening', 'DISA STIGs'],
+    links: []
   },
   ringo: {
     title: 'R.I.N.G.O. Platform',

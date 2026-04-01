@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RingoSystems — Mark Ringo. Endpoint Solutions Architect. PowerShell, AI, cloud-native endpoint management, and infrastructure automation.">
+<meta name="description" content="RingoSystems — Mark Ringo. Principal Infrastructure Architect. PowerShell, AI, cloud-native endpoint management, and infrastructure automation.">
 <meta name="theme-color" content="#07070d">
-<title>RingoSystems — Mark Ringo | Endpoint Solutions Architect</title>
+<title>RingoSystems — Mark Ringo | Principal Infrastructure Architect</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -247,7 +247,7 @@ section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
 .career-item:first-child::before { border-color: var(--accent); background: var(--accent); }
 .career-role { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
 .career-company { font-size: 0.78rem; color: var(--text-secondary); }
-.career-years { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim); white-space: nowrap; min-width: 65px; padding-top: 0.15rem; }
+.career-years { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim); white-space: nowrap; width: 65px; flex-shrink: 0; text-align: right; padding-top: 0.15rem; }
 
 /* ── TESTIMONIAL ── */
 .testimonial-section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
@@ -414,6 +414,10 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
   .about-stats { grid-template-columns: 1fr; }
 }
 </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
 
@@ -439,10 +443,15 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero-eyebrow">// Endpoint Solutions Architect</div>
+    <div class="hero-eyebrow">// Principal Infrastructure Architect</div>
     <h1 class="hero-title">I build systems that<br><span class="gradient-text">manage themselves.</span></h1>
     <div class="hero-terminal">
       <span class="prompt">$&gt;</span> <span id="typedOutput"></span><span class="typed-text"></span>
+    </div>
+    <div class="hero-agentic-badge" style="display:inline-flex;align-items:center;gap:0.75rem;padding:0.6rem 1.25rem;border:1px solid var(--border-glow);border-radius:8px;background:linear-gradient(135deg, var(--accent-dim) 0%, rgba(124,92,255,0.1) 100%);margin-bottom:2rem;opacity:0;transform:translateY(20px);animation:fadeInUp 0.8s var(--ease-out-expo) 0.8s forwards;">
+      <span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;">Now practicing:</span>
+      <span style="font-family:var(--font-display);font-size:0.95rem;font-weight:600;background:linear-gradient(135deg,var(--accent),#7C5CFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Agentic Engineering</span>
+      <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-secondary);">&#8212; AI as a collaborating infrastructure engineer</span>
     </div>
     <div class="hero-cta-row">
       <a href="#projects" class="hero-cta primary">
@@ -471,8 +480,8 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
     </div>
     <div class="about-grid">
       <div class="about-text reveal reveal-delay-1">
-        <p>I'm <strong>Mark Ringo</strong> &#8212; I've been building, breaking, and fixing IT infrastructure since the <span class="accent">late 1980s</span>. What started with early networking and systems work evolved through three decades of increasingly complex environments: from retail networks at <strong>Pier 1</strong>, to enterprise storage engineering at <strong>Hitachi</strong>, to running North American infrastructure for Citi's Credit Cards Business Operations as <strong>SVP</strong>.</p>
-        <p>Along the way I served as <strong>CTO at Triencon Services</strong> for seven years &#8212; designing hybrid public/private clouds, deploying pervasive encryption across the firm, building multi-node DirectAccess IPv6 VPN infrastructure, and hardening Active Directory for electric grid control networks under <strong>NERC CIP</strong> requirements. I went on to lead infrastructure architecture at <strong>Simmons Bank</strong> and <strong>AccountabilIT</strong> before landing at <strong>Steeves &amp; Associates</strong>, Canada's first certified Microsoft Cloud Partner.</p>
+        <p>I'm <strong>Mark Ringo</strong> &#8212; I've been building, breaking, and fixing IT infrastructure since the <span class="accent">late 1980s</span>. What started with early networking and systems work evolved through three decades of increasingly complex environments: from retail networks at <strong>Pier 1 Imports</strong>, to consulting at <strong>Arthur Andersen</strong> where I helped design server infrastructure and data center implementation for XM Satellite Radio and architected directory services for the Chevron/Ultramar Diamond Shamrock energy merger, to joining <strong>Hitachi Consulting</strong> as a founding-day Senior Systems Engineer, to serving as <strong>SVP of Global Infrastructure</strong> at <strong>Citibank</strong>, supporting North American Credit Cards Business Operations.</p>
+        <p>Along the way I served as <strong>CTO at Triencon Services</strong> for seven years &#8212; designing hybrid public/private clouds, deploying pervasive encryption across the firm, building multi-node DirectAccess IPv6 VPN infrastructure, and hardening Active Directory for electric grid control networks under <strong>NERC CIP</strong> requirements. I went on to lead infrastructure architecture at <strong>Simmons Bank</strong> before landing at <strong>Steeves &amp; Associates</strong>, Canada's first certified Microsoft Cloud Partner.</p>
         <p>Today my work lives at the intersection of <span class="accent">cloud-native endpoint management</span>, <strong>DSC v3</strong>, and <strong>AI-augmented operations</strong>. I build tools that let tens of thousands of Intune-managed endpoints configure, secure, and remediate themselves &#8212; and I'm training custom LLMs on the domain knowledge to make that even better.</p>
         <p>I hold a <strong>BS in Management Information Systems</strong> from the University of Texas at Arlington. I live near Alberta Beach, Alberta, where my home lab mirrors the enterprise patterns I deploy professionally &#8212; and where my cat Chaos continually stress-tests my exit door sensor automations.</p>
       </div>
@@ -485,14 +494,15 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         </div>
         <div class="career-timeline">
           <div class="career-timeline-title">Career Path</div>
-          <div class="career-item"><div class="career-years">Current</div><div><div class="career-role">Principal Infrastructure Architect</div><div class="career-company">Steeves &amp; Associates / RingoSystems</div></div></div>
-          <div class="career-item"><div class="career-years">2019</div><div><div class="career-role">Enterprise Design Architect</div><div class="career-company">AccountabilIT</div></div></div>
+          <div class="career-item"><div class="career-years">2019–</div><div><div class="career-role">Principal Infrastructure Architect</div><div class="career-company">Steeves &amp; Associates / RingoSystems</div></div></div>
+          
           <div class="career-item"><div class="career-years">2017</div><div><div class="career-role">Director, Infrastructure Architecture</div><div class="career-company">Simmons Bank</div></div></div>
-          <div class="career-item"><div class="career-years">2016</div><div><div class="career-role">Global SVP, Infrastructure</div><div class="career-company">Citi &#8212; NA Credit Cards Business Ops</div></div></div>
+          <div class="career-item"><div class="career-years">2016</div><div><div class="career-role">SVP, Global Infrastructure</div><div class="career-company">Citibank &#8212; NA Credit Cards Business Ops</div></div></div>
           <div class="career-item"><div class="career-years">2009</div><div><div class="career-role">Chief Technology Officer</div><div class="career-company">Triencon Services</div></div></div>
           <div class="career-item"><div class="career-years">2005</div><div><div class="career-role">Associate Director, IT</div><div class="career-company">ORIX USA</div></div></div>
-          <div class="career-item"><div class="career-years">2002</div><div><div class="career-role">Senior Systems Engineer</div><div class="career-company">Hitachi</div></div></div>
-          <div class="career-item"><div class="career-years">1996</div><div><div class="career-role">Lead Network &amp; Technical Analyst</div><div class="career-company">Pier 1</div></div></div>
+          <div class="career-item"><div class="career-years">2002</div><div><div class="career-role">Senior Systems Engineer</div><div class="career-company">Hitachi Consulting</div></div></div>
+          <div class="career-item"><div class="career-years">1999</div><div><div class="career-role">Senior Systems Engineer</div><div class="career-company">Arthur Andersen</div></div></div>
+          <div class="career-item"><div class="career-years">1996</div><div><div class="career-role">Lead Network &amp; Technical Analyst</div><div class="career-company">Pier 1 Imports</div></div></div>
         </div>
       </div>
     </div>
@@ -534,8 +544,8 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
       <div class="skill-card reveal reveal-delay-3">
         <div class="skill-icon">&#128274;</div>
         <h3>Security &amp; Compliance</h3>
-        <p>Application control, conditional access, certificate-based auth, and security baselines that actually ship. From NERC CIP to retail PCI &#8212; security at every layer.</p>
-        <div class="skill-tags"><span class="skill-tag">App Control</span><span class="skill-tag">CrowdStrike</span><span class="skill-tag">SCEPman</span><span class="skill-tag">Conditional Access</span><span class="skill-tag">LAPS</span></div>
+        <p>Application control, conditional access, certificate-based auth, and security baselines that actually ship. From NERC CIP to retail PCI &#8212; security at every layer. CISSP certified.</p>
+        <div class="skill-tags"><span class="skill-tag">App Control</span><span class="skill-tag">CISSP</span><span class="skill-tag">Conditional Access</span><span class="skill-tag">LAPS</span></div>
       </div>
       <div class="skill-card reveal reveal-delay-4">
         <div class="skill-icon">&#129302;</div>
@@ -543,7 +553,13 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         <p>Fine-tuning domain-specific models, building local inference infrastructure on consumer GPUs, and integrating AI into operational workflows. Not chatbots &#8212; real utility.</p>
         <div class="skill-tags"><span class="skill-tag">Ollama</span><span class="skill-tag">QLoRA</span><span class="skill-tag">GGUF</span><span class="skill-tag">Claude API</span><span class="skill-tag">RTX 5080</span></div>
       </div>
-      <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-card reveal reveal-delay-1" style="border-color: var(--border-glow); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 212, 255, 0.04) 100%);">
+        <div class="skill-icon" style="background: linear-gradient(135deg, var(--accent-dim), rgba(124, 92, 255, 0.2)); border-color: rgba(124, 92, 255, 0.25);">&#9881;</div>
+        <h3>Agentic Engineering</h3>
+        <p>Designing AI-driven workflows where Claude acts as a collaborating engineer &#8212; not just a chatbot. Persistent project contexts, structured skill systems, tool orchestration, and iterative development loops that produce production-grade infrastructure code.</p>
+        <div class="skill-tags"><span class="skill-tag">Claude Projects</span><span class="skill-tag">MCP</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Tool Orchestration</span><span class="skill-tag">IaC Pipelines</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
         <div class="skill-icon">&#9729;</div>
         <h3>Cloud &amp; Hybrid Architecture</h3>
         <p>Azure-first infrastructure design. From hybrid public/private clouds at energy companies to Azure Functions for config delivery &#8212; always with cost discipline.</p>
@@ -552,8 +568,8 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
       <div class="skill-card reveal reveal-delay-2">
         <div class="skill-icon">&#128268;</div>
         <h3>Infrastructure &amp; Home Lab</h3>
-        <p>Unraid servers, Ubiquiti networking, smart home automation, ESP32 embedded projects. The home lab is where enterprise patterns get tested before they ship.</p>
-        <div class="skill-tags"><span class="skill-tag">Unraid</span><span class="skill-tag">UniFi</span><span class="skill-tag">Homey Pro</span><span class="skill-tag">ESP32</span><span class="skill-tag">Zigbee</span></div>
+        <p>Unraid servers, Ubiquiti networking, smart home automation, and bespoke ESP32 firmware connecting to home automation via Matter over Thread. The home lab is where enterprise patterns get tested before they ship.</p>
+        <div class="skill-tags"><span class="skill-tag">Unraid</span><span class="skill-tag">UniFi</span><span class="skill-tag">Homey Pro</span><span class="skill-tag">ESP32</span><span class="skill-tag">Matter/Thread</span></div>
       </div>
     </div>
   </section>
@@ -564,7 +580,7 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
   <section id="projects">
     <div class="section-header reveal">
       <div class="section-label">Projects</div>
-      <h2 class="section-title">Things I've built.</h2>
+      <h2 class="section-title">Things I'm working on currently.</h2>
       <p class="section-subtitle">Tools and platforms born from real problems in endpoint management.</p>
     </div>
     <div class="projects-grid">
@@ -592,11 +608,19 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         <div class="project-tech"><span>PowerShell</span><span>Graph API</span><span>Intune</span><span>JSON Export</span><span>Azure Blob</span></div>
         <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
       </div>
+      <div class="project-card reveal reveal-delay-4" onclick="openModal('cisdscforge')">
+        <span class="project-status">Active</span>
+        <h3>CISDSCForge</h3>
+        <div class="project-tagline">Multi-Standard Security Baseline DSC v3 Generator</div>
+        <p>An agentic Claude Project that ingests CIS Benchmarks, Microsoft OSConfig baselines, HardeningKitty finding lists, and other hardening standards to generate production-ready DSC v3 YAML configurations. Extensible to new sources.</p>
+        <div class="project-tech"><span>Claude Project</span><span>DSC v3</span><span>CIS Benchmarks</span><span>OSConfig</span><span>HardeningKitty</span></div>
+        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
+      </div>
       <div class="project-card reveal reveal-delay-4" onclick="openModal('ringo')">
         <span class="project-status arch">Architecture</span>
-        <h3>RINGO Platform</h3>
-        <div class="project-tagline">DSC v3 Pull Architecture</div>
-        <p>Azure Function-based middleman for DSC v3 configuration delivery. SCEPman cert auth, tiered processing, and Proactive Remediation compliance bridge. Under $7 CAD/month.</p>
+        <h3>R.I.N.G.O. Platform</h3>
+        <div class="project-tagline">Resource Instrumentation Normalization &amp; Governance Orchestration</div>
+        <p>Azure Function-based middleman for DSC v3 configuration delivery. SCEPman cert auth, tiered processing, and Proactive Remediation compliance bridge. Typically under $7 CAD/month regardless of seat count.</p>
         <div class="project-tech"><span>Azure Functions</span><span>SCEPman</span><span>Blob Storage</span><span>DSC v3</span><span>Entra Groups</span></div>
         <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
       </div>
@@ -624,7 +648,7 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         LinkedIn
       </a>
     </div>
-    <div class="footer-copyright">&copy; 2026 RingoSystems. Alberta, Canada.</div>
+    <div class="footer-copyright">&copy; 2026 RingoSystems Heavy Industries. Alberta, Canada.</div>
   </div>
 </footer>
 
@@ -699,12 +723,13 @@ document.addEventListener('mousemove', function(e) {
 // ── TYPING EFFECT ──
 (function() {
   var phrases = [
-    'Building the bridge between DSC v3 and Intune at enterprise scale.',
+    'Bringing Configuration as Code to Intune-managed endpoints.',
     'Building AI co-pilots for Windows management.',
     'Shipping PowerShell modules that don\'t break things.',
     'Fine-tuning LLMs on endpoint management data.',
     'Designing hybrid clouds since before they had a name.',
-    'Making infrastructure manage itself since the late \'80s.'
+    'Making infrastructure manage itself since the late \'80s.',
+    'Practicing agentic engineering \u2014 AI as a collaborating architect.'
   ];
   var el = document.getElementById('typedOutput');
   var phraseIdx = 0, charIdx = 0, deleting = false;
@@ -777,7 +802,7 @@ var projectData = {
     tagline: 'Your endpoint management co-pilot.',
     body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management \u2014 covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 2.5 Coder 14B</strong> \u2014 selected for its code generation capabilities and ability to run full GPU inference on 16GB VRAM.</p><p>Current corpus: <strong>6,235 documents, 8.26M tokens</strong>. Q&amp;A generation is actively running.</p>',
     tech: ['Qwen 2.5 Coder 14B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
-    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }]
+    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
   },
   intunegovernance: {
     title: 'IntuneGovernance',
@@ -786,10 +811,17 @@ var projectData = {
     tech: ['PowerShell', 'Microsoft Graph API', 'Intune', 'Windows Firewall', 'Azure Blob', 'JSON Export', 'Proactive Remediation'],
     links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
   },
+  cisdscforge: {
+    title: 'CISDSCForge',
+    tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
+    body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project \u2014 a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> \u2014 The Center for Internet Security\u2019s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> \u2014 The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> \u2014 The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <strong>easily extensible</strong> \u2014 any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: AI as a collaborating infrastructure engineer, not just a text generator.</p>',
+    tech: ['Claude Project', 'DSC v3', 'CIS Benchmarks', 'OSConfig', 'HardeningKitty', 'YAML', 'Intune', 'Azure Machine Configuration', 'Agentic Engineering', 'Windows Hardening', 'DISA STIGs'],
+    links: []
+  },
   ringo: {
-    title: 'RINGO Platform',
-    tagline: 'DSC v3 Pull Architecture',
-    body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base \u2192 Role \u2192 App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune\'s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <strong>under $7 CAD/month</strong>.</p>',
+    title: 'R.I.N.G.O. Platform',
+    tagline: 'Resource Instrumentation Normalization & Governance Orchestration',
+    body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base \u2192 Role \u2192 App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune\'s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <strong>typically under $7 CAD/month regardless of seat count</strong>.</p>',
     tech: ['Azure Functions', 'SCEPman', 'Azure Blob', 'DSC v3', 'Entra ID', 'Proactive Remediation', 'Device Certificates', 'Registry Sentinels'],
     links: []
   }
