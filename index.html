@@ -600,7 +600,15 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         <div class="project-tech"><span>Qwen 2.5 Coder 14B</span><span>QLoRA</span><span>Unsloth</span><span>RTX 5080</span><span>Ollama</span></div>
         <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
       </div>
-      <div class="project-card reveal reveal-delay-3" onclick="openModal('intunegovernance')">
+      <div class="project-card reveal reveal-delay-3" onclick="openModal('aria')">
+        <span class="project-status wip">In Progress</span>
+        <h3>Aria Concierge</h3>
+        <div class="project-tagline">Agentic Research &amp; Insight Assistant</div>
+        <p>A local-first, self-hosted agentic personal assistant that builds a durable, temporal, multi-user personal knowledge graph &#8212; cross-referencing sources, flagging contradictions, and surfacing knowledge through chat, a dashboard, Obsidian, and a native Android app.</p>
+        <div class="project-tech"><span>Python / FastAPI</span><span>Neo4j + Qdrant</span><span>Graphiti</span><span>Ollama</span><span>Strix Halo</span></div>
+        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
+      </div>
+      <div class="project-card reveal reveal-delay-4" onclick="openModal('intunegovernance')">
         <span class="project-status">Active</span>
         <h3>IntuneGovernance</h3>
         <div class="project-tagline">PowerShell module for Intune fleet operations</div>
@@ -803,6 +811,13 @@ var projectData = {
     body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management \u2014 covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 2.5 Coder 14B</strong> \u2014 selected for its code generation capabilities and ability to run full GPU inference on 16GB VRAM.</p><p>Current corpus: <strong>6,235 documents, 8.26M tokens</strong>. Q&amp;A generation is actively running.</p>',
     tech: ['Qwen 2.5 Coder 14B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
     links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
+  },
+  aria: {
+    title: 'Aria Concierge',
+    tagline: 'Agentic Research & Insight Assistant',
+    body: '<p><strong>Aria</strong> is a local-first, self-hosted agentic personal assistant designed for decades of service. Its primary artifact is not conversations \u2014 it is a durable, temporal, multi-user <strong>personal knowledge graph</strong> that ingests content from Outlook, OneDrive, YouTube, Feedly, Miniflux, podcasts, audiobooks, and meeting uploads, then proactively verifies claims against reputable sources.</p><p>The <strong>Concierge</strong> is the MCP-based agent that operates Aria\'s own infrastructure \u2014 restarting services, managing remote access via Cloudflare Tunnel, surfacing live-sampling review queues, and answering user queries. It doesn\'t just observe the integrated services; it runs them.</p><p>Under the hood: <strong>Graphiti over Neo4j + Qdrant</strong> for the knowledge graph, a pluggable claim-extraction pipeline with per-stage model, prompt, and reasoning-mode configuration and A/B eval from day one, <strong>Ollama on a Minisforum MS-S1 Max (Strix Halo, 128 GB)</strong> for local inference, and LiteLLM routing with Presidio PII scrub on anything that leaves the house. Frontier models (Claude, Gemini) are called only when meaningfully better.</p><p>Interactive surfaces: Open WebUI chat, a TypeScript / Next.js dashboard, an Obsidian vault mirror, and a native Kotlin / Jetpack Compose Android app with QR pairing, wake-word shortcuts, and both on-device and server-side speech-to-text.</p><p>Architected multi-user and remote-access-capable from v0.1, but single-user and LAN-only at launch \u2014 the kind of design discipline that lets a household assistant grow up without being rewritten.</p>',
+    tech: ['Python', 'FastAPI', 'Neo4j', 'Qdrant', 'Graphiti', 'Ollama', 'LiteLLM', 'MCP', 'Next.js', 'Kotlin / Jetpack Compose', 'Cloudflare Tunnel', 'WhisperX'],
+    links: []
   },
   intunegovernance: {
     title: 'IntuneGovernance',
