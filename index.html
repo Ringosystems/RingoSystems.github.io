@@ -597,7 +597,7 @@ footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subt
         <h3>RingoLLM</h3>
         <div class="project-tagline">Your endpoint management co-pilot.</div>
         <p>Domain-specialized LLM fine-tuned on Windows endpoint management data. Custom training pipeline with synthetic Q&amp;A generation, quality filtering, and local GPU inference.</p>
-        <div class="project-tech"><span>Qwen 2.5 Coder 14B</span><span>QLoRA</span><span>Unsloth</span><span>RTX 5080</span><span>Ollama</span></div>
+        <div class="project-tech"><span>Qwen 3 8B</span><span>QLoRA</span><span>Unsloth</span><span>RTX 5080</span><span>Ollama</span></div>
         <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
       </div>
       <div class="project-card reveal reveal-delay-3" onclick="openModal('aria')">
@@ -808,8 +808,8 @@ var projectData = {
   ringollm: {
     title: 'RingoLLM',
     tagline: 'Your endpoint management co-pilot.',
-    body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management \u2014 covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 2.5 Coder 14B</strong> \u2014 selected for its code generation capabilities and ability to run full GPU inference on 16GB VRAM.</p><p>Current corpus: <strong>6,235 documents, 8.26M tokens</strong>.</p>',
-    tech: ['Qwen 2.5 Coder 14B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
+    body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management \u2014 covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> \u2014 selected for strong general-purpose performance with comfortable headroom on 16GB VRAM. Code generation emerges from the training corpus itself: PowerShell, KQL, and Graph API examples are first-class citizens of the Q&amp;A pairs.</p><p>Current corpus: <strong>6,235 documents, 8.26M tokens</strong>.</p>',
+    tech: ['Qwen 3 8B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
     links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
   },
   aria: {
