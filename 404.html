@@ -3,825 +3,1474 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RingoSystems — Mark Ringo. Principal Infrastructure Architect. PowerShell, AI, cloud-native endpoint management, and infrastructure automation.">
-<meta name="theme-color" content="#07070d">
-<title>RingoSystems — Mark Ringo | Principal Infrastructure Architect</title>
+<meta name="description" content="RingoSystems — Mark Ringo. Principal Infrastructure Architect. Three decades of cloud, security, and AI-augmented endpoint management.">
+<meta name="theme-color" content="#2a2520">
+<meta property="og:title" content="RingoSystems — Mark Ringo">
+<meta property="og:description" content="Principal Infrastructure Architect. PowerShell, AI, cloud-native endpoint management, and infrastructure automation.">
+<meta property="og:type" content="website">
+<title>RingoSystems — Mark Ringo &middot; Principal Infrastructure Architect</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg-primary: #07070d;
-  --bg-secondary: #0c0c14;
-  --bg-card: #0f0f1a;
-  --bg-card-hover: #141422;
-  --border-subtle: rgba(0, 212, 255, 0.08);
-  --border-glow: rgba(0, 212, 255, 0.25);
-  --accent: #00D4FF;
-  --accent-dim: rgba(0, 212, 255, 0.15);
-  --accent-glow: rgba(0, 212, 255, 0.4);
-  --text-primary: #e8eaed;
-  --text-secondary: #8b8fa3;
-  --text-dim: #555770;
-  --font-display: 'Outfit', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --grid-color: rgba(0, 212, 255, 0.04);
-  --grid-color-strong: rgba(0, 212, 255, 0.08);
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-dim) var(--bg-primary);
-}
-
-body {
-  font-family: var(--font-display);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-::selection { background: var(--accent); color: var(--bg-primary); }
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
-
-/* ── BACKGROUND LAYERS ── */
-.grid-bg {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
-    linear-gradient(var(--grid-color-strong) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color-strong) 1px, transparent 1px);
-  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
-}
-
-#particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-
-.noise {
-  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 128px;
-}
-
-.glow-orb {
-  position: fixed; width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
-  pointer-events: none; z-index: 0; transform: translate(-50%, -50%);
-  transition: left 0.6s var(--ease-out-expo), top 0.6s var(--ease-out-expo);
-  opacity: 0.5;
-}
-
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  background: rgba(7, 7, 13, 0.7); border-bottom: 1px solid var(--border-subtle);
-  transition: transform 0.4s var(--ease-out-expo);
-}
-nav.hidden { transform: translateY(-100%); }
-
-.nav-brand {
-  font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600;
-  letter-spacing: 0.1em; color: var(--accent); text-decoration: none;
-  display: flex; align-items: center; gap: 0.5rem;
-}
-.nav-brand .cursor-blink {
-  display: inline-block; width: 2px; height: 1em;
-  background: var(--accent); animation: blink 1s steps(1) infinite; margin-left: 2px;
-}
-
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 400;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary);
-  text-decoration: none; transition: color 0.3s ease; position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
-  background: var(--accent); transition: width 0.3s var(--ease-out-expo);
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-links a:hover::after { width: 100%; }
-
-.nav-mobile-toggle {
-  display: none; background: none; border: none;
-  color: var(--text-secondary); cursor: pointer; padding: 0.5rem;
-}
-
-/* ── MAIN ── */
-main { position: relative; z-index: 2; }
-section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
-
-/* ── HERO ── */
-.hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  justify-content: center; padding-top: 6rem; position: relative;
-}
-.hero-eyebrow {
-  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 400;
-  color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 1.5rem; opacity: 0; transform: translateY(20px);
-  animation: fadeInUp 0.8s var(--ease-out-expo) 0.3s forwards;
-}
-.hero-title {
-  font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
-  margin-bottom: 2rem; opacity: 0; transform: translateY(30px);
-  animation: fadeInUp 0.8s var(--ease-out-expo) 0.5s forwards;
-}
-.hero-title .gradient-text {
-  background: linear-gradient(135deg, var(--accent) 0%, #7C5CFF 50%, var(--accent) 100%);
-  background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; animation: shimmer 4s linear infinite;
-}
-.hero-terminal {
-  font-family: var(--font-mono); font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-  color: var(--text-secondary); line-height: 1.8; max-width: 700px;
-  margin-bottom: 3rem; opacity: 0; transform: translateY(20px);
-  animation: fadeInUp 0.8s var(--ease-out-expo) 0.7s forwards;
-}
-.hero-terminal .prompt { color: var(--accent); user-select: none; }
-.hero-terminal .typed-text { border-right: 2px solid var(--accent); animation: blink 1s steps(1) infinite; }
-
-.hero-cta-row {
-  display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
-  opacity: 0; transform: translateY(20px);
-  animation: fadeInUp 0.8s var(--ease-out-expo) 0.9s forwards;
-}
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.05em; text-decoration: none; color: var(--text-secondary);
-  padding: 0.7rem 1.5rem; border: 1px solid var(--border-subtle);
-  border-radius: 6px; transition: all 0.3s ease; background: transparent;
-}
-.hero-cta:hover {
-  color: var(--accent); border-color: var(--border-glow);
-  background: var(--accent-dim); box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
-}
-.hero-cta.primary { background: var(--accent-dim); border-color: var(--border-glow); color: var(--accent); }
-
-.hero-scroll-indicator {
-  position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-  opacity: 0; animation: fadeInUp 0.8s var(--ease-out-expo) 1.2s forwards;
-}
-.scroll-line {
-  width: 1px; height: 40px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-/* ── SECTION HEADERS ── */
-.section-header { margin-bottom: 4rem; }
-.section-label {
-  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
-  color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
-  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;
-}
-.section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
-.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
-.section-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-top: 1rem; max-width: 600px; line-height: 1.6; }
-
-/* ── REVEAL ── */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-
-/* ── ABOUT ── */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.about-text { font-size: 1.05rem; line-height: 1.85; color: var(--text-secondary); }
-.about-text p { margin-bottom: 1.5rem; }
-.about-text strong { color: var(--text-primary); font-weight: 600; }
-.about-text .accent { color: var(--accent); }
-.about-right { display: flex; flex-direction: column; gap: 2rem; }
-.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-
-.stat-card {
-  background: var(--bg-card); border: 1px solid var(--border-subtle);
-  border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden;
-  transition: all 0.4s ease;
-}
-.stat-card::before {
-  content: ''; position: absolute; inset: 0; border-radius: 12px; padding: 1px;
-  background: linear-gradient(135deg, var(--border-glow), transparent 50%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s ease;
-}
-.stat-card:hover::before { opacity: 1; }
-.stat-card:hover { background: var(--bg-card-hover); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0, 212, 255, 0.06); }
-.stat-number { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
-.stat-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
-
-/* ── CAREER TIMELINE ── */
-.career-timeline { display: flex; flex-direction: column; gap: 0; }
-.career-timeline-title { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
-.career-item {
-  display: flex; gap: 1rem; padding: 0.6rem 0;
-  border-left: 1px solid var(--border-subtle); padding-left: 1.25rem;
-  position: relative; transition: border-color 0.3s ease;
-}
-.career-item:hover { border-color: var(--accent); }
-.career-item::before {
-  content: ''; position: absolute; left: -3.5px; top: 1rem;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--bg-primary); border: 1.5px solid var(--text-dim);
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-.career-item:hover::before { border-color: var(--accent); background: var(--accent-dim); }
-.career-item:first-child::before { border-color: var(--accent); background: var(--accent); }
-.career-role { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
-.career-company { font-size: 0.78rem; color: var(--text-secondary); }
-.career-years { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim); white-space: nowrap; width: 65px; flex-shrink: 0; text-align: right; padding-top: 0.15rem; }
-
-/* ── TESTIMONIAL ── */
-.testimonial-section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-.testimonial-card {
-  background: var(--bg-card); border: 1px solid var(--border-subtle);
-  border-radius: 16px; padding: 2.5rem 3rem; position: relative;
-  max-width: 800px; margin: 0 auto;
-}
-.testimonial-card::before {
-  content: '\201C'; position: absolute; top: 1rem; left: 1.5rem;
-  font-size: 4rem; color: var(--accent); opacity: 0.2;
-  font-family: Georgia, serif; line-height: 1;
-}
-.testimonial-text {
-  font-size: 1.1rem; font-style: italic; color: var(--text-secondary);
-  line-height: 1.8; margin-bottom: 1.5rem; padding-left: 0.5rem;
-}
-.testimonial-author {
-  font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
-  display: flex; align-items: center; gap: 0.75rem;
-}
-.testimonial-author::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--accent); }
-.testimonial-role { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); margin-left: 0.5rem; }
-
-/* ── SKILLS ── */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-.skill-card {
-  background: var(--bg-card); border: 1px solid var(--border-subtle);
-  border-radius: 12px; padding: 2rem; position: relative; overflow: hidden;
-  transition: all 0.4s ease; cursor: default;
-}
-.skill-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0; transition: opacity 0.4s ease;
-}
-.skill-card:hover::after { opacity: 1; }
-.skill-card:hover {
-  background: var(--bg-card-hover); border-color: var(--border-glow);
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.05), inset 0 0 40px rgba(0, 212, 255, 0.02);
-  transform: translateY(-3px);
-}
-.skill-icon {
-  font-size: 1.5rem; margin-bottom: 1rem; display: inline-flex;
-  align-items: center; justify-content: center; width: 48px; height: 48px;
-  border-radius: 10px; background: var(--accent-dim); border: 1px solid rgba(0, 212, 255, 0.12);
-}
-.skill-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; }
-.skill-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.skill-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); background: var(--accent-dim); padding: 0.3rem 0.6rem; border-radius: 4px; letter-spacing: 0.03em; }
-
-/* ── PROJECTS ── */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-.project-card {
-  background: var(--bg-card); border: 1px solid var(--border-subtle);
-  border-radius: 12px; padding: 2rem; cursor: pointer; position: relative;
-  overflow: hidden; transition: all 0.4s ease;
-}
-.project-card::before {
-  content: ''; position: absolute; inset: -1px; border-radius: 12px; padding: 1px;
-  background: linear-gradient(135deg, var(--accent) 0%, transparent 40%, transparent 60%, rgba(124, 92, 255, 0.3) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s ease;
-}
-.project-card:hover::before { opacity: 1; }
-.project-card:hover { background: var(--bg-card-hover); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 212, 255, 0.08); }
-.project-status { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--bg-primary); background: var(--accent); padding: 0.25rem 0.6rem; border-radius: 3px; display: inline-block; margin-bottom: 1rem; font-weight: 600; }
-.project-status.wip { background: #F59E0B; }
-.project-status.arch { background: #8B5CF6; color: #fff; }
-.project-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
-.project-card .project-tagline { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 0.75rem; }
-.project-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem; }
-.project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-.project-tech span { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); border: 1px solid var(--border-subtle); padding: 0.25rem 0.5rem; border-radius: 3px; }
-.project-open-hint { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.4rem; transition: color 0.3s ease; }
-.project-card:hover .project-open-hint { color: var(--accent); }
-
-/* ── MODAL ── */
-.modal-overlay {
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center; padding: 2rem;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-}
-.modal-overlay.active { opacity: 1; pointer-events: auto; }
-.modal-content {
-  background: var(--bg-secondary); border: 1px solid var(--border-subtle);
-  border-radius: 16px; max-width: 700px; width: 100%; max-height: 85vh;
-  overflow-y: auto; padding: 3rem; position: relative;
-  transform: scale(0.95) translateY(20px); transition: transform 0.4s var(--ease-out-expo);
-}
-.modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
-.modal-close {
-  position: absolute; top: 1.5rem; right: 1.5rem; background: none;
-  border: 1px solid var(--border-subtle); color: var(--text-secondary);
-  width: 36px; height: 36px; border-radius: 8px; font-size: 1.2rem;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s ease; font-family: var(--font-mono);
-}
-.modal-close:hover { color: var(--accent); border-color: var(--border-glow); background: var(--accent-dim); }
-.modal-content h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
-.modal-content .modal-tagline { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1.5rem; }
-.modal-content .modal-body { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
-.modal-content .modal-body p { margin-bottom: 1rem; }
-.modal-content .modal-body strong { color: var(--text-primary); }
-.modal-tech-full { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); }
-.modal-tech-full span { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); background: var(--accent-dim); padding: 0.35rem 0.7rem; border-radius: 4px; }
-.modal-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
-.modal-link {
-  font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
-  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.5rem 1rem; border: 1px solid var(--border-glow); border-radius: 6px; transition: all 0.3s ease;
-}
-.modal-link:hover { background: var(--accent-dim); box-shadow: 0 0 20px rgba(0, 212, 255, 0.1); }
-
-/* ── FOOTER ── */
-footer { position: relative; z-index: 2; border-top: 1px solid var(--border-subtle); padding: 4rem 2rem; text-align: center; }
-.footer-inner { max-width: 1100px; margin: 0 auto; }
-.footer-brand { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
-.footer-tagline { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.75rem; }
-.footer-sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem; }
-.footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
-.footer-link {
-  font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary);
-  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.6rem 1.2rem; border: 1px solid var(--border-subtle); border-radius: 6px; transition: all 0.3s ease;
-}
-.footer-link:hover { color: var(--accent); border-color: var(--border-glow); background: var(--accent-dim); }
-.footer-copyright { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; }
-
-/* ── SEPARATOR ── */
-.section-separator { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-.section-separator hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border-glow), transparent); }
-
-/* ── ANIMATIONS ── */
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-@keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
-@keyframes scrollPulse { 0%, 100% { opacity: 0.3; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  section { padding: 5rem 1.25rem; }
-  .nav-links { display: none; }
-  .nav-mobile-toggle { display: flex; }
-  .nav-links.mobile-open {
-    display: flex; flex-direction: column; position: absolute;
-    top: 100%; left: 0; right: 0; background: rgba(7, 7, 13, 0.95);
-    backdrop-filter: blur(12px); padding: 1.5rem 2rem; gap: 1rem;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-  .hero-cta-row { flex-direction: column; align-items: flex-start; }
-  .modal-content { padding: 2rem; }
-  .footer-links { flex-direction: column; align-items: center; }
-  .hero-scroll-indicator { display: none; }
-  .testimonial-card { padding: 2rem 1.5rem; }
-  .testimonial-section { padding: 3rem 1.25rem; }
-}
-@media (max-width: 480px) {
-  .about-stats { grid-template-columns: 1fr; }
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,200..900,0..100,0..1&family=JetBrains+Mono:wght@300;400;500;600&family=Onest:wght@300;400;500;600;700&family=Source+Serif+4:opsz,ital,wght@8..60,0..1,300..900&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+:root {
+  /* warm charcoal */
+  --bg: #2a2520;
+  --bg-deep: #1f1b17;
+  --bg-elevated: #322d27;
+
+  /* parchment palette */
+  --ink: #f5ebd6;
+  --ink-muted: #d2c5a8;
+  --ink-secondary: #a39880;
+  --ink-dim: #786e5b;
+
+  /* jade accent */
+  --accent: #14b986;
+  --accent-deep: #0d8a64;
+  --accent-glow: rgba(20, 185, 134, 0.18);
+  --accent-faint: rgba(20, 185, 134, 0.07);
+
+  /* status colors for project badges */
+  --status-active: #14b986;
+  --status-wip: #e8a948;
+  --status-arch: #b67dd9;
+
+  --rule: rgba(245, 235, 214, 0.14);
+  --rule-faint: rgba(245, 235, 214, 0.07);
+  --grid: rgba(245, 235, 214, 0.022);
+
+  --serif-display: 'Fraunces', serif;
+  --serif-body: 'Source Serif 4', serif;
+  --sans: 'Onest', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: rgba(245,235,214,0.1); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(245,235,214,0.2); }
+
+/* ── BACKGROUND TEXTURE STACK ── */
+.bg-base {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,235,214,0.05), transparent 60%),
+    radial-gradient(ellipse 70% 90% at 50% 100%, rgba(20,17,14,0.5), transparent 70%);
+}
+.bg-noise {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px;
+  mix-blend-mode: overlay;
+}
+.bg-grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 80px;
+  mix-blend-mode: soft-light;
+}
+.bg-grid {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 85%);
+}
+.bg-glow {
+  position: fixed; top: -10vh; right: -15vw; width: 70vw; height: 80vh; z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at top right, var(--accent-glow), transparent 60%);
+  opacity: 0.5; filter: blur(60px);
+}
+.bg-vignette {
+  position: fixed; inset: 0; z-index: 2; pointer-events: none;
+  box-shadow: inset 0 0 220px 50px rgba(20, 17, 14, 0.55);
+}
+
+/* ── MASTHEAD ── */
+nav.masthead {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(42, 37, 32, 0.78);
+  backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.1rem 2.5rem;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 1.5rem; align-items: center;
+}
+.masthead-brand {
+  font-family: var(--serif-display); font-weight: 500;
+  font-size: 0.95rem; letter-spacing: 0.32em;
+  color: var(--ink); text-decoration: none;
+  font-variation-settings: 'SOFT' 100, 'opsz' 36;
+  text-transform: uppercase; transition: color 0.3s var(--ease);
+}
+.masthead-brand:hover { color: var(--accent); }
+.masthead-brand .dot { color: var(--accent); padding: 0 0.1em; }
+.masthead-issue {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-dim); justify-self: center;
+}
+.masthead-issue strong { color: var(--accent); font-weight: 400; }
+.masthead-nav { display: flex; gap: 1.75rem; }
+.masthead-nav a {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-secondary); text-decoration: none;
+  transition: color 0.3s var(--ease); position: relative;
+}
+.masthead-nav a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.masthead-nav a:hover { color: var(--ink); }
+.masthead-nav a:hover::after { transform: scaleX(1); }
+.masthead-mobile-toggle { display: none; background: none; border: none; color: var(--ink-secondary); cursor: pointer; padding: 0.5rem; }
+.masthead-nav.mobile-open {
+  display: flex; flex-direction: column; position: absolute;
+  top: 100%; left: 0; right: 0; background: rgba(42,37,32,0.98);
+  backdrop-filter: blur(16px); padding: 1.5rem 2rem; gap: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── FOLIO STRIP ── */
+.folio {
+  max-width: 1280px; margin: 0 auto;
+  padding: 1.4rem 2.5rem 0;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 2rem; align-items: center;
+  font-family: var(--mono); font-size: 0.65rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.folio span { color: var(--accent); }
+.folio .center { text-align: center; }
+.folio .right { text-align: right; }
+
+/* ── MAIN ── */
+main { position: relative; z-index: 3; }
+
+/* ──────────── HERO ──────────── */
+.hero {
+  max-width: 1280px; margin: 0 auto;
+  padding: 3rem 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: start;
+  position: relative;
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 0.7rem;
+  font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 0.85rem;
+  opacity: 0; transform: translateY(8px);
+  animation: fadeUp 0.8s var(--ease) 0.1s forwards;
+}
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+.hero-eyebrow .feature-title { color: var(--ink); }
+
+.hero-title {
+  font-family: var(--serif-display); font-weight: 200;
+  font-size: clamp(3rem, 7.5vw, 6.4rem); line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink); margin-bottom: 0;
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 0;
+  opacity: 0; transform: translateY(14px);
+  animation: fadeUp 1s var(--ease) 0.25s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 1;
+  color: var(--accent);
+}
+
+.hero-right {
+  padding-top: 1.5rem;
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp 1s var(--ease) 0.45s forwards;
+}
+.hero-deck {
+  font-family: var(--serif-display); font-weight: 300; font-style: italic;
+  font-size: clamp(1.2rem, 1.9vw, 1.45rem); line-height: 1.4;
+  color: var(--ink-muted);
+  font-variation-settings: 'SOFT' 100, 'opsz' 36, 'WONK' 0;
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-deck strong {
+  color: var(--ink); font-style: normal; font-weight: 500;
+  font-family: var(--serif-display);
+  font-variation-settings: 'opsz' 36, 'SOFT' 50;
+}
+.hero-deck em { color: var(--accent); }
+.hero-byline {
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-secondary); line-height: 1.95;
+}
+.hero-byline-row { display: grid; grid-template-columns: 75px 1fr; gap: 0.75rem; }
+.hero-byline-row .label { color: var(--ink-dim); font-size: 0.62rem; letter-spacing: 0.18em; padding-top: 0.05rem; }
+.hero-byline-row .value { color: var(--ink); }
+.hero-byline-row .value .live-dot {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  vertical-align: middle; margin-right: 0.4rem;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(20,185,134,0.6); }
+  50% { opacity: 0.55; box-shadow: 0 0 0 5px rgba(20,185,134,0); }
+}
+
+/* ── ORNAMENT ── */
+.ornament {
+  max-width: 1280px; margin: 0 auto;
+  padding: 4rem 2.5rem 1rem;
+  text-align: center;
+  font-family: var(--serif-display); font-weight: 300;
+  font-size: 1.1rem; color: var(--accent); opacity: 0.8;
+  letter-spacing: 1.5rem;
+  font-variation-settings: 'opsz' 36;
+}
+.ornament.faint { opacity: 0.4; padding: 2.5rem 2.5rem 0; }
+
+/* ──────────── FEATURE BODY (Profile) ──────────── */
+.feature {
+  max-width: 1280px; margin: 0 auto;
+  padding: 3rem 2.5rem 4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 640px) 1fr;
+  gap: 4rem;
+  position: relative;
+}
+.feature-body { position: relative; }
+.feature-margin {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-dim); position: sticky; top: 6rem;
+  align-self: start; padding-top: 0.5rem;
+}
+.feature-margin-block { margin-bottom: 2.5rem; padding-left: 1.5rem; border-left: 1px solid var(--rule); }
+.feature-margin-block:last-child { margin-bottom: 0; }
+.feature-margin-label {
+  display: block; color: var(--accent); font-size: 0.6rem;
+  letter-spacing: 0.22em; margin-bottom: 0.4rem;
+}
+.feature-margin-value { color: var(--ink); line-height: 1.6; font-size: 0.7rem; }
+.feature-margin-value .pgnum { font-family: var(--serif-display); font-style: italic; font-size: 1.4rem; color: var(--accent); font-weight: 300; padding-right: 0.3rem; }
+.feature-margin-value em { color: var(--accent); font-style: italic; font-family: var(--serif-display); text-transform: none; letter-spacing: 0; font-size: 0.85rem; }
+
+.section-mark {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-secondary); margin-bottom: 1.75rem;
+  padding-bottom: 0.85rem; border-bottom: 1px solid var(--rule);
+  display: flex; align-items: baseline; gap: 0.85rem;
+}
+.section-mark .num { color: var(--accent); }
+.section-mark .title { color: var(--ink); font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: 1.2rem; letter-spacing: -0.005em; text-transform: none; font-variation-settings: 'opsz' 36, 'SOFT' 100, 'WONK' 1; }
+.section-mark .read-time { margin-left: auto; color: var(--ink-dim); font-size: 0.62rem; }
+
+.feature-prose {
+  font-family: var(--serif-body); font-size: 1.08rem;
+  line-height: 1.85; color: var(--ink-muted);
+}
+.feature-prose p { margin-bottom: 1.4rem; }
+.feature-prose p:first-of-type::first-letter {
+  font-family: var(--serif-display); font-weight: 300;
+  font-size: 5rem; float: left;
+  line-height: 0.85; padding: 0.45rem 0.7rem 0 0;
+  color: var(--accent);
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 1;
+}
+.feature-prose strong { color: var(--ink); font-weight: 500; }
+.feature-prose em {
+  color: var(--accent); font-style: italic;
+  font-variation-settings: 'opsz' 24, 'SOFT' 100, 'WONK' 0;
+}
+
+/* ── PULL QUOTE ── */
+.pullquote-wrap {
+  max-width: 1280px; margin: 0 auto;
+  padding: 1rem 2.5rem 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 880px) 1fr;
+  gap: 4rem;
+}
+.pullquote {
+  font-family: var(--serif-display); font-weight: 200; font-style: italic;
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+  line-height: 1.25; letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 1;
+  position: relative;
+  padding: 1.75rem 0 1.75rem 4rem;
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--rule);
+}
+.pullquote::before {
+  content: '"'; position: absolute; left: 0; top: 0.4rem;
+  font-size: 7rem; color: var(--accent); line-height: 1;
+  font-style: normal; font-family: var(--serif-display);
+  font-variation-settings: 'opsz' 144; opacity: 0.85;
+}
+.pullquote em { color: var(--accent); }
+.pullquote-attr {
+  display: block; font-family: var(--mono); font-size: 0.7rem;
+  font-style: normal; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-top: 1.4rem;
+}
+.pullquote-attr a {
+  color: inherit; text-decoration: none;
+  border-bottom: 1px dashed rgba(20,185,134,0.4); padding-bottom: 1px;
+  transition: color 0.3s var(--ease), border-bottom-color 0.3s var(--ease);
+}
+.pullquote-attr a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.pullquote-attr .attr-role { color: var(--ink-dim); }
+
+/* ── IN THIS ISSUE TOC ── */
+.in-this-issue {
+  max-width: 1280px; margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 200px) 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.in-this-issue-header {
+  font-family: var(--serif-display); font-weight: 300; font-style: italic;
+  font-size: 1.5rem; color: var(--ink); line-height: 1.2;
+  font-variation-settings: 'SOFT' 100, 'opsz' 36, 'WONK' 1;
+}
+.in-this-issue-header span {
+  display: block; font-family: var(--mono); font-style: normal;
+  font-size: 0.6rem; font-weight: 400; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.65rem;
+}
+.toc-list { display: flex; flex-direction: column; }
+.toc-item {
+  display: grid; grid-template-columns: 60px minmax(0, 1fr) auto auto;
+  gap: 1.25rem; align-items: baseline;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--rule);
+  text-decoration: none; color: inherit;
+  transition: padding-left 0.4s var(--ease);
+  cursor: pointer; position: relative;
+}
+.toc-item:last-child { border-bottom: 1px solid var(--rule); }
+.toc-item::after {
+  content: ''; position: absolute; bottom: -1px; left: 0;
+  height: 1px; background: var(--accent);
+  width: 0; transition: width 0.5s var(--ease);
+}
+.toc-item:hover::after { width: 100%; }
+.toc-item:hover .toc-arrow { color: var(--ink); transform: translateX(6px); }
+.toc-item:hover .toc-title em { color: var(--accent); }
+.toc-num {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent);
+}
+.toc-title {
+  font-family: var(--serif-display); font-weight: 300;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  line-height: 1.15; letter-spacing: -0.015em;
+  color: var(--ink);
+  font-variation-settings: 'SOFT' 100, 'opsz' 60;
+}
+.toc-title em {
+  font-style: italic; color: var(--ink-muted);
+  font-variation-settings: 'SOFT' 100, 'opsz' 60, 'WONK' 1;
+  transition: color 0.3s var(--ease);
+}
+.toc-leader {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.5em; color: var(--rule);
+  overflow: hidden; white-space: nowrap;
+  align-self: baseline;
+}
+.toc-pg {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+.toc-pg .num { color: var(--accent); }
+.toc-arrow {
+  font-family: var(--mono); font-size: 1.1rem;
+  color: var(--accent); padding-left: 0.5rem;
+  transition: transform 0.4s var(--ease), color 0.3s var(--ease);
+  align-self: baseline;
+}
+
+/* ──────────── FEATURE 02 / TOOLKIT ──────────── */
+.feature-opener {
+  max-width: 1280px; margin: 0 auto;
+  padding: 4rem 2.5rem 2rem;
+  position: relative;
+}
+.feature-opener-eyebrow {
+  font-family: var(--mono); font-size: 0.7rem;
+  font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 0.85rem;
+}
+.feature-opener-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+.feature-opener-eyebrow .ft { color: var(--ink); }
+.feature-opener-title {
+  font-family: var(--serif-display); font-weight: 200;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 0.96;
+  letter-spacing: -0.035em; color: var(--ink);
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 0;
+  margin-bottom: 1.5rem; max-width: 1000px;
+}
+.feature-opener-title em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 1;
+  color: var(--accent);
+}
+.feature-opener-deck {
+  font-family: var(--serif-display); font-weight: 300; font-style: italic;
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.45;
+  color: var(--ink-muted); max-width: 720px;
+  font-variation-settings: 'SOFT' 100, 'opsz' 36;
+}
+.feature-opener-deck em { color: var(--accent); }
+
+.toolkit-grid {
+  max-width: 1280px; margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+.toolkit-item {
+  padding: 2.5rem 2rem 2.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  transition: background 0.4s var(--ease);
+}
+.toolkit-item:nth-child(odd) { border-right: 1px solid var(--rule); padding-right: 2.5rem; }
+.toolkit-item:nth-child(even) { padding-left: 2.5rem; }
+.toolkit-item:hover { background: linear-gradient(180deg, var(--accent-faint), transparent 80%); }
+.toolkit-item.featured {
+  background: linear-gradient(135deg, var(--accent-faint), transparent 70%);
+  position: relative;
+}
+.toolkit-item.featured::before {
+  content: 'Now Practicing'; position: absolute; top: 1.2rem; right: 1rem;
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  padding: 0.3rem 0.65rem; border: 1px solid var(--accent);
+  border-radius: 100px;
+}
+.toolkit-num {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.85rem;
+}
+.toolkit-title {
+  font-family: var(--serif-display); font-weight: 300;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  letter-spacing: -0.02em; line-height: 1.05;
+  color: var(--ink); margin-bottom: 0.85rem;
+  font-variation-settings: 'SOFT' 100, 'opsz' 60;
+}
+.toolkit-title em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: 'SOFT' 100, 'opsz' 60, 'WONK' 1;
+}
+.toolkit-body {
+  font-family: var(--serif-body); font-size: 1rem;
+  line-height: 1.7; color: var(--ink-muted);
+  margin-bottom: 1.25rem; max-width: 480px;
+}
+.toolkit-body em { color: var(--accent); font-style: italic; }
+.toolkit-tags {
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.08em; color: var(--ink-secondary);
+  line-height: 1.7;
+}
+.toolkit-tags .sep { color: var(--ink-dim); padding: 0 0.3rem; }
+.toolkit-tags .tag { color: var(--ink); }
+
+/* ──────────── FEATURE 03 / SELECTED WORK ──────────── */
+.work-grid {
+  max-width: 1280px; margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.work-item {
+  background: rgba(50, 45, 39, 0.4);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 2rem 1.85rem;
+  cursor: pointer; position: relative;
+  transition: all 0.4s var(--ease);
+  display: flex; flex-direction: column;
+}
+.work-item:hover {
+  background: rgba(50, 45, 39, 0.7);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 0 1px var(--accent-faint);
+}
+.work-item-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 1rem; gap: 1rem;
+}
+.work-item-num {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+}
+.work-item-status {
+  font-family: var(--mono); font-size: 0.6rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.3rem 0.65rem; border-radius: 100px;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.work-item-status::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor;
+}
+.work-item-status.active { color: var(--status-active); border: 1px solid var(--status-active); }
+.work-item-status.wip { color: var(--status-wip); border: 1px solid var(--status-wip); }
+.work-item-status.arch { color: var(--status-arch); border: 1px solid var(--status-arch); }
+
+.work-item h3 {
+  font-family: var(--serif-display); font-weight: 300;
+  font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.02em; line-height: 1.05;
+  color: var(--ink); margin-bottom: 0.5rem;
+  font-variation-settings: 'SOFT' 100, 'opsz' 60;
+}
+.work-item h3 em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: 'SOFT' 100, 'opsz' 60, 'WONK' 1;
+}
+.work-item-tagline {
+  font-family: var(--serif-display); font-style: italic; font-weight: 300;
+  font-size: 1rem; color: var(--ink-muted);
+  font-variation-settings: 'SOFT' 100, 'opsz' 24;
+  margin-bottom: 1rem;
+}
+.work-item-body {
+  font-family: var(--serif-body); font-size: 0.95rem;
+  line-height: 1.65; color: var(--ink-muted);
+  margin-bottom: 1.25rem; flex: 1;
+}
+.work-item-tags {
+  font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.06em; color: var(--ink-secondary);
+  line-height: 1.6; margin-bottom: 1.25rem;
+}
+.work-item-tags .sep { color: var(--ink-dim); padding: 0 0.25rem; }
+.work-item-cta {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--accent); padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 0.5rem;
+  transition: color 0.3s var(--ease);
+}
+.work-item-cta .arrow { transition: transform 0.4s var(--ease); }
+.work-item:hover .work-item-cta { color: var(--ink); }
+.work-item:hover .work-item-cta .arrow { transform: translateX(6px); color: var(--accent); }
+
+/* ──────────── FEATURE 04 / THE ARC (timeline) ──────────── */
+.arc-wrap {
+  max-width: 1280px; margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 720px) 1fr;
+  gap: 4rem;
+}
+.arc-list {
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--rule);
+  position: relative;
+}
+.arc-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--rule);
+  transition: padding-left 0.4s var(--ease), background 0.4s var(--ease);
+  position: relative;
+}
+.arc-item:hover { padding-left: 1rem; background: linear-gradient(90deg, var(--accent-faint), transparent 70%); }
+.arc-item.current::before {
+  content: ''; position: absolute; left: -1px; top: 0; bottom: 0;
+  width: 2px; background: var(--accent);
+}
+.arc-year {
+  font-family: var(--serif-display); font-weight: 200; font-style: italic;
+  font-size: 1.6rem; line-height: 1; color: var(--accent);
+  font-variation-settings: 'SOFT' 100, 'opsz' 36, 'WONK' 1;
+  padding-top: 0.2rem;
+}
+.arc-year .now {
+  font-family: var(--mono); font-style: normal; font-weight: 400;
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  display: block; color: var(--accent); padding-top: 0.5rem;
+}
+.arc-role {
+  font-family: var(--serif-display); font-weight: 400;
+  font-size: 1.3rem; color: var(--ink); line-height: 1.25;
+  letter-spacing: -0.005em; margin-bottom: 0.25rem;
+  font-variation-settings: 'SOFT' 100, 'opsz' 36;
+}
+.arc-company {
+  font-family: var(--serif-body); font-style: italic;
+  font-size: 0.95rem; color: var(--ink-muted);
+  margin-bottom: 0.5rem;
+}
+.arc-context {
+  font-family: var(--serif-body); font-size: 0.88rem;
+  line-height: 1.6; color: var(--ink-secondary);
+  max-width: 520px;
+}
+.arc-context em { color: var(--accent); font-style: italic; }
+
+.arc-margin {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ink-dim); position: sticky; top: 6rem;
+  align-self: start; padding-top: 0.5rem;
+}
+.arc-margin-block { margin-bottom: 2.5rem; padding-left: 1.5rem; border-left: 1px solid var(--rule); }
+.arc-margin-block:last-child { margin-bottom: 0; }
+.arc-margin-label {
+  display: block; color: var(--accent); font-size: 0.6rem;
+  letter-spacing: 0.22em; margin-bottom: 0.4rem;
+}
+.arc-margin-value { color: var(--ink); line-height: 1.6; font-size: 0.7rem; text-transform: none; letter-spacing: 0.04em; }
+.arc-margin-value em { color: var(--accent); font-style: italic; font-family: var(--serif-display); font-size: 0.85rem; }
+
+/* ──────────── COLOPHON / FOOTER ──────────── */
+.colophon-end {
+  max-width: 1280px; margin: 0 auto;
+  padding: 3rem 2.5rem 2rem;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem; align-items: center;
+  font-family: var(--mono); font-size: 0.65rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.colophon-end::before, .colophon-end::after {
+  content: ''; height: 1px; background: var(--rule-faint);
+}
+.colophon-end-mark { color: var(--accent); font-family: var(--serif-display); font-style: italic; font-size: 1rem; letter-spacing: 0.1em; }
+
+footer {
+  max-width: 1280px; margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+  position: relative; z-index: 3;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--rule);
+}
+.footer-block-label {
+  font-family: var(--mono); font-size: 0.6rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+}
+.footer-tagline {
+  font-family: var(--serif-display); font-weight: 300; font-style: italic;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.2;
+  color: var(--ink); letter-spacing: -0.015em;
+  font-variation-settings: 'SOFT' 100, 'opsz' 36, 'WONK' 1;
+  margin-bottom: 1rem;
+}
+.footer-tagline em { color: var(--accent); }
+.footer-body {
+  font-family: var(--serif-body); font-size: 0.92rem;
+  line-height: 1.65; color: var(--ink-muted);
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.85rem; }
+.footer-link {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink-secondary); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  transition: color 0.3s var(--ease);
+  width: fit-content;
+}
+.footer-link:hover { color: var(--accent); }
+.footer-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+.footer-link span { color: var(--ink-dim); padding-left: 0.25rem; transition: color 0.3s var(--ease), transform 0.3s var(--ease); }
+.footer-link:hover span { color: var(--accent); transform: translateX(3px); }
+
+.footer-bottom {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem; align-items: center;
+  padding-top: 2rem;
+  font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.footer-bottom .right { text-align: right; }
+.footer-bottom .center { text-align: center; color: var(--accent); font-family: var(--serif-display); font-style: italic; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: none; }
+
+/* ──────────── MODAL ──────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(20, 17, 14, 0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-content {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  max-width: 760px; width: 100%; max-height: 88vh;
+  overflow-y: auto; padding: 3.5rem 3.5rem 3rem;
+  position: relative;
+  transform: scale(0.96) translateY(20px);
+  transition: transform 0.4s var(--ease);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
+.modal-content::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px; opacity: 0.04; mix-blend-mode: overlay;
+  border-radius: 6px;
+}
+.modal-close {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  background: none; border: 1px solid var(--rule);
+  color: var(--ink-secondary);
+  width: 36px; height: 36px; border-radius: 50%;
+  font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s var(--ease);
+  font-family: var(--mono); z-index: 1;
+}
+.modal-close:hover { color: var(--ink); border-color: var(--accent); background: var(--accent-faint); }
+
+.modal-eyebrow {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.85rem;
+  position: relative; z-index: 1;
+}
+.modal-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.modal-eyebrow .ft { color: var(--ink); }
+.modal-content h2 {
+  font-family: var(--serif-display); font-weight: 300;
+  font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink); margin-bottom: 0.85rem;
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 0;
+  position: relative; z-index: 1;
+}
+.modal-content h2 em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: 'SOFT' 100, 'opsz' 144, 'WONK' 1;
+}
+.modal-tagline {
+  font-family: var(--serif-display); font-weight: 300; font-style: italic;
+  font-size: 1.15rem; color: var(--ink-muted);
+  margin-bottom: 2rem; padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+  font-variation-settings: 'SOFT' 100, 'opsz' 36;
+  position: relative; z-index: 1;
+}
+.modal-body {
+  font-family: var(--serif-body); font-size: 1rem;
+  line-height: 1.8; color: var(--ink-muted);
+  position: relative; z-index: 1;
+}
+.modal-body p { margin-bottom: 1rem; }
+.modal-body strong { color: var(--ink); font-weight: 500; }
+.modal-body em { color: var(--accent); font-style: italic; }
+
+.modal-tech-full {
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  position: relative; z-index: 1;
+}
+.modal-tech-label {
+  font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.85rem;
+}
+.modal-tech-tags {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.06em; color: var(--ink); line-height: 1.8;
+}
+.modal-tech-tags .sep { color: var(--ink-dim); padding: 0 0.35rem; }
+
+.modal-links {
+  display: flex; gap: 0.85rem; flex-wrap: wrap;
+  margin-top: 2rem; position: relative; z-index: 1;
+}
+.modal-link {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--accent);
+  border-radius: 100px;
+  transition: all 0.3s var(--ease);
+}
+.modal-link:hover { background: var(--accent-faint); color: var(--ink); }
+.modal-link svg { width: 12px; height: 12px; }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3rem; }
+  .feature { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .feature-margin { position: static; display: flex; gap: 2rem; flex-wrap: wrap; padding-top: 0; }
+  .feature-margin-block { margin-bottom: 0; padding-left: 1rem; flex: 1; min-width: 140px; }
+  .pullquote-wrap { grid-template-columns: 1fr; }
+  .in-this-issue { grid-template-columns: 1fr; gap: 2rem; }
+  .toc-item { grid-template-columns: 50px 1fr auto; }
+  .toc-leader { display: none; }
+  .arc-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .arc-margin { position: static; display: flex; gap: 2rem; flex-wrap: wrap; padding-top: 0; }
+  .arc-margin-block { margin-bottom: 0; padding-left: 1rem; flex: 1; min-width: 140px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-tagline-block { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 2rem 1.5rem 1rem; }
+  .hero-right { padding-top: 1.75rem; border-top: 1px solid var(--rule); }
+  nav.masthead { padding: 1rem 1.25rem; grid-template-columns: auto 1fr auto; }
+  .masthead-issue { display: none; }
+  .masthead-nav { display: none; }
+  .masthead-nav.mobile-open { display: flex; }
+  .masthead-mobile-toggle { display: flex; }
+  .folio { grid-template-columns: 1fr; padding: 1rem 1.5rem 0; gap: 0.4rem; }
+  .folio .center, .folio .right { text-align: left; }
+  .feature { padding: 2rem 1.5rem 3rem; }
+  .feature-prose { font-size: 1rem; }
+  .feature-prose p:first-of-type::first-letter { font-size: 4rem; }
+  .pullquote-wrap { padding: 1rem 1.5rem 2rem; }
+  .pullquote { padding-left: 2.5rem; }
+  .pullquote::before { font-size: 4.5rem; }
+  .in-this-issue { padding: 2rem 1.5rem 4rem; }
+  .toc-item { grid-template-columns: 1fr auto; }
+  .toc-num { grid-column: 1 / -1; }
+  .feature-opener { padding: 3rem 1.5rem 1.5rem; }
+  .toolkit-grid { grid-template-columns: 1fr; padding: 1.5rem 1.5rem 3rem; }
+  .toolkit-item:nth-child(odd), .toolkit-item:nth-child(even) { padding: 2rem 0; border-right: none; }
+  .work-grid { grid-template-columns: 1fr; padding: 1.5rem 1.5rem 3rem; }
+  .arc-wrap { padding: 1.5rem 1.5rem 3rem; }
+  .arc-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+  .arc-year { font-size: 1.3rem; }
+  .colophon-end { grid-template-columns: 1fr; text-align: center; gap: 0.75rem; }
+  .colophon-end::before, .colophon-end::after { display: none; }
+  .ornament { padding: 2.5rem 1.5rem 0; }
+  .modal-content { padding: 2.5rem 1.5rem 2rem; }
+  .modal-close { top: 0.85rem; right: 0.85rem; }
+  footer { padding: 2rem 1.5rem 3rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { grid-template-columns: 1fr; gap: 0.75rem; text-align: center; }
+  .footer-bottom .right { text-align: center; }
+}
+</style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
-<canvas id="particles"></canvas>
-<div class="noise"></div>
-<div class="glow-orb" id="glowOrb"></div>
+<div class="bg-base"></div>
+<div class="bg-noise"></div>
+<div class="bg-grain"></div>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-vignette"></div>
 
-<nav id="mainNav">
-  <a href="#" class="nav-brand">RINGOSYSTEMS<span class="cursor-blink"></span></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="mailto:ceo@ringosystems.com">Contact</a></li>
-  </ul>
-  <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+<nav class="masthead" id="mainNav">
+  <a href="#" class="masthead-brand">Ringo<span class="dot">·</span>Systems</a>
+  <div class="masthead-issue">Vol. <strong>01</strong> &middot; No. 01 &middot; 2026</div>
+  <div class="masthead-nav" id="navLinks">
+    <a href="#profile">Profile</a>
+    <a href="#toolkit">Toolkit</a>
+    <a href="#work">Work</a>
+    <a href="#arc">The Arc</a>
+    <a href="mailto:ceo@ringosystems.com">Contact</a>
+  </div>
+  <button class="masthead-mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
   </button>
 </nav>
 
+<!-- folio strip -->
+<div class="folio">
+  <div>RingoSystems &middot; <span>Vol. 01</span></div>
+  <div class="center">Feature 01 &mdash; <span>The Principal</span></div>
+  <div class="right">pg. <span>03</span></div>
+</div>
+
 <main>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-eyebrow">// Principal Infrastructure Architect</div>
-    <h1 class="hero-title">I build systems that<br><span class="gradient-text">manage themselves.</span></h1>
-    <div class="hero-terminal">
-      <span class="prompt">$&gt;</span> <span id="typedOutput"></span><span class="typed-text"></span>
+  <!-- ──────────── FEATURE 01 / HERO ──────────── -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Feature 01 &middot; <span class="feature-title">The Principal</span></div>
+      <h1 class="hero-title">The engineer who taught<br>infrastructure to <em>manage itself.</em></h1>
     </div>
-    <div class="hero-agentic-badge" style="display:inline-flex;align-items:center;gap:0.75rem;padding:0.6rem 1.25rem;border:1px solid var(--border-glow);border-radius:8px;background:linear-gradient(135deg, var(--accent-dim) 0%, rgba(124,92,255,0.1) 100%);margin-bottom:2rem;opacity:0;transform:translateY(20px);animation:fadeInUp 0.8s var(--ease-out-expo) 0.8s forwards;">
-      <span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;">Now practicing:</span>
-      <span style="font-family:var(--font-display);font-size:0.95rem;font-weight:600;background:linear-gradient(135deg,var(--accent),#7C5CFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Agentic Engineering</span>
-      <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-secondary);">&#8212; AI as a collaborating infrastructure engineer</span>
-    </div>
-    <div class="hero-cta-row">
-      <a href="#projects" class="hero-cta primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg>
-        View Projects
-      </a>
-      <a href="https://github.com/Ringosystems" target="_blank" rel="noopener" class="hero-cta">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://ca.linkedin.com/in/markringo" target="_blank" rel="noopener" class="hero-cta">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-    </div>
-    <div class="hero-scroll-indicator"><div class="scroll-line"></div></div>
-  </section>
-
-  <div class="section-separator"><hr></div>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-header reveal">
-      <div class="section-label">About</div>
-      <h2 class="section-title">The person behind<br>the automation.</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text reveal reveal-delay-1">
-        <p>I'm <strong>Mark Ringo</strong> &#8212; I've been building, breaking, and fixing IT infrastructure since the <span class="accent">late 1980s</span>. What started with early networking and systems work evolved through three decades of increasingly complex environments: from retail networks at <strong>Pier 1 Imports</strong>, to consulting at <strong>Arthur Andersen</strong> where I helped design server infrastructure and data center implementation for XM Satellite Radio and architected directory services for the Chevron/Ultramar Diamond Shamrock energy merger, to joining <strong>Hitachi Consulting</strong> as a founding-day Senior Systems Engineer, to serving as <strong>SVP of Global Infrastructure</strong> at <strong>Citibank</strong>, supporting North American Credit Cards Business Operations.</p>
-        <p>Along the way I served as <strong>CTO at Triencon Services</strong> for seven years &#8212; designing hybrid public/private clouds, deploying pervasive encryption across the firm, building multi-node DirectAccess IPv6 VPN infrastructure, and hardening Active Directory for electric grid control networks under <strong>NERC CIP</strong> requirements. I went on to lead infrastructure architecture at <strong>Simmons Bank</strong> before landing at <strong>Steeves &amp; Associates</strong>, Canada's first certified Microsoft Cloud Partner.</p>
-        <p>Today my work lives at the intersection of <span class="accent">cloud-native endpoint management</span>, <strong>DSC v3</strong>, and <strong>AI-augmented operations</strong>. I build tools that let tens of thousands of Intune-managed endpoints configure, secure, and remediate themselves &#8212; and I'm training custom LLMs on the domain knowledge to make that even better.</p>
-        <p>I hold a <strong>BS in Management Information Systems</strong> from the University of Texas at Arlington. I live near Alberta Beach, Alberta, where my home lab mirrors the enterprise patterns I deploy professionally &#8212; and where my cat Chaos continually stress-tests my exit door sensor automations.</p>
-      </div>
-      <div class="about-right reveal reveal-delay-2">
-        <div class="about-stats">
-          <div class="stat-card"><div class="stat-number">35+</div><div class="stat-label">Years in IT</div></div>
-          <div class="stat-card"><div class="stat-number">10K+</div><div class="stat-label">Endpoints at Scale</div></div>
-          <div class="stat-card"><div class="stat-number">DSC v3</div><div class="stat-label">Early Adopter</div></div>
-          <div class="stat-card"><div class="stat-number">IaC</div><div class="stat-label">Everything as Code</div></div>
-        </div>
-        <div class="career-timeline">
-          <div class="career-timeline-title">Career Path</div>
-          <div class="career-item"><div class="career-years">2019–</div><div><div class="career-role">Principal Infrastructure Architect</div><div class="career-company">Steeves &amp; Associates / RingoSystems</div></div></div>
-          
-          <div class="career-item"><div class="career-years">2017</div><div><div class="career-role">Director, Infrastructure Architecture</div><div class="career-company">Simmons Bank</div></div></div>
-          <div class="career-item"><div class="career-years">2016</div><div><div class="career-role">SVP, Global Infrastructure</div><div class="career-company">Citibank &#8212; NA Credit Cards Business Ops</div></div></div>
-          <div class="career-item"><div class="career-years">2009</div><div><div class="career-role">Chief Technology Officer</div><div class="career-company">Triencon Services</div></div></div>
-          <div class="career-item"><div class="career-years">2005</div><div><div class="career-role">Associate Director, IT</div><div class="career-company">ORIX USA</div></div></div>
-          <div class="career-item"><div class="career-years">2002</div><div><div class="career-role">Senior Systems Engineer</div><div class="career-company">Hitachi Consulting</div></div></div>
-          <div class="career-item"><div class="career-years">1999</div><div><div class="career-role">Senior Systems Engineer</div><div class="career-company">Arthur Andersen</div></div></div>
-          <div class="career-item"><div class="career-years">1996</div><div><div class="career-role">Lead Network &amp; Technical Analyst</div><div class="career-company">Pier 1 Imports</div></div></div>
-        </div>
+    <div class="hero-right">
+      <p class="hero-deck">Three decades on, the principal architect at <strong>Canada&apos;s first Microsoft Cloud Partner</strong> is teaching a language model to do what he does &mdash; <em>one PowerShell script at a time.</em></p>
+      <div class="hero-byline">
+        <div class="hero-byline-row"><span class="label">Subject</span><span class="value">Mark Ringo</span></div>
+        <div class="hero-byline-row"><span class="label">Filed</span><span class="value">Alberta Beach, AB</span></div>
+        <div class="hero-byline-row"><span class="label">Practice</span><span class="value">Steeves &amp; Associates</span></div>
+        <div class="hero-byline-row"><span class="label">Status</span><span class="value"><span class="live-dot"></span>Operational, 35yr+</span></div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIAL -->
-  <div class="testimonial-section reveal">
-    <a href="https://ca.linkedin.com/in/markringo" target="_blank" rel="noopener" class="testimonial-card" style="text-decoration:none;color:inherit;display:block;cursor:default;">
-      <p class="testimonial-text">A talented technologist with a rare gift for identifying waste and inefficiency in complex IT environments. Unlike many highly skilled technologists, he doesn't pursue technology for technology's sake &#8212; he brings a business-based perspective to infrastructure. He has a passion for security, stays current on emerging threats, and understands technical security at an expert level.</p>
-      <div>
-        <span class="testimonial-author">Randy Green</span>
-        <span class="testimonial-role">&#8212; Retired CTO, via LinkedIn</span>
+  <div class="ornament">&#9670;</div>
+
+  <!-- FEATURE 01 / PROFILE BODY -->
+  <section class="feature" id="profile">
+    <article class="feature-body">
+      <div class="section-mark">
+        <span class="num">01</span> &middot;
+        <span class="title">Profile</span>
+        <span class="read-time">12 min read</span>
       </div>
-    </a>
+      <div class="feature-prose">
+        <p>I have been building IT infrastructure since the late 1980s, and what is striking when I look at the arc isn&apos;t the variety of technologies &mdash; though there is plenty of that &mdash; but the consistency of the underlying instinct: <em>find the waste, remove the manual step, make the system run itself.</em></p>
+        <p>It started with retail networks at <strong>Pier 1 Imports</strong>. Then <strong>Arthur Andersen</strong>, where I helped design server infrastructure and data center implementation for XM Satellite Radio, and architected directory services for the Chevron / Ultramar Diamond Shamrock energy merger. <strong>Hitachi Consulting</strong> hired me on its founding day. Seven years as Chief Technology Officer at <strong>Triencon Services</strong> &mdash; designing hybrid public-private clouds, deploying pervasive encryption, hardening Active Directory for electric grid control networks under <em>NERC CIP</em>. <strong>Citibank</strong>, as Senior Vice President of Global Infrastructure for North American Credit Cards Business Operations. <strong>Simmons Bank</strong>. And now <strong>Steeves &amp; Associates</strong>, where the work has converged on the strange and lovely intersection of cloud-native endpoint management, DSC v3, and the practice of training language models on the discipline itself.</p>
+        <p>I live near Alberta Beach, where my home lab mirrors the enterprise patterns I deploy at scale &mdash; and where my cat, Chaos, continually stress-tests the exit door sensor automations. The work I am most engaged with right now sits at the intersection of <em>agentic engineering</em> and infrastructure: building tools that let tens of thousands of Intune-managed endpoints configure, secure, and remediate themselves, and training a custom LLM on the corpus of knowledge that makes that possible.</p>
+      </div>
+    </article>
+    <aside class="feature-margin">
+      <div class="feature-margin-block">
+        <span class="feature-margin-label">In this section</span>
+        <span class="feature-margin-value">A working profile of the principal &mdash; arc, practice, current pursuits.</span>
+      </div>
+      <div class="feature-margin-block">
+        <span class="feature-margin-label">Page</span>
+        <span class="feature-margin-value"><span class="pgnum">04</span>&mdash; 06</span>
+      </div>
+      <div class="feature-margin-block">
+        <span class="feature-margin-label">Continued</span>
+        <span class="feature-margin-value">In <em>Selected Work</em>, pg. 24</span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pullquote-wrap">
+    <blockquote class="pullquote">
+      He doesn&apos;t pursue technology for technology&apos;s sake &mdash; he brings a <em>business-based</em> perspective to infrastructure.
+      <span class="pullquote-attr">
+        &mdash; <a href="https://ca.linkedin.com/in/markringo" target="_blank" rel="noopener">Randy Green</a>, <span class="attr-role">Retired CTO &middot; via LinkedIn</span>
+      </span>
+    </blockquote>
   </div>
 
-  <div class="section-separator"><hr></div>
+  <div class="ornament faint">&#9670; &nbsp; &#9670; &nbsp; &#9670;</div>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-header reveal">
-      <div class="section-label">Capabilities</div>
-      <h2 class="section-title">What I bring to<br>the stack.</h2>
-      <p class="section-subtitle">Enterprise endpoint management, from silicon to cloud &#8212; automated, secured, and built to outlast the next reorg.</p>
+  <!-- IN THIS ISSUE TOC -->
+  <section class="in-this-issue">
+    <div class="in-this-issue-header">
+      <span>Continued</span>
+      In this <em>issue</em>
     </div>
-    <div class="skills-grid">
-      <div class="skill-card reveal reveal-delay-1">
-        <div class="skill-icon">&#9881;</div>
-        <h3>Endpoint Management</h3>
-        <p>Cloud-native device management at scale. Intune-first architectures with zero-touch provisioning, compliance policies, and automated remediation across large enterprise and retail fleets.</p>
-        <div class="skill-tags"><span class="skill-tag">Intune</span><span class="skill-tag">Autopilot</span><span class="skill-tag">SCCM</span><span class="skill-tag">Graph API</span><span class="skill-tag">Entra ID</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon">&#128187;</div>
-        <h3>PowerShell &amp; Automation</h3>
-        <p>Production-grade modules, Proactive Remediations, custom DSC resources, and CI/CD pipelines. If it can be scripted, it should be &#8212; and it should run unattended.</p>
-        <div class="skill-tags"><span class="skill-tag">PowerShell 7+</span><span class="skill-tag">DSC v3</span><span class="skill-tag">WinGet</span><span class="skill-tag">Pester</span><span class="skill-tag">Azure Functions</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-3">
-        <div class="skill-icon">&#128274;</div>
-        <h3>Security &amp; Compliance</h3>
-        <p>Application control, conditional access, certificate-based auth, and security baselines that actually ship. From NERC CIP to retail PCI &#8212; security at every layer. CISSP certified.</p>
-        <div class="skill-tags"><span class="skill-tag">App Control</span><span class="skill-tag">CISSP</span><span class="skill-tag">Conditional Access</span><span class="skill-tag">LAPS</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-4">
-        <div class="skill-icon">&#129302;</div>
-        <h3>AI &amp; LLM Engineering</h3>
-        <p>Fine-tuning domain-specific models, building local inference infrastructure on consumer GPUs, and integrating AI into operational workflows. Not chatbots &#8212; real utility.</p>
-        <div class="skill-tags"><span class="skill-tag">Ollama</span><span class="skill-tag">QLoRA</span><span class="skill-tag">GGUF</span><span class="skill-tag">Claude API</span><span class="skill-tag">RTX 5080</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-1" style="border-color: var(--border-glow); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 212, 255, 0.04) 100%);">
-        <div class="skill-icon" style="background: linear-gradient(135deg, var(--accent-dim), rgba(124, 92, 255, 0.2)); border-color: rgba(124, 92, 255, 0.25);">&#9881;</div>
-        <h3>Agentic Engineering</h3>
-        <p>Designing AI-driven workflows where Claude acts as a collaborating engineer &#8212; not just a chatbot. Persistent project contexts, structured skill systems, tool orchestration, and iterative development loops that produce production-grade infrastructure code.</p>
-        <div class="skill-tags"><span class="skill-tag">Claude Projects</span><span class="skill-tag">MCP</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Tool Orchestration</span><span class="skill-tag">IaC Pipelines</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon">&#9729;</div>
-        <h3>Cloud &amp; Hybrid Architecture</h3>
-        <p>Azure-first infrastructure design. From hybrid public/private clouds at energy companies to Azure Functions for config delivery &#8212; always with cost discipline.</p>
-        <div class="skill-tags"><span class="skill-tag">Azure</span><span class="skill-tag">Docker</span><span class="skill-tag">REST APIs</span><span class="skill-tag">NuGet</span><span class="skill-tag">ProGet</span></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2">
-        <div class="skill-icon">&#128268;</div>
-        <h3>Infrastructure &amp; Home Lab</h3>
-        <p>Unraid servers, Ubiquiti networking, smart home automation, and bespoke ESP32 firmware connecting to home automation via Matter over Thread. The home lab is where enterprise patterns get tested before they ship.</p>
-        <div class="skill-tags"><span class="skill-tag">Unraid</span><span class="skill-tag">UniFi</span><span class="skill-tag">Homey Pro</span><span class="skill-tag">ESP32</span><span class="skill-tag">Matter/Thread</span></div>
-      </div>
+    <div class="toc-list">
+      <a href="#toolkit" class="toc-item">
+        <div class="toc-num">02</div>
+        <div class="toc-title">The <em>Toolkit</em></div>
+        <div class="toc-leader">............................................................</div>
+        <div class="toc-pg">pg. <span class="num">12</span></div>
+        <div class="toc-arrow">&rarr;</div>
+      </a>
+      <a href="#work" class="toc-item">
+        <div class="toc-num">03</div>
+        <div class="toc-title">Selected <em>Work</em></div>
+        <div class="toc-leader">............................................................</div>
+        <div class="toc-pg">pg. <span class="num">24</span></div>
+        <div class="toc-arrow">&rarr;</div>
+      </a>
+      <a href="#arc" class="toc-item">
+        <div class="toc-num">04</div>
+        <div class="toc-title">The <em>Arc</em></div>
+        <div class="toc-leader">............................................................</div>
+        <div class="toc-pg">pg. <span class="num">38</span></div>
+        <div class="toc-arrow">&rarr;</div>
+      </a>
     </div>
   </section>
 
-  <div class="section-separator"><hr></div>
+  <!-- ──────────── FEATURE 02 / TOOLKIT ──────────── -->
+  <div class="ornament">&#9670;</div>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-header reveal">
-      <div class="section-label">Projects</div>
-      <h2 class="section-title">Things I'm working on currently.</h2>
-      <p class="section-subtitle">Tools and platforms born from real problems in endpoint management.</p>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1" onclick="openModal('dscforge')">
-        <span class="project-status">Active</span>
-        <h3>DscForge</h3>
-        <div class="project-tagline">DSC v3 Configuration Authoring Platform</div>
-        <p>Full-stack PowerShell SPA for building, validating, and deploying DSC v3 configurations. Multi-provider AI assistance, GPO import, ADMX knowledge base, and live package search.</p>
-        <div class="project-tech"><span>PowerShell 7</span><span>DSC v3</span><span>HTML/JS SPA</span><span>Ollama</span><span>Claude API</span></div>
-        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
-      </div>
-      <div class="project-card reveal reveal-delay-2" onclick="openModal('ringollm')">
-        <span class="project-status wip">In Progress</span>
-        <h3>RingoLLM</h3>
-        <div class="project-tagline">Your endpoint management co-pilot.</div>
-        <p>Domain-specialized LLM fine-tuned on Windows endpoint management data. Custom training pipeline with synthetic Q&amp;A generation, quality filtering, and local GPU inference.</p>
-        <div class="project-tech"><span>Qwen 2.5 Coder 14B</span><span>QLoRA</span><span>Unsloth</span><span>RTX 5080</span><span>Ollama</span></div>
-        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
-      </div>
-      <div class="project-card reveal reveal-delay-3" onclick="openModal('intunegovernance')">
-        <span class="project-status">Active</span>
-        <h3>IntuneGovernance</h3>
-        <div class="project-tagline">PowerShell module for Intune fleet operations</div>
-        <p>A governance module for managing Intune at enterprise scale. Firewall remediation, fleet analysis, risk scoring, compliance reporting, and automated policy generation.</p>
-        <div class="project-tech"><span>PowerShell</span><span>Graph API</span><span>Intune</span><span>JSON Export</span><span>Azure Blob</span></div>
-        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
-      </div>
-      <div class="project-card reveal reveal-delay-4" onclick="openModal('cisdscforge')">
-        <span class="project-status">Active</span>
-        <h3>CISDSCForge</h3>
-        <div class="project-tagline">Multi-Standard Security Baseline DSC v3 Generator</div>
-        <p>An agentic Claude Project that ingests CIS Benchmarks, Microsoft OSConfig baselines, HardeningKitty finding lists, and other hardening standards to generate production-ready DSC v3 YAML configurations. Extensible to new sources.</p>
-        <div class="project-tech"><span>Claude Project</span><span>DSC v3</span><span>CIS Benchmarks</span><span>OSConfig</span><span>HardeningKitty</span></div>
-        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
-      </div>
-      <div class="project-card reveal reveal-delay-4" onclick="openModal('ringo')">
-        <span class="project-status arch">Architecture</span>
-        <h3>R.I.N.G.O. Platform</h3>
-        <div class="project-tagline">Resource Instrumentation Normalization &amp; Governance Orchestration</div>
-        <p>Azure Function-based middleman for DSC v3 configuration delivery. SCEPman cert auth, tiered processing, and Proactive Remediation compliance bridge. Typically under $7 CAD/month regardless of seat count.</p>
-        <div class="project-tech"><span>Azure Functions</span><span>SCEPman</span><span>Blob Storage</span><span>DSC v3</span><span>Entra Groups</span></div>
-        <div class="project-open-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View details</div>
-      </div>
-    </div>
+  <section class="feature-opener" id="toolkit">
+    <div class="feature-opener-eyebrow">Feature 02 &middot; <span class="ft">The Toolkit</span></div>
+    <h2 class="feature-opener-title">A working <em>inventory</em> of the practice.</h2>
+    <p class="feature-opener-deck">Enterprise endpoint management, from silicon to cloud &mdash; <em>automated, secured, and built to outlast the next reorg.</em></p>
   </section>
+
+  <div class="toolkit-grid">
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">01</div>
+      <h3 class="toolkit-title">Endpoint <em>Management</em></h3>
+      <p class="toolkit-body">Cloud-native device management at scale. Intune-first architectures with zero-touch provisioning, compliance policies, and automated remediation across large enterprise and retail fleets.</p>
+      <div class="toolkit-tags">
+        <span class="tag">Intune</span><span class="sep">&middot;</span>
+        <span class="tag">Autopilot</span><span class="sep">&middot;</span>
+        <span class="tag">SCCM</span><span class="sep">&middot;</span>
+        <span class="tag">Graph API</span><span class="sep">&middot;</span>
+        <span class="tag">Entra ID</span>
+      </div>
+    </article>
+
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">02</div>
+      <h3 class="toolkit-title">PowerShell &amp; <em>Automation</em></h3>
+      <p class="toolkit-body">Production-grade modules, Proactive Remediations, custom DSC resources, and CI/CD pipelines. <em>If it can be scripted, it should be</em> &mdash; and it should run unattended.</p>
+      <div class="toolkit-tags">
+        <span class="tag">PowerShell 7+</span><span class="sep">&middot;</span>
+        <span class="tag">DSC v3</span><span class="sep">&middot;</span>
+        <span class="tag">WinGet</span><span class="sep">&middot;</span>
+        <span class="tag">Pester</span><span class="sep">&middot;</span>
+        <span class="tag">Azure Functions</span>
+      </div>
+    </article>
+
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">03</div>
+      <h3 class="toolkit-title">Security &amp; <em>Compliance</em></h3>
+      <p class="toolkit-body">Application control, conditional access, certificate-based auth, and security baselines that actually ship. From NERC CIP to retail PCI &mdash; security at every layer. CISSP certified.</p>
+      <div class="toolkit-tags">
+        <span class="tag">App Control</span><span class="sep">&middot;</span>
+        <span class="tag">CISSP</span><span class="sep">&middot;</span>
+        <span class="tag">Conditional Access</span><span class="sep">&middot;</span>
+        <span class="tag">LAPS</span>
+      </div>
+    </article>
+
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">04</div>
+      <h3 class="toolkit-title">AI &amp; <em>LLM Engineering</em></h3>
+      <p class="toolkit-body">Fine-tuning domain-specific models, building local inference infrastructure on consumer GPUs, and integrating AI into operational workflows. <em>Not chatbots</em> &mdash; real utility.</p>
+      <div class="toolkit-tags">
+        <span class="tag">Ollama</span><span class="sep">&middot;</span>
+        <span class="tag">QLoRA</span><span class="sep">&middot;</span>
+        <span class="tag">GGUF</span><span class="sep">&middot;</span>
+        <span class="tag">Claude API</span><span class="sep">&middot;</span>
+        <span class="tag">RTX 5080</span>
+      </div>
+    </article>
+
+    <article class="toolkit-item featured reveal">
+      <div class="toolkit-num">05</div>
+      <h3 class="toolkit-title">Agentic <em>Engineering</em></h3>
+      <p class="toolkit-body">Designing AI-driven workflows where Claude acts as a collaborating engineer &mdash; <em>not just a chatbot.</em> Persistent project contexts, structured skill systems, tool orchestration, and iterative development loops that produce production-grade infrastructure code.</p>
+      <div class="toolkit-tags">
+        <span class="tag">Claude Projects</span><span class="sep">&middot;</span>
+        <span class="tag">MCP</span><span class="sep">&middot;</span>
+        <span class="tag">Prompt Engineering</span><span class="sep">&middot;</span>
+        <span class="tag">Tool Orchestration</span><span class="sep">&middot;</span>
+        <span class="tag">IaC Pipelines</span>
+      </div>
+    </article>
+
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">06</div>
+      <h3 class="toolkit-title">Cloud &amp; <em>Hybrid Architecture</em></h3>
+      <p class="toolkit-body">Azure-first infrastructure design. From hybrid public/private clouds at energy companies to Azure Functions for config delivery &mdash; <em>always with cost discipline.</em></p>
+      <div class="toolkit-tags">
+        <span class="tag">Azure</span><span class="sep">&middot;</span>
+        <span class="tag">Docker</span><span class="sep">&middot;</span>
+        <span class="tag">REST APIs</span><span class="sep">&middot;</span>
+        <span class="tag">NuGet</span><span class="sep">&middot;</span>
+        <span class="tag">ProGet</span>
+      </div>
+    </article>
+
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">07</div>
+      <h3 class="toolkit-title">Infrastructure &amp; <em>Home Lab</em></h3>
+      <p class="toolkit-body">Unraid servers, Ubiquiti networking, smart home automation, and bespoke ESP32 firmware connecting to home automation via Matter over Thread. <em>The home lab is where enterprise patterns get tested before they ship.</em></p>
+      <div class="toolkit-tags">
+        <span class="tag">Unraid</span><span class="sep">&middot;</span>
+        <span class="tag">UniFi</span><span class="sep">&middot;</span>
+        <span class="tag">Homey Pro</span><span class="sep">&middot;</span>
+        <span class="tag">ESP32</span><span class="sep">&middot;</span>
+        <span class="tag">Matter/Thread</span>
+      </div>
+    </article>
+  </div>
+
+  <!-- ──────────── FEATURE 03 / SELECTED WORK ──────────── -->
+  <div class="ornament">&#9670;</div>
+
+  <section class="feature-opener" id="work">
+    <div class="feature-opener-eyebrow">Feature 03 &middot; <span class="ft">Selected Work</span></div>
+    <h2 class="feature-opener-title">Tools and platforms born from <em>real problems</em> in endpoint management.</h2>
+    <p class="feature-opener-deck">Each one began as a problem I needed to solve at scale. <em>Open the entries below</em> to read the full feature on each.</p>
+  </section>
+
+  <div class="work-grid">
+    <article class="work-item reveal" onclick="openModal('dscforge')">
+      <div class="work-item-header">
+        <span class="work-item-num">001</span>
+        <span class="work-item-status active">Active</span>
+      </div>
+      <h3>Dsc<em>Forge</em></h3>
+      <p class="work-item-tagline">DSC v3 Configuration Authoring Platform</p>
+      <p class="work-item-body">Full-stack PowerShell SPA for building, validating, and deploying DSC v3 configurations. Multi-provider AI assistance, GPO import, ADMX knowledge base, and live package search.</p>
+      <div class="work-item-tags">
+        <span>PowerShell 7</span><span class="sep">&middot;</span>
+        <span>DSC v3</span><span class="sep">&middot;</span>
+        <span>HTML/JS SPA</span><span class="sep">&middot;</span>
+        <span>Ollama</span><span class="sep">&middot;</span>
+        <span>Claude API</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('ringollm')">
+      <div class="work-item-header">
+        <span class="work-item-num">002</span>
+        <span class="work-item-status active">Active</span>
+      </div>
+      <h3>Ringo<em>LLM</em></h3>
+      <p class="work-item-tagline">Your endpoint management co-pilot.</p>
+      <p class="work-item-body">Domain-specialized LLM fine-tuned on Windows endpoint management data. Multiple versions shipped on HuggingFace. Custom training pipeline with synthetic Q&amp;A generation, quality filtering, and local GPU inference.</p>
+      <div class="work-item-tags">
+        <span>Qwen 3 8B</span><span class="sep">&middot;</span>
+        <span>QLoRA</span><span class="sep">&middot;</span>
+        <span>Unsloth</span><span class="sep">&middot;</span>
+        <span>RTX 5080</span><span class="sep">&middot;</span>
+        <span>Ollama</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('intunegovernance')">
+      <div class="work-item-header">
+        <span class="work-item-num">003</span>
+        <span class="work-item-status active">Active</span>
+      </div>
+      <h3>Intune<em>Governance</em></h3>
+      <p class="work-item-tagline">PowerShell module for Intune fleet operations</p>
+      <p class="work-item-body">A governance module for managing Intune at enterprise scale. Firewall remediation, fleet analysis, risk scoring, compliance reporting, and automated policy generation.</p>
+      <div class="work-item-tags">
+        <span>PowerShell</span><span class="sep">&middot;</span>
+        <span>Graph API</span><span class="sep">&middot;</span>
+        <span>Intune</span><span class="sep">&middot;</span>
+        <span>JSON Export</span><span class="sep">&middot;</span>
+        <span>Azure Blob</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('cisdscforge')">
+      <div class="work-item-header">
+        <span class="work-item-num">004</span>
+        <span class="work-item-status active">Active</span>
+      </div>
+      <h3>CIS<em>DSCForge</em></h3>
+      <p class="work-item-tagline">Multi-Standard Security Baseline DSC v3 Generator</p>
+      <p class="work-item-body">An agentic Claude Project that ingests CIS Benchmarks, Microsoft OSConfig baselines, HardeningKitty finding lists, and other hardening standards to generate production-ready DSC v3 YAML configurations.</p>
+      <div class="work-item-tags">
+        <span>Claude Project</span><span class="sep">&middot;</span>
+        <span>DSC v3</span><span class="sep">&middot;</span>
+        <span>CIS Benchmarks</span><span class="sep">&middot;</span>
+        <span>OSConfig</span><span class="sep">&middot;</span>
+        <span>HardeningKitty</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('aria')">
+      <div class="work-item-header">
+        <span class="work-item-num">005</span>
+        <span class="work-item-status wip">In Progress</span>
+      </div>
+      <h3>Aria <em>Concierge</em></h3>
+      <p class="work-item-tagline">Local-first agentic personal assistant</p>
+      <p class="work-item-body">A self-hosted personal AI built around a temporal knowledge graph. Privacy as architecture &mdash; local processing, PII scrubbing, no data leaves the lab. The Concierge agent operates via MCP and manages its own infrastructure.</p>
+      <div class="work-item-tags">
+        <span>Python / FastAPI</span><span class="sep">&middot;</span>
+        <span>Neo4j</span><span class="sep">&middot;</span>
+        <span>Qdrant</span><span class="sep">&middot;</span>
+        <span>Ollama</span><span class="sep">&middot;</span>
+        <span>MCP</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('ringo')">
+      <div class="work-item-header">
+        <span class="work-item-num">006</span>
+        <span class="work-item-status arch">Architecture</span>
+      </div>
+      <h3>R.I.N.G.O. <em>Platform</em></h3>
+      <p class="work-item-tagline">Resource Instrumentation Normalization &amp; Governance Orchestration</p>
+      <p class="work-item-body">Azure Function-based middleman for DSC v3 configuration delivery. SCEPman cert auth, tiered processing, and Proactive Remediation compliance bridge. Typically under <em>$7 CAD/month</em> regardless of seat count.</p>
+      <div class="work-item-tags">
+        <span>Azure Functions</span><span class="sep">&middot;</span>
+        <span>SCEPman</span><span class="sep">&middot;</span>
+        <span>Blob Storage</span><span class="sep">&middot;</span>
+        <span>DSC v3</span><span class="sep">&middot;</span>
+        <span>Entra Groups</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+  </div>
+
+  <!-- ──────────── FEATURE 04 / THE ARC ──────────── -->
+  <div class="ornament">&#9670;</div>
+
+  <section class="feature-opener" id="arc">
+    <div class="feature-opener-eyebrow">Feature 04 &middot; <span class="ft">The Arc</span></div>
+    <h2 class="feature-opener-title">A chronological reading of <em>the career.</em></h2>
+    <p class="feature-opener-deck">From the floor of Pier 1 in 1996 to the home lab in Alberta Beach in 2026 &mdash; <em>thirty years of teaching infrastructure to behave.</em></p>
+  </section>
+
+  <div class="arc-wrap">
+    <div class="arc-list">
+      <div class="arc-item current reveal">
+        <div class="arc-year">2019<span class="now">&mdash; Present</span></div>
+        <div>
+          <div class="arc-role">Principal Infrastructure Architect</div>
+          <div class="arc-company">Steeves &amp; Associates</div>
+          <div class="arc-context">Cloud-native endpoint management at scale. <em>Tens of thousands</em> of Intune-managed devices. DSC v3 architecture, custom LLM fine-tuning, agentic engineering practice.</div>
+        </div>
+      </div>
+
+      <div class="arc-item reveal">
+        <div class="arc-year">2017</div>
+        <div>
+          <div class="arc-role">Director, Infrastructure Architecture</div>
+          <div class="arc-company">Simmons Bank</div>
+          <div class="arc-context">Enterprise infrastructure leadership in regulated banking. Endpoint, identity, and security architecture across the bank&apos;s footprint.</div>
+        </div>
+      </div>
+
+      <div class="arc-item reveal">
+        <div class="arc-year">2016</div>
+        <div>
+          <div class="arc-role">SVP, Global Infrastructure</div>
+          <div class="arc-company">Citibank &mdash; North American Credit Cards Business Operations</div>
+          <div class="arc-context">Global infrastructure leadership for one of the world&apos;s largest consumer credit operations. <em>Scale and accountability at the highest level.</em></div>
+        </div>
+      </div>
+
+      <div class="arc-item reveal">
+        <div class="arc-year">2009</div>
+        <div>
+          <div class="arc-role">Chief Technology Officer</div>
+          <div class="arc-company">Triencon Services</div>
+          <div class="arc-context">Seven years as CTO. Hybrid public-private clouds. Pervasive encryption rollout. Multi-node DirectAccess IPv6 VPN. Active Directory hardening for electric grid control networks under <em>NERC CIP</em>.</div>
+        </div>
+      </div>
+
+      <div class="arc-item reveal">
+        <div class="arc-year">2005</div>
+        <div>
+          <div class="arc-role">Associate Director, IT</div>
+          <div class="arc-company">ORIX USA</div>
+          <div class="arc-context">Financial services infrastructure. The pivot from pure consulting into enterprise IT leadership.</div>
+        </div>
+      </div>
+
+      <div class="arc-item reveal">
+        <div class="arc-year">2002</div>
+        <div>
+          <div class="arc-role">Senior Systems Engineer</div>
+          <div class="arc-company">Hitachi Consulting</div>
+          <div class="arc-context"><em>Founding-day employee.</em> Helping build the practice from zero.</div>
+        </div>
+      </div>
+
+      <div class="arc-item reveal">
+        <div class="arc-year">1999</div>
+        <div>
+          <div class="arc-role">Senior Systems Engineer</div>
+          <div class="arc-company">Arthur Andersen</div>
+          <div class="arc-context">Server infrastructure and data center implementation for XM Satellite Radio. Directory services architecture for the Chevron / Ultramar Diamond Shamrock energy merger.</div>
+        </div>
+      </div>
+
+      <div class="arc-item reveal">
+        <div class="arc-year">1996</div>
+        <div>
+          <div class="arc-role">Lead Network &amp; Technical Analyst</div>
+          <div class="arc-company">Pier 1 Imports</div>
+          <div class="arc-context">The first chapter. Retail networks. Where the instinct to <em>find the waste, remove the manual step</em> first found a place to practice.</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="arc-margin">
+      <div class="arc-margin-block">
+        <span class="arc-margin-label">Span</span>
+        <span class="arc-margin-value"><em>1996</em> &mdash; Present</span>
+      </div>
+      <div class="arc-margin-block">
+        <span class="arc-margin-label">Eras</span>
+        <span class="arc-margin-value">Retail &middot; Consulting &middot; Energy &middot; Finance &middot; Cloud-native</span>
+      </div>
+      <div class="arc-margin-block">
+        <span class="arc-margin-label">Education</span>
+        <span class="arc-margin-value">B.S. Management Information Systems, University of Texas at Arlington</span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ornament faint">&#9670; &nbsp; &#9670; &nbsp; &#9670;</div>
+
+  <!-- COLOPHON END -->
+  <div class="colophon-end">
+    <div>End of Vol. 01 &middot; No. 01</div>
+    <div class="colophon-end-mark">&#10086;</div>
+    <div class="right">RingoSystems &middot; 2026</div>
+  </div>
 
 </main>
 
+<!-- ──────────── FOOTER ──────────── -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">RINGOSYSTEMS</div>
-    <div class="footer-tagline">Infrastructure is a craft.<br>This is where I practice it.</div>
-    <p class="footer-sub">Find me on GitHub or LinkedIn, or drop me a line.</p>
-    <div class="footer-links">
-      <a href="mailto:ceo@ringosystems.com" class="footer-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        ceo@ringosystems.com
-      </a>
-      <a href="https://github.com/Ringosystems" target="_blank" rel="noopener" class="footer-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://ca.linkedin.com/in/markringo" target="_blank" rel="noopener" class="footer-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
+    <div class="footer-tagline-block">
+      <div class="footer-block-label">About this publication</div>
+      <p class="footer-tagline">Infrastructure is a craft. <em>This is where I practice it.</em></p>
+      <p class="footer-body">RingoSystems is the personal practice and publication of <strong>Mark Ringo</strong> &mdash; principal infrastructure architect at Steeves &amp; Associates, working from a home lab near Alberta Beach.</p>
     </div>
-    <div class="footer-copyright">&copy; 2026 RingoSystems Heavy Industries. Alberta, Canada.</div>
+
+    <div>
+      <div class="footer-block-label">Correspondence</div>
+      <div class="footer-links">
+        <a href="mailto:ceo@ringosystems.com" class="footer-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          ceo@ringosystems.com <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-block-label">Elsewhere</div>
+      <div class="footer-links">
+        <a href="https://github.com/Ringosystems" target="_blank" rel="noopener" class="footer-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub <span>&rarr;</span>
+        </a>
+        <a href="https://ca.linkedin.com/in/markringo" target="_blank" rel="noopener" class="footer-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>&copy; 2026 RingoSystems Heavy Industries</div>
+    <div class="center">&#10086;</div>
+    <div class="right">Alberta, Canada</div>
   </div>
 </footer>
 
-<!-- MODAL -->
+<!-- ──────────── MODAL ──────────── -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-content" id="modalContent">
-    <button class="modal-close" id="modalCloseBtn">&times;</button>
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
     <div id="modalBody"></div>
   </div>
 </div>
 
 <script>
-// ── PARTICLES ──
-(function() {
-  var canvas = document.getElementById('particles');
-  var ctx = canvas.getContext('2d');
-  var particles = [];
-  var mouse = { x: -1000, y: -1000 };
-
-  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-
-  function createParticles() {
-    particles = [];
-    var count = Math.min(80, Math.floor((canvas.width * canvas.height) / 18000));
-    for (var i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 1.5 + 0.5, opacity: Math.random() * 0.4 + 0.1
-      });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-      if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 212, 255, ' + p.opacity + ')'; ctx.fill();
-      for (var j = i + 1; j < particles.length; j++) {
-        var p2 = particles[j];
-        var dx = p.x - p2.x, dy = p.y - p2.y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = 'rgba(0, 212, 255, ' + (0.06 * (1 - dist / 120)) + ')';
-          ctx.lineWidth = 0.5; ctx.stroke();
-        }
-      }
-      var mdx = p.x - mouse.x, mdy = p.y - mouse.y;
-      var mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-      if (mDist < 200) { var force = (200 - mDist) / 200; p.x += mdx * force * 0.01; p.y += mdy * force * 0.01; }
-    }
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', function() { resize(); createParticles(); });
-  window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
-  resize(); createParticles(); draw();
-})();
-
-// ── GLOW ORB ──
-document.addEventListener('mousemove', function(e) {
-  var orb = document.getElementById('glowOrb');
-  orb.style.left = e.clientX + 'px';
-  orb.style.top = e.clientY + 'px';
-});
-
-// ── TYPING EFFECT ──
-(function() {
-  var phrases = [
-    'Bringing Configuration as Code to Intune-managed endpoints.',
-    'Building AI co-pilots for Windows management.',
-    'Shipping PowerShell modules that don\'t break things.',
-    'Fine-tuning LLMs on endpoint management data.',
-    'Designing hybrid clouds since before they had a name.',
-    'Making infrastructure manage itself since the late \'80s.',
-    'Practicing agentic engineering \u2014 AI as a collaborating architect.'
-  ];
-  var el = document.getElementById('typedOutput');
-  var phraseIdx = 0, charIdx = 0, deleting = false;
-
-  function type() {
-    var current = phrases[phraseIdx];
-    if (!deleting) {
-      el.textContent = current.substring(0, charIdx + 1);
-      charIdx++;
-      if (charIdx === current.length) { setTimeout(function() { deleting = true; type(); }, 2500); return; }
-      setTimeout(type, 35 + Math.random() * 25);
-    } else {
-      el.textContent = current.substring(0, charIdx - 1);
-      charIdx--;
-      if (charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; setTimeout(type, 400); return; }
-      setTimeout(type, 18);
-    }
-  }
-  setTimeout(type, 1200);
-})();
-
-// ── SCROLL REVEAL ──
-(function() {
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
-})();
-
-// ── NAV HIDE ON SCROLL ──
-(function() {
-  var lastScroll = 0;
-  var nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', function() {
-    var current = window.scrollY;
-    if (current > lastScroll && current > 100) nav.classList.add('hidden');
-    else nav.classList.remove('hidden');
-    lastScroll = current;
-  });
-})();
-
-// ── MOBILE NAV ──
-document.getElementById('mobileToggle').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('mobile-open');
-});
-
-// ── SMOOTH SCROLL ──
-document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    var target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      document.getElementById('navLinks').classList.remove('mobile-open');
-    }
-  });
-});
-
 // ── PROJECT MODAL DATA ──
 var projectData = {
   dscforge: {
-    title: 'DscForge',
+    eyebrow: 'Feature 03.A',
+    title: 'Dsc<em>Forge</em>',
     tagline: 'DSC v3 Configuration Authoring Platform',
-    body: '<p><strong>DscForge</strong> is a full-stack PowerShell SPA that makes authoring DSC v3 configurations feel like a modern development experience instead of hand-editing YAML in the dark.</p><p>The platform provides a browser-based UI powered entirely by a PowerShell backend (System.Net.HttpListener), with multi-provider AI assistance via both local Ollama models and Claude Max through CLIProxyAPI. It features a complete GPO import pipeline, live parallel NuGet and WinGet search with popularity scoring, an ADMX evergreen sync engine pulling from 6 sources (Windows, Edge, Chrome, Office 365, Windows 11 25H2, Server 2025), and a managed tag system for organizing configurations.</p><p>The architecture follows a <strong>Quarry/Forge/Alloy</strong> naming convention: Quarry is where you discover and gather resources, Forge is where you shape configurations, and Alloy is where you combine and export the final product.</p><p>Current state: <strong>131 routes</strong> across 10 route files, 20 JS modules, per-source cache status, and professional DOCX documentation export.</p>',
+    body: '<p><strong>DscForge</strong> is a full-stack PowerShell SPA that makes authoring DSC v3 configurations feel like a modern development experience instead of hand-editing YAML in the dark.</p><p>The platform provides a browser-based UI powered entirely by a PowerShell backend (System.Net.HttpListener), with multi-provider AI assistance via both local Ollama models and Claude Max through CLIProxyAPI. It features a complete GPO import pipeline, live parallel NuGet and WinGet search with popularity scoring, an ADMX evergreen sync engine pulling from 6 sources (Windows, Edge, Chrome, Office 365, Windows 11 25H2, Server 2025), and a managed tag system for organizing configurations.</p><p>The architecture follows a <strong>Quarry / Forge / Alloy</strong> naming convention: Quarry is where you discover and gather resources, Forge is where you shape configurations, and Alloy is where you combine and export the final product.</p><p>Current state: <strong>131 routes</strong> across 10 route files, 20 JS modules, per-source cache status, and professional DOCX documentation export.</p>',
     tech: ['PowerShell 7', 'DSC v3', 'HttpListener', 'JavaScript', 'Ollama', 'Claude API', 'NuGet v2/v3', 'WinGet', 'ADMX', 'WinForms'],
     links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/DscForge' }]
   },
   ringollm: {
-    title: 'RingoLLM',
+    eyebrow: 'Feature 03.B',
+    title: 'Ringo<em>LLM</em>',
     tagline: 'Your endpoint management co-pilot.',
-    body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management \u2014 covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 2.5 Coder 14B</strong> \u2014 selected for its code generation capabilities and ability to run full GPU inference on 16GB VRAM.</p><p>Current corpus: <strong>6,235 documents, 8.26M tokens</strong>. Q&amp;A generation is actively running.</p>',
-    tech: ['Qwen 2.5 Coder 14B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
+    body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management &mdash; covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> &mdash; <em>code generation capability emerges from the training corpus</em> (PowerShell, KQL, Graph API examples) rather than from a Coder-variant base model. An important distinction in how the model achieves its specialization.</p><p>Multiple versions have shipped to HuggingFace as the corpus and pipeline have matured. Each release tightens the domain focus and improves the quality of the generated outputs.</p>',
+    tech: ['Qwen 3 8B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
     links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
   },
   intunegovernance: {
-    title: 'IntuneGovernance',
+    eyebrow: 'Feature 03.C',
+    title: 'Intune<em>Governance</em>',
     tagline: 'PowerShell module for Intune fleet operations',
-    body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale \u2014 the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management \u2014 where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that actually works at scale rather than looking good in a demo.</p>',
+    body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale &mdash; the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management &mdash; where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that <em>actually works at scale</em> rather than looking good in a demo.</p>',
     tech: ['PowerShell', 'Microsoft Graph API', 'Intune', 'Windows Firewall', 'Azure Blob', 'JSON Export', 'Proactive Remediation'],
     links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
   },
   cisdscforge: {
-    title: 'CISDSCForge',
+    eyebrow: 'Feature 03.D',
+    title: 'CIS<em>DSCForge</em>',
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
-    body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project \u2014 a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> \u2014 The Center for Internet Security\u2019s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> \u2014 The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> \u2014 The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <strong>easily extensible</strong> \u2014 any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: AI as a collaborating infrastructure engineer, not just a text generator.</p>',
+    body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p>',
     tech: ['Claude Project', 'DSC v3', 'CIS Benchmarks', 'OSConfig', 'HardeningKitty', 'YAML', 'Intune', 'Azure Machine Configuration', 'Agentic Engineering', 'Windows Hardening', 'DISA STIGs'],
     links: []
   },
+  aria: {
+    eyebrow: 'Feature 03.E',
+    title: 'Aria <em>Concierge</em>',
+    tagline: 'Local-first agentic personal assistant',
+    body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p>',
+    tech: ['Python / FastAPI', 'Neo4j', 'Qdrant', 'Graphiti', 'Ollama', 'LiteLLM + Presidio', 'Next.js', 'Kotlin / Jetpack Compose', 'Cloudflare Tunnel', 'MCP', 'Minisforum MS-S1 Max'],
+    links: []
+  },
   ringo: {
-    title: 'R.I.N.G.O. Platform',
-    tagline: 'Resource Instrumentation Normalization & Governance Orchestration',
-    body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base \u2192 Role \u2192 App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune\'s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <strong>typically under $7 CAD/month regardless of seat count</strong>.</p>',
+    eyebrow: 'Feature 03.F',
+    title: 'R.I.N.G.O. <em>Platform</em>',
+    tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
+    body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
     tech: ['Azure Functions', 'SCEPman', 'Azure Blob', 'DSC v3', 'Entra ID', 'Proactive Remediation', 'Device Certificates', 'Registry Sentinels'],
     links: []
   }
@@ -831,18 +1480,27 @@ var projectData = {
 function openModal(projectId) {
   var data = projectData[projectId];
   if (!data) return;
-  var html = '<h2>' + data.title + '</h2>';
-  html += '<div class="modal-tagline">' + data.tagline + '</div>';
+  var html = '';
+  if (data.eyebrow) {
+    html += '<div class="modal-eyebrow">' + data.eyebrow + ' &middot; <span class="ft">Selected Work</span></div>';
+  }
+  html += '<h2>' + data.title + '</h2>';
+  html += '<p class="modal-tagline">' + data.tagline + '</p>';
   html += '<div class="modal-body">' + data.body + '</div>';
   html += '<div class="modal-tech-full">';
-  for (var i = 0; i < data.tech.length; i++) { html += '<span>' + data.tech[i] + '</span>'; }
-  html += '</div>';
+  html += '<div class="modal-tech-label">Tech &amp; Tools</div>';
+  html += '<div class="modal-tech-tags">';
+  for (var i = 0; i < data.tech.length; i++) {
+    html += '<span>' + data.tech[i] + '</span>';
+    if (i < data.tech.length - 1) html += '<span class="sep">&middot;</span>';
+  }
+  html += '</div></div>';
   if (data.links && data.links.length > 0) {
     html += '<div class="modal-links">';
     for (var j = 0; j < data.links.length; j++) {
       var l = data.links[j];
       html += '<a href="' + l.url + '" target="_blank" rel="noopener" class="modal-link">';
-      html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+      html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
       html += l.label + '</a>';
     }
     html += '</div>';
@@ -850,6 +1508,7 @@ function openModal(projectId) {
   document.getElementById('modalBody').innerHTML = html;
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
+  document.getElementById('modalContent').scrollTop = 0;
 }
 
 function closeModal() {
@@ -860,14 +1519,39 @@ function closeModal() {
 document.getElementById('modalOverlay').addEventListener('click', function(e) {
   if (e.target === document.getElementById('modalOverlay')) closeModal();
 });
-
 document.getElementById('modalCloseBtn').addEventListener('click', function(e) {
   e.stopPropagation();
   closeModal();
 });
-
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
+});
+
+// ── REVEAL ON SCROLL ──
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+// ── MOBILE NAV ──
+document.getElementById('mobileToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('mobile-open');
+});
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var href = a.getAttribute('href');
+    if (href === '#') return;
+    var target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('navLinks').classList.remove('mobile-open');
+    }
+  });
 });
 </script>
 
