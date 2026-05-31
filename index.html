@@ -1664,8 +1664,9 @@ function openPdf(url) {
   frame.setAttribute('src', url + '#view=FitH');
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
+  try { history.pushState({ pdfOpen: true }, '', '#pdf'); } catch (e) {}
 }
-function closePdf() {
+function closePdf(fromPopState) {
   var overlay = document.getElementById('pdfOverlay');
   if (!overlay.classList.contains('active')) return;
   overlay.classList.remove('active');
@@ -1673,10 +1674,18 @@ function closePdf() {
   if (!document.getElementById('modalOverlay').classList.contains('active')) {
     document.body.style.overflow = '';
   }
+  if (!fromPopState && history.state && history.state.pdfOpen) {
+    try { history.back(); } catch (e) {}
+  }
 }
-document.getElementById('pdfCloseBtn').addEventListener('click', closePdf);
+document.getElementById('pdfCloseBtn').addEventListener('click', function() { closePdf(); });
 document.getElementById('pdfOverlay').addEventListener('click', function(e) {
   if (e.target === document.getElementById('pdfOverlay')) closePdf();
+});
+window.addEventListener('popstate', function() {
+  if (document.getElementById('pdfOverlay').classList.contains('active')) {
+    closePdf(true);
+  }
 });
 
 // ── REVEAL ON SCROLL ──
