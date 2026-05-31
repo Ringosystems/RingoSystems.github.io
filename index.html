@@ -799,6 +799,74 @@ footer {
 }
 .modal-close:hover { color: var(--ink); border-color: var(--accent); background: var(--accent-faint); }
 
+/* ──────────── PDF OVERLAY (full-bleed) ──────────── */
+.pdf-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(20, 17, 14, 0.96);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+.pdf-overlay.active { opacity: 1; pointer-events: auto; }
+.pdf-overlay-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-deep);
+  flex-shrink: 0;
+}
+.pdf-overlay-label {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+.pdf-overlay-label em { color: var(--accent); font-style: normal; }
+.pdf-overlay-actions { display: flex; align-items: center; gap: 0.6rem; }
+.pdf-overlay-btn {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: none; border: 1px solid var(--rule);
+  color: var(--ink-secondary); padding: 0.5rem 0.9rem;
+  border-radius: 100px; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  transition: all 0.25s var(--ease);
+}
+.pdf-overlay-btn:hover { color: var(--ink); border-color: var(--accent); background: var(--accent-faint); }
+.pdf-overlay-btn svg { width: 14px; height: 14px; }
+.pdf-overlay-close {
+  width: 36px; height: 36px; border-radius: 50%;
+  padding: 0; font-size: 1.1rem;
+}
+.pdf-overlay-frame {
+  flex: 1; width: 100%; border: 0;
+  background: #2a2520;
+}
+
+/* prominent PDF button on a work-item card */
+.work-item-pdf {
+  margin-top: 1.1rem;
+  width: 100%;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--bg); background: var(--accent);
+  border: 1px solid var(--accent); cursor: pointer;
+  padding: 0.75rem 1rem; border-radius: 100px;
+  text-decoration: none; font-weight: 600;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 0 0 0 var(--accent-glow);
+}
+.work-item-pdf:hover {
+  background: var(--accent-deep); border-color: var(--accent-deep);
+  box-shadow: 0 0 0 6px var(--accent-glow);
+  transform: translateY(-1px);
+}
+.work-item-pdf:hover .arrow { transform: translateX(4px); }
+.work-item-pdf .arrow { transition: transform 0.3s var(--ease); display: inline-block; }
+.work-item-pdf svg { width: 14px; height: 14px; }
+
 .modal-eyebrow {
   font-family: var(--mono); font-size: 0.7rem;
   letter-spacing: 0.22em; text-transform: uppercase;
@@ -1181,6 +1249,10 @@ footer {
         <span>Docker / UNRAID</span>
       </div>
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+      <button class="work-item-pdf" onclick="event.stopPropagation(); openPdf('/assets/RepoFabric-comparison-onepager.pdf');" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        View the comparison one-pager <span class="arrow">&rarr;</span>
+      </button>
     </article>
 
     <article class="work-item reveal" onclick="openModal('dscforge')">
@@ -1452,6 +1524,25 @@ footer {
   </div>
 </div>
 
+<!-- ──────────── PDF OVERLAY ──────────── -->
+<div class="pdf-overlay" id="pdfOverlay" role="dialog" aria-modal="true" aria-label="Document viewer">
+  <div class="pdf-overlay-bar">
+    <div class="pdf-overlay-label">Repo<em>Fabric</em> &middot; Comparison one-pager</div>
+    <div class="pdf-overlay-actions">
+      <a class="pdf-overlay-btn" id="pdfOpenNew" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open in new tab
+      </a>
+      <a class="pdf-overlay-btn" id="pdfDownload" href="#" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <button class="pdf-overlay-btn pdf-overlay-close" id="pdfCloseBtn" aria-label="Close" type="button">&times;</button>
+    </div>
+  </div>
+  <iframe class="pdf-overlay-frame" id="pdfFrame" title="PDF viewer" src="about:blank"></iframe>
+</div>
+
 <script>
 // ── PROJECT MODAL DATA ──
 var projectData = {
@@ -1459,9 +1550,9 @@ var projectData = {
     eyebrow: 'Feature 03.A',
     title: 'Repo<em>Fabric</em>',
     tagline: 'Stop downloading the same installer a thousand times.',
-    body: '<p><strong>RepoFabric</strong> is a self-hosted, browser-managed <code>winget</code> source platform &mdash; three Docker containers on a single host that present themselves to managed Windows endpoints as a native WinGet REST source, so any <code>winget install</code> on an enrolled endpoint just works. Operated by <strong>Steeves &amp; Associates</strong>.</p><p><strong>Download once. Reuse across the subnet.</strong> The installer endpoint advertises <code>PeerDist</code> (MS-PCCRC) content hashes, so BranchCache and Delivery Optimization let the second-through-Nth endpoint on a subnet pull installer blocks from a LAN peer instead of the WAN. A subnet of 50 endpoints installing Chrome costs the central host one full transfer plus 49 hash-table transfers (~15 KB each) &mdash; not fifty 100&nbsp;MB pulls. A built-in <strong>Bandwidth dashboard</strong> quantifies savings per subnet and per installer over 7 / 30 / 90 days.</p><p><strong>Azure-native control.</strong> Admins sign in with Microsoft Entra ID. Every publish, sync, promote, revert, and service action is attributed to the operator UPN (or <code>SYSTEM</code> for scheduled jobs) and lands in a <code>publish_events</code> ledger. The Activity tab is one chronological feed across every virtual repo &mdash; compliance review of <em>who shipped what, where, and when</em> is one filter away.</p><p><strong>Intune-ready in one click.</strong> Export an Intune Settings Catalog policy for the <code>DesktopAppInstaller</code> CSP plus a matching GPO script. Generated per-repo PowerShell registers the source as <em>Trusted</em>, sets silent defaults, and enables BITS Peercaching, BranchCache distributed mode, and Delivery Optimization.</p><p><strong>Curated and safe by default.</strong> Subscribe to the apps you approve; new versions auto-sync from the public <code>microsoft/winget-pkgs</code> catalog into your private source. Pair with the policy export to block the public repo, so endpoints install only vetted builds. Internal-only apps publish through an upload-first wizard that auto-fills metadata and detects silent switches.</p><p><strong>Virtual repos</strong> let a single deployment serve multiple independent WinGet repositories &mdash; Engineering, Finance, Dev-Pilot &mdash; each with its own Gitea backing store, Rewinged instance, subscription list, and audit ledger. Promotion between repos is a one-click operator action; drift detection cron + DR drill UI + daily archive snapshots round out day-two operations.</p><p><strong>Architecture:</strong> <code>repofabric-linux</code> (PowerShell + Node admin core, cron, installer file server under supervisord), <code>repofabric-gitea</code> (manifest store), <code>repofabric-rewinged</code> (WinGet REST source protocol). Stands up via <code>bootstrap.sh</code> + a browser setup wizard. Current status: <strong>0.7.9 GA</strong> on the <code>0.8.0-repofabric</code> branch &mdash; Phases A&ndash;D shipped (Linux container, virtual repos, promotion, ledger, revert, drift detection, archive snapshots, DR drill). 0.8.0 PeerDist + bandwidth measurement is in flight.</p>',
+    body: '<p><strong>RepoFabric</strong> is a self-hosted, browser-managed <code>winget</code> source platform &mdash; three Docker containers on a single host that present themselves to managed Windows endpoints as a native WinGet REST source, so any <code>winget install</code> on an enrolled endpoint just works.</p><p><strong>Download once. Reuse across the subnet.</strong> The installer endpoint advertises <code>PeerDist</code> (MS-PCCRC) content hashes, so BranchCache and Delivery Optimization let the second-through-Nth endpoint on a subnet pull installer blocks from a LAN peer instead of the WAN. A subnet of 50 endpoints installing Chrome costs the central host one full transfer plus 49 hash-table transfers (~15 KB each) &mdash; not fifty 100&nbsp;MB pulls. A built-in <strong>Bandwidth dashboard</strong> quantifies savings per subnet and per installer over 7 / 30 / 90 days.</p><p><strong>Azure-native control.</strong> Admins sign in with Microsoft Entra ID. Every publish, sync, promote, revert, and service action is attributed to the operator UPN (or <code>SYSTEM</code> for scheduled jobs) and lands in a <code>publish_events</code> ledger. The Activity tab is one chronological feed across every virtual repo &mdash; compliance review of <em>who shipped what, where, and when</em> is one filter away.</p><p><strong>Intune-ready in one click.</strong> Export an Intune Settings Catalog policy for the <code>DesktopAppInstaller</code> CSP plus a matching GPO script. Generated per-repo PowerShell registers the source as <em>Trusted</em>, sets silent defaults, and enables BITS Peercaching, BranchCache distributed mode, and Delivery Optimization.</p><p><strong>Curated and safe by default.</strong> Subscribe to the apps you approve; new versions auto-sync from the public <code>microsoft/winget-pkgs</code> catalog into your private source. Pair with the policy export to block the public repo, so endpoints install only vetted builds. Internal-only apps publish through an upload-first wizard that auto-fills metadata and detects silent switches.</p><p><strong>Virtual repos</strong> let a single deployment serve multiple independent WinGet repositories &mdash; Engineering, Finance, Dev-Pilot &mdash; each with its own Gitea backing store, Rewinged instance, subscription list, and audit ledger. Promotion between repos is a one-click operator action; drift detection cron + DR drill UI + daily archive snapshots round out day-two operations.</p><p><strong>Architecture:</strong> <code>repofabric-linux</code> (PowerShell + Node admin core, cron, installer file server under supervisord), <code>repofabric-gitea</code> (manifest store), <code>repofabric-rewinged</code> (WinGet REST source protocol). Stands up via <code>bootstrap.sh</code> + a browser setup wizard. Current status: <strong>0.7.9 GA</strong> on the <code>0.8.0-repofabric</code> branch &mdash; Phases A&ndash;D shipped (Linux container, virtual repos, promotion, ledger, revert, drift detection, archive snapshots, DR drill). 0.8.0 PeerDist + bandwidth measurement is in flight.</p>',
     tech: ['WinGet REST', 'PeerDist / BranchCache', 'Delivery Optimization', 'Microsoft Entra ID', 'Intune Settings Catalog', 'PowerShell 7', 'Node.js', 'Docker / UNRAID', 'Gitea', 'rewinged', 'Nginx Proxy Manager'],
-    links: [{ label: 'GitHub (0.8.0-repofabric branch)', url: 'https://github.com/Ringosystems/WinGet-RepoSync/tree/0.8.0-repofabric' }]
+    links: [{ label: 'Comparison one-pager (PDF)', url: '/assets/RepoFabric-comparison-onepager.pdf' }, { label: 'GitHub (0.8.0-repofabric branch)', url: 'https://github.com/Ringosystems/WinGet-RepoSync/tree/0.8.0-repofabric' }]
   },
   dscforge: {
     eyebrow: 'Feature 03.B',
@@ -1561,7 +1652,31 @@ document.getElementById('modalCloseBtn').addEventListener('click', function(e) {
   closeModal();
 });
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') { closeModal(); closePdf(); }
+});
+
+// ── PDF OVERLAY ──
+function openPdf(url) {
+  var overlay = document.getElementById('pdfOverlay');
+  var frame = document.getElementById('pdfFrame');
+  document.getElementById('pdfOpenNew').setAttribute('href', url);
+  document.getElementById('pdfDownload').setAttribute('href', url);
+  frame.setAttribute('src', url + '#view=FitH');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePdf() {
+  var overlay = document.getElementById('pdfOverlay');
+  if (!overlay.classList.contains('active')) return;
+  overlay.classList.remove('active');
+  document.getElementById('pdfFrame').setAttribute('src', 'about:blank');
+  if (!document.getElementById('modalOverlay').classList.contains('active')) {
+    document.body.style.overflow = '';
+  }
+}
+document.getElementById('pdfCloseBtn').addEventListener('click', closePdf);
+document.getElementById('pdfOverlay').addEventListener('click', function(e) {
+  if (e.target === document.getElementById('pdfOverlay')) closePdf();
 });
 
 // ── REVEAL ON SCROLL ──
