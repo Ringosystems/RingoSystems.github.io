@@ -618,6 +618,79 @@ main { position: relative; z-index: 3; }
 .work-item:hover .work-item-cta { color: var(--ink); }
 .work-item:hover .work-item-cta .arrow { transform: translateX(6px); color: var(--accent); }
 
+/* ── FABRIC SUITE BANNER (total solution) ── */
+.fabric-suite { max-width: 1280px; margin: 0 auto; padding: 0 2.5rem 0.5rem; }
+.fabric-suite-inner {
+  border: 1px solid var(--accent); border-radius: 6px;
+  background: linear-gradient(135deg, var(--accent-faint), transparent 62%), rgba(50, 45, 39, 0.35);
+  padding: 2.25rem 2.25rem 2rem; position: relative; overflow: hidden;
+}
+.fabric-suite-eyebrow {
+  font-family: var(--mono); font-size: 0.65rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.fabric-suite-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.fabric-suite-title {
+  font-family: var(--serif-display); font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.05;
+  letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.75rem;
+  font-variation-settings: 'SOFT' 100, 'opsz' 60;
+}
+.fabric-suite-title em { font-style: italic; color: var(--accent); font-variation-settings: 'SOFT' 100, 'opsz' 60, 'WONK' 1; }
+.fabric-suite-deck {
+  font-family: var(--serif-body); font-size: 1rem; line-height: 1.65;
+  color: var(--ink-muted); max-width: 760px; margin-bottom: 1.75rem;
+}
+.fabric-suite-deck code {
+  font-family: var(--mono); font-size: 0.85em; color: var(--ink);
+  background: rgba(245, 235, 214, 0.06); padding: 0.1em 0.4em; border-radius: 4px;
+}
+.fabric-suite-flow { display: flex; align-items: stretch; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.85rem; }
+.fabric-node {
+  flex: 1; min-width: 150px;
+  border: 1px solid var(--rule); border-top: 2px solid var(--accent);
+  border-radius: 5px; background: rgba(31, 27, 23, 0.4);
+  padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.35rem;
+}
+.fabric-node-name {
+  font-family: var(--serif-display); font-weight: 400; font-size: 1.15rem;
+  color: var(--ink); font-variation-settings: 'opsz' 36, 'SOFT' 100;
+}
+.fabric-node-name em { font-style: italic; color: var(--accent); font-variation-settings: 'opsz' 36, 'SOFT' 100, 'WONK' 1; }
+.fabric-node-verb {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-secondary);
+}
+.fabric-arrow { align-self: center; color: var(--accent); font-family: var(--mono); font-size: 1.1rem; flex: 0 0 auto; }
+.fabric-suite-note {
+  font-family: var(--mono); font-size: 0.68rem; line-height: 1.65;
+  letter-spacing: 0.02em; color: var(--ink-secondary); margin: 0 0 1.6rem;
+}
+.fabric-suite-note strong { color: var(--ink); font-weight: 500; }
+.fabric-suite-note .lic-free { color: var(--accent); }
+.fabric-suite-cta {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--bg); background: var(--accent); border: 1px solid var(--accent);
+  font-weight: 600; padding: 0.7rem 1.3rem; border-radius: 100px;
+  text-decoration: none; transition: all 0.3s var(--ease); box-shadow: 0 0 0 0 var(--accent-glow);
+}
+.fabric-suite-cta:hover {
+  background: var(--accent-deep); border-color: var(--accent-deep);
+  box-shadow: 0 0 0 6px var(--accent-glow); transform: translateY(-1px);
+}
+.fabric-suite-cta .arrow { transition: transform 0.3s var(--ease); display: inline-block; }
+.fabric-suite-cta:hover .arrow { transform: translateX(4px); }
+@media (max-width: 760px) {
+  .fabric-suite { padding: 0 1.5rem; }
+  .fabric-suite-inner { padding: 1.75rem 1.5rem; }
+  .fabric-node { min-width: 100%; }
+  .fabric-arrow { width: 100%; text-align: center; transform: rotate(90deg); margin: 0.1rem 0; }
+}
+
 /* ──────────── FEATURE 04 / THE ARC (timeline) ──────────── */
 .arc-wrap {
   max-width: 1280px; margin: 0 auto;
@@ -1232,6 +1305,24 @@ footer {
     <p class="feature-opener-deck">Each one began as a problem I needed to solve at scale. <em>Open the entries below</em> to read the full feature on each.</p>
   </section>
 
+  <!-- Fabric Suite: total-solution banner grouping the three Fabric products -->
+  <aside class="fabric-suite reveal">
+    <div class="fabric-suite-inner">
+      <div class="fabric-suite-eyebrow">The Fabric Suite &middot; One closed loop</div>
+      <h3 class="fabric-suite-title">Three products. <em>One fabric.</em></h3>
+      <p class="fabric-suite-deck"><strong>DscForge</strong> authors and proves a DSC&nbsp;v3 config, <strong>ConfigFabric</strong> assigns it by Entra device group and enforces state on the endpoint, and <strong>RepoFabric</strong> delivers the apps that config needs over LAN peers &mdash; one Entra sign-in, one UPN-attributed audit ledger, one Gitea store, one <code>docker compose</code>. Run all three together, or stand one up at a time.</p>
+      <div class="fabric-suite-flow">
+        <div class="fabric-node"><span class="fabric-node-name">Dsc<em>Forge</em></span><span class="fabric-node-verb">Author &amp; prove</span></div>
+        <span class="fabric-arrow">&rarr;</span>
+        <div class="fabric-node"><span class="fabric-node-name">Config<em>Fabric</em></span><span class="fabric-node-verb">Assign &amp; enforce</span></div>
+        <span class="fabric-arrow">&rarr;</span>
+        <div class="fabric-node"><span class="fabric-node-name">Repo<em>Fabric</em></span><span class="fabric-node-verb">Deliver over LAN peers</span></div>
+      </div>
+      <p class="fabric-suite-note"><strong>RepoFabric</strong> ships <span class="lic-free">free and open-source</span> &mdash; the foundation. <strong>ConfigFabric</strong> and <strong>DscForge</strong> are deeply integrated and separately licensed.</p>
+      <a href="https://fabric.ringosystems.com" target="_blank" rel="noopener" class="fabric-suite-cta">See how they work together <span class="arrow">&rarr;</span></a>
+    </div>
+  </aside>
+
   <div class="work-grid">
     <article class="work-item reveal" onclick="openModal('repofabric')">
       <div class="work-item-header">
@@ -1255,10 +1346,32 @@ footer {
       </button>
     </article>
 
-    <article class="work-item reveal" onclick="openModal('dscforge')">
+    <article class="work-item reveal" onclick="openModal('configfabric')">
       <div class="work-item-header">
         <span class="work-item-num">002</span>
-        <span class="work-item-status active">Active</span>
+        <span class="work-item-status new">Recently Launched</span>
+      </div>
+      <h3>Config<em>Fabric</em></h3>
+      <p class="work-item-tagline">Desired state, assigned by Entra group and enforced on the endpoint.</p>
+      <p class="work-item-body">Self-hosted, browser-managed DSC&nbsp;v3 distribution. Endpoints discover the configs assigned to them by Microsoft Entra device-group membership, apply them with <code>dsc config set</code>, and report compliance &mdash; with the PowerShell modules those configs depend on served from the same Gitea store. <em>The desired-state layer of the Fabric suite.</em></p>
+      <div class="work-item-tags">
+        <span>DSC v3</span><span class="sep">&middot;</span>
+        <span>Entra Device Groups</span><span class="sep">&middot;</span>
+        <span>Azure Functions</span><span class="sep">&middot;</span>
+        <span>Gitea NuGet Feed</span><span class="sep">&middot;</span>
+        <span>Docker / UNRAID</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+      <button class="work-item-pdf" onclick="event.stopPropagation(); openPdf('/assets/ConfigFabric-onepager.pdf');" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        View the one-pager <span class="arrow">&rarr;</span>
+      </button>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('dscforge')">
+      <div class="work-item-header">
+        <span class="work-item-num">003</span>
+        <span class="work-item-status new">Recently Launched</span>
       </div>
       <h3>Dsc<em>Forge</em></h3>
       <p class="work-item-tagline">DSC v3 Configuration Authoring Platform</p>
@@ -1271,11 +1384,51 @@ footer {
         <span>Claude API</span>
       </div>
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+      <button class="work-item-pdf" onclick="event.stopPropagation(); openPdf('/assets/DSCForge-onepager.pdf');" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        View the one-pager <span class="arrow">&rarr;</span>
+      </button>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('tractorbeeam')">
+      <div class="work-item-header">
+        <span class="work-item-num">004</span>
+        <span class="work-item-status new">Recently Launched</span>
+      </div>
+      <h3>Tractor<em>Beeam365-MCP</em></h3>
+      <p class="work-item-tagline">Point an AI at your Microsoft 365 backups &mdash; read-only by default.</p>
+      <p class="work-item-body">An independent <strong>MCP server for Veeam Backup for Microsoft 365</strong>. It talks straight to the VB365 REST API so Claude can review backup config, find protection gaps against Microsoft Graph, spot trend drift, and verify cloud immutability. The action and restore tier is opt-in, confirm-token gated, and fully audited. <em>The pull is opt-in; review is the safe default.</em></p>
+      <div class="work-item-tags">
+        <span>MCP</span><span class="sep">&middot;</span>
+        <span>VB365 REST API</span><span class="sep">&middot;</span>
+        <span>FastMCP / Python</span><span class="sep">&middot;</span>
+        <span>Microsoft Graph</span><span class="sep">&middot;</span>
+        <span>Docker Hub</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('periscope')">
+      <div class="work-item-header">
+        <span class="work-item-num">005</span>
+        <span class="work-item-status active">Active</span>
+      </div>
+      <h3>Peri<em>scope</em></h3>
+      <p class="work-item-tagline">Mission control for a family of AI coding agents.</p>
+      <p class="work-item-body">A self-hosted, single-screen control plane that coordinates one AI coding agent per repo across the RingoSystems fabric. Per repo it surfaces open PRs, issues, and Actions runs, local-clone freshness, and a persisted chat &mdash; then drives a two-way contract: urgency-ranked directives out, broker-channel reports back, with an LLM service registry routing siblings to shared model endpoints. <em>v1 complete &mdash; all eight phases shipped.</em></p>
+      <div class="work-item-tags">
+        <span>Next.js 15</span><span class="sep">&middot;</span>
+        <span>TypeScript</span><span class="sep">&middot;</span>
+        <span>Drizzle / LibSQL</span><span class="sep">&middot;</span>
+        <span>Octokit</span><span class="sep">&middot;</span>
+        <span>StrixHalo LLM</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
 
     <article class="work-item reveal" onclick="openModal('ringollm')">
       <div class="work-item-header">
-        <span class="work-item-num">003</span>
+        <span class="work-item-num">006</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Ringo<em>LLM</em></h3>
@@ -1293,7 +1446,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('intunegovernance')">
       <div class="work-item-header">
-        <span class="work-item-num">004</span>
+        <span class="work-item-num">007</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Intune<em>Governance</em></h3>
@@ -1311,7 +1464,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('cisdscforge')">
       <div class="work-item-header">
-        <span class="work-item-num">005</span>
+        <span class="work-item-num">008</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>CIS<em>DSCForge</em></h3>
@@ -1329,7 +1482,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('aria')">
       <div class="work-item-header">
-        <span class="work-item-num">006</span>
+        <span class="work-item-num">009</span>
         <span class="work-item-status wip">In Progress</span>
       </div>
       <h3>Aria <em>Concierge</em></h3>
@@ -1347,7 +1500,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringo')">
       <div class="work-item-header">
-        <span class="work-item-num">007</span>
+        <span class="work-item-num">010</span>
         <span class="work-item-status arch">Architecture</span>
       </div>
       <h3>R.I.N.G.O. <em>Platform</em></h3>
@@ -1531,20 +1684,44 @@ var projectData = {
     eyebrow: 'Feature 03.A',
     title: 'Repo<em>Fabric</em>',
     tagline: 'Stop downloading the same installer a thousand times.',
-    body: '<p><strong>RepoFabric</strong> is a self-hosted, browser-managed <code>winget</code> source platform &mdash; three Docker containers on a single host that present themselves to managed Windows endpoints as a native WinGet REST source, so any <code>winget install</code> on an enrolled endpoint just works.</p><p><strong>Download once. Reuse across the subnet.</strong> The installer endpoint advertises <code>PeerDist</code> (MS-PCCRC) content hashes, so BranchCache and Delivery Optimization let the second-through-Nth endpoint on a subnet pull installer blocks from a LAN peer instead of the WAN. A subnet of 50 endpoints installing Chrome costs the central host one full transfer plus 49 hash-table transfers (~15 KB each) &mdash; not fifty 100&nbsp;MB pulls. A built-in <strong>Bandwidth dashboard</strong> quantifies savings per subnet and per installer over 7 / 30 / 90 days.</p><p><strong>Azure-native control.</strong> Admins sign in with Microsoft Entra ID. Every publish, sync, promote, revert, and service action is attributed to the operator UPN (or <code>SYSTEM</code> for scheduled jobs) and lands in a <code>publish_events</code> ledger. The Activity tab is one chronological feed across every virtual repo &mdash; compliance review of <em>who shipped what, where, and when</em> is one filter away.</p><p><strong>Intune-ready in one click.</strong> Export an Intune Settings Catalog policy for the <code>DesktopAppInstaller</code> CSP plus a matching GPO script. Generated per-repo PowerShell registers the source as <em>Trusted</em>, sets silent defaults, and enables BITS Peercaching, BranchCache distributed mode, and Delivery Optimization.</p><p><strong>Curated and safe by default.</strong> Subscribe to the apps you approve; new versions auto-sync from the public <code>microsoft/winget-pkgs</code> catalog into your private source. Pair with the policy export to block the public repo, so endpoints install only vetted builds. Internal-only apps publish through an upload-first wizard that auto-fills metadata and detects silent switches.</p><p><strong>Virtual repos</strong> let a single deployment serve multiple independent WinGet repositories &mdash; Engineering, Finance, Dev-Pilot &mdash; each with its own Gitea backing store, Rewinged instance, subscription list, and audit ledger. Promotion between repos is a one-click operator action; drift detection cron + DR drill UI + daily archive snapshots round out day-two operations.</p><p><strong>Architecture:</strong> <code>repofabric-linux</code> (PowerShell + Node admin core, cron, installer file server under supervisord), <code>repofabric-gitea</code> (manifest store), <code>repofabric-rewinged</code> (WinGet REST source protocol). Stands up via <code>bootstrap.sh</code> + a browser setup wizard. Current status: <strong>0.7.9 GA</strong> on the <code>0.8.0-repofabric</code> branch &mdash; Phases A&ndash;D shipped (Linux container, virtual repos, promotion, ledger, revert, drift detection, archive snapshots, DR drill). 0.8.0 PeerDist + bandwidth measurement is in flight.</p>',
+    body: '<p><strong>RepoFabric</strong> is a self-hosted, browser-managed <code>winget</code> source platform &mdash; three Docker containers on a single host that present themselves to managed Windows endpoints as a native WinGet REST source, so any <code>winget install</code> on an enrolled endpoint just works.</p><p><strong>Download once. Reuse across the subnet.</strong> The installer endpoint advertises <code>PeerDist</code> (MS-PCCRC) content hashes, so BranchCache and Delivery Optimization let the second-through-Nth endpoint on a subnet pull installer blocks from a LAN peer instead of the WAN. A subnet of 50 endpoints installing Chrome costs the central host one full transfer plus 49 hash-table transfers (~15 KB each) &mdash; not fifty 100&nbsp;MB pulls. A built-in <strong>Bandwidth dashboard</strong> quantifies savings per subnet and per installer over 7 / 30 / 90 days.</p><p><strong>Azure-native control.</strong> Admins sign in with Microsoft Entra ID. Every publish, sync, promote, revert, and service action is attributed to the operator UPN (or <code>SYSTEM</code> for scheduled jobs) and lands in a <code>publish_events</code> ledger. The Activity tab is one chronological feed across every virtual repo &mdash; compliance review of <em>who shipped what, where, and when</em> is one filter away.</p><p><strong>Intune-ready in one click.</strong> Export an Intune Settings Catalog policy for the <code>DesktopAppInstaller</code> CSP plus a matching GPO script. Generated per-repo PowerShell registers the source as <em>Trusted</em>, sets silent defaults, and enables BITS Peercaching, BranchCache distributed mode, and Delivery Optimization.</p><p><strong>Curated and safe by default.</strong> Subscribe to the apps you approve; new versions auto-sync from the public <code>microsoft/winget-pkgs</code> catalog into your private source. Pair with the policy export to block the public repo, so endpoints install only vetted builds. Internal-only apps publish through an upload-first wizard that auto-fills metadata and detects silent switches.</p><p><strong>Virtual repos</strong> let a single deployment serve multiple independent WinGet repositories &mdash; Engineering, Finance, Dev-Pilot &mdash; each with its own Gitea backing store, Rewinged instance, subscription list, and audit ledger. Promotion between repos is a one-click operator action; drift detection cron + DR drill UI + daily archive snapshots round out day-two operations.</p><p><strong>Architecture:</strong> <code>repofabric-linux</code> (PowerShell + Node admin core, cron, installer file server under supervisord), <code>repofabric-gitea</code> (manifest store), <code>repofabric-rewinged</code> (WinGet REST source protocol). Stands up via <code>bootstrap.sh</code> + a browser setup wizard. Current status: <strong>0.7.9 GA</strong> on the <code>0.8.0-repofabric</code> branch &mdash; Phases A&ndash;D shipped (Linux container, virtual repos, promotion, ledger, revert, drift detection, archive snapshots, DR drill). 0.8.0 PeerDist + bandwidth measurement is in flight.</p><p><strong>Licensing:</strong> RepoFabric is <em>free and open-source</em> &mdash; the foundation of The Fabric Suite, on which the separately licensed ConfigFabric and DscForge build.</p>',
     tech: ['WinGet REST', 'PeerDist / BranchCache', 'Delivery Optimization', 'Microsoft Entra ID', 'Intune Settings Catalog', 'PowerShell 7', 'Node.js', 'Docker / UNRAID', 'Gitea', 'rewinged', 'Nginx Proxy Manager'],
-    links: [{ label: 'Comparison one-pager (PDF)', url: '/assets/RepoFabric-comparison-onepager.pdf#view=Fit' }, { label: 'GitHub (0.8.0-repofabric branch)', url: 'https://github.com/Ringosystems/WinGet-RepoSync/tree/0.8.0-repofabric' }]
+    links: [{ label: 'The Fabric Suite', url: 'https://fabric.ringosystems.com' }, { label: 'Comparison one-pager (PDF)', url: '/assets/RepoFabric-comparison-onepager.pdf#view=Fit' }]
+  },
+  configfabric: {
+    eyebrow: 'Feature 03.B',
+    title: 'Config<em>Fabric</em>',
+    tagline: 'Desired state, assigned by Entra group and enforced on the endpoint.',
+    body: '<p><strong>ConfigFabric</strong> is a self-hosted, browser-managed DSC&nbsp;v3 configuration distribution platform for Windows endpoints. Endpoints discover, download, and apply the DSC&nbsp;v3 YAML configurations assigned to them by Microsoft Entra device-group membership, report compliance, and pull the PowerShell modules those configurations depend on &mdash; all from one deployment. It runs standalone or bolts on to RepoFabric as a sidecar.</p><p><strong>Two operator portals</strong> &mdash; Configs and Modules &mdash; sit over a PowerShell compute bridge with import, validate, publish, export, promote, and revert for DSC&nbsp;v3 YAML, plus PowerShell module import (PSGallery search or URL, <code>.nupkg</code> / zip upload with archive sanitisation) onto a Gitea NuGet V3 feed, a Windows module code-signing engine, and a nightly upstream-update review gate.</p><p><strong>The device tier</strong> is a discovery Azure Function (device-certificate JWS or mTLS, Graph group resolution, a server-side topologically ordered manifest) plus a PowerShell&nbsp;7 endpoint engine that verifies every file by SHA-256, keeps a last-known-good cache, applies with <code>dsc config set</code>, and halts dependents on failure. It triggers via Intune Proactive Remediation, scheduled task, or interactive SYSTEM &mdash; <em>no Windows service to install</em> &mdash; and reports to Log Analytics.</p><p><strong>Virtual repos</strong> (main / dev / test / departmental) each map to a Gitea <code>dsc-{slug}</code> repo, with computed &ldquo;latest&rdquo; plus explicit pinning and immutable publications. Status: <strong>deployed live on UNRAID</strong> behind Nginx Proxy Manager, proven end-to-end, with 222 Pester tests. Azure Arc machines additionally get a native publication channel via Azure Machine Configuration and Azure Policy.</p><p>ConfigFabric is the <em>assign-and-enforce</em> layer of The Fabric Suite &mdash; it closes the loop with DscForge and RepoFabric. <strong>Licensing:</strong> deeply integrated with the free, open-source RepoFabric core, and separately licensed.</p>',
+    tech: ['DSC v3', 'Microsoft Entra ID', 'Azure Functions', 'PowerShell 7', 'Gitea NuGet V3', 'Log Analytics', 'Azure Machine Configuration', 'Bicep', 'Docker / UNRAID', 'SQLite', 'Pester'],
+    links: [{ label: 'The Fabric Suite', url: 'https://fabric.ringosystems.com' }, { label: 'One-pager (PDF)', url: '/assets/ConfigFabric-onepager.pdf#view=Fit' }]
   },
   dscforge: {
-    eyebrow: 'Feature 03.B',
+    eyebrow: 'Feature 03.C',
     title: 'Dsc<em>Forge</em>',
     tagline: 'DSC v3 Configuration Authoring Platform',
-    body: '<p><strong>DscForge</strong> is a full-stack PowerShell SPA that makes authoring DSC v3 configurations feel like a modern development experience instead of hand-editing YAML in the dark.</p><p>The platform provides a browser-based UI powered entirely by a PowerShell backend (System.Net.HttpListener), with multi-provider AI assistance via both local Ollama models and Claude Max through CLIProxyAPI. It features a complete GPO import pipeline, live parallel NuGet and WinGet search with popularity scoring, an ADMX evergreen sync engine pulling from 6 sources (Windows, Edge, Chrome, Office 365, Windows 11 25H2, Server 2025), and a managed tag system for organizing configurations.</p><p>The architecture follows a <strong>Quarry / Forge / Alloy</strong> naming convention: Quarry is where you discover and gather resources, Forge is where you shape configurations, and Alloy is where you combine and export the final product.</p><p>Current state: <strong>131 routes</strong> across 10 route files, 20 JS modules, per-source cache status, and professional DOCX documentation export.</p>',
+    body: '<p><strong>DscForge</strong> is a full-stack PowerShell SPA that makes authoring DSC v3 configurations feel like a modern development experience instead of hand-editing YAML in the dark.</p><p>The platform provides a browser-based UI powered entirely by a PowerShell backend (System.Net.HttpListener), with multi-provider AI assistance via both local Ollama models and Claude Max through CLIProxyAPI. It features a complete GPO import pipeline, live parallel NuGet and WinGet search with popularity scoring, an ADMX evergreen sync engine pulling from 6 sources (Windows, Edge, Chrome, Office 365, Windows 11 25H2, Server 2025), and a managed tag system for organizing configurations.</p><p>The architecture follows a <strong>Quarry / Forge / Alloy</strong> naming convention: Quarry is where you discover and gather resources, Forge is where you shape configurations, and Alloy is where you combine and export the final product.</p><p>Current state: <strong>131 routes</strong> across 10 route files, 20 JS modules, per-source cache status, and professional DOCX documentation export.</p><p><strong>Licensing:</strong> DscForge is the authoring front door of The Fabric Suite &mdash; deeply integrated with the free, open-source RepoFabric core, and separately licensed.</p>',
     tech: ['PowerShell 7', 'DSC v3', 'HttpListener', 'JavaScript', 'Ollama', 'Claude API', 'NuGet v2/v3', 'WinGet', 'ADMX', 'WinForms'],
-    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/DscForge' }]
+    links: [{ label: 'The Fabric Suite', url: 'https://fabric.ringosystems.com' }, { label: 'One-pager (PDF)', url: '/assets/DSCForge-onepager.pdf#view=Fit' }]
+  },
+  tractorbeeam: {
+    eyebrow: 'Feature 03.D',
+    title: 'Tractor<em>Beeam365-MCP</em>',
+    tagline: 'Point an AI at your Microsoft 365 backups &mdash; read-only by default.',
+    body: '<p><strong>TractorBeeam365-MCP</strong> is a Model Context Protocol server for <strong>Veeam Backup for Microsoft 365 (VB365)</strong>. It talks directly to the VB365 REST API so an MCP client &mdash; Claude Code or Claude Desktop &mdash; can review your backup configuration, find protection gaps, spot trends, and verify cloud immutability &mdash; and, when you explicitly opt in, run jobs and orchestrate restores.</p><p><strong>Two tiers, safe by default.</strong> The read-only review tier is always on and physically GET-only: a one-shot <code>vb365_health_summary</code> across orgs, jobs, repositories, cloud object storage, proxies, and license; per-job success/failure drift with repo capacity-full projections; backup-coverage gap analysis that compares Microsoft Graph against what jobs actually protect; and a cloud-lock audit that cross-checks Object Lock retention at the bucket against what VB365 reports.</p><p><strong>The action and restore tier is opt-in</strong> and only registers when you set the matching <code>TB_*</code> flags. Every mutation uses a two-call confirm pattern &mdash; the first call returns a preview plus a one-time confirm token, the second executes &mdash; and every execution is appended to an append-only audit log. Full restore orchestration spans Exchange, OneDrive, SharePoint, and Teams, defaulting to the safest export target; writing back to the original location needs an explicit acknowledgement.</p><p><strong>Ships as a container</strong> on Docker Hub and the official MCP Registry, defaulting to read-only streamable-HTTP with no credentials baked in. Recommended pattern: a separate operator instance with the action flags on, and the default instance read-only.</p><p><em>Independent project &mdash; not affiliated with, endorsed by, or supported by Veeam Software. The &ldquo;Beeam&rdquo; spelling is a deliberate play on words: a tractor beam pulls your data back in.</em></p>',
+    tech: ['Model Context Protocol', 'FastMCP / Python', 'Veeam VB365 REST API', 'httpx', 'Microsoft Graph', 'Object Lock (B2 / S3)', 'Docker', 'streamable-http'],
+    links: [{ label: 'Docker Hub', url: 'https://hub.docker.com/r/ringosystems/tractorbeeam365-mcp' }, { label: 'MCP Registry', url: 'https://registry.modelcontextprotocol.io/?search=tractorbeeam' }, { label: 'GitHub', url: 'https://github.com/Ringosystems/TractorBeeam-MCP' }]
+  },
+  periscope: {
+    eyebrow: 'Feature 03.E',
+    title: 'Peri<em>scope</em>',
+    tagline: 'Mission control for a family of AI coding agents.',
+    body: '<p><strong>Periscope</strong> is the control-plane for the RingoSystems fabric family &mdash; a self-hosted, single-screen mission-control web app for an operator coordinating a family of AI coding agents, one per git repo (RepoFabric, ConfigFabric, DscForge, and more). It is also the home for the family operating contract and the offline-LLM infrastructure.</p><p>Periscope tracks a <strong>multi-source fabric</strong>: a primary GitHub org plus arbitrary external repos. Per repo it surfaces activity (open PRs, issues, Actions runs), local-clone freshness (ahead/behind, dirty files, last fetch), and a persisted chat pane &mdash; all behind a nine-step onboarding wizard.</p><p>Beyond a dashboard it implements a <strong>two-way operating contract</strong> between Primary and its siblings. <strong>Directives</strong> (Primary to sibling) carry an urgency &mdash; <code>now</code> means &ldquo;pause what you are doing and work this immediately.&rdquo; <strong>Reports</strong> (sibling to Primary) flow through broker channels &mdash; committed status files, comments on tracking issues &mdash; so Periscope works even with no inbound URL, with cadence adapting per sibling via a warm / cold / hot state machine. An <strong>LLM service registry</strong> distributes routing config and credentials so siblings can call shared model endpoints, like the StrixHalo box running llama.cpp with GLM-4.5-Air, with Periscope as policy authority and observability sink.</p><p>Status: <strong>v1 complete</strong> &mdash; all eight phases shipped on a Next.js&nbsp;15 / React&nbsp;19 / TypeScript-strict stack with Drizzle over LibSQL, the LLM registry, the directives-and-reports contract, the cross-repo change-set engine, and the protocol specification. Build green at 32 routes, 65 unit tests green.</p>',
+    tech: ['Next.js 15', 'React 19', 'TypeScript (strict)', 'Tailwind / shadcn', 'Drizzle ORM + LibSQL', 'Octokit', 'simple-git', 'libsodium', 'MCP', 'llama.cpp / StrixHalo'],
+    links: []
   },
   ringollm: {
-    eyebrow: 'Feature 03.C',
+    eyebrow: 'Feature 03.F',
     title: 'Ringo<em>LLM</em>',
     tagline: 'Your endpoint management co-pilot.',
     body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management &mdash; covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> &mdash; <em>code generation capability emerges from the training corpus</em> (PowerShell, KQL, Graph API examples) rather than from a Coder-variant base model. An important distinction in how the model achieves its specialization.</p><p>Multiple versions have shipped to HuggingFace as the corpus and pipeline have matured. Each release tightens the domain focus and improves the quality of the generated outputs.</p>',
@@ -1552,7 +1729,7 @@ var projectData = {
     links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
   },
   intunegovernance: {
-    eyebrow: 'Feature 03.D',
+    eyebrow: 'Feature 03.G',
     title: 'Intune<em>Governance</em>',
     tagline: 'PowerShell module for Intune fleet operations',
     body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale &mdash; the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management &mdash; where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that <em>actually works at scale</em> rather than looking good in a demo.</p>',
@@ -1560,7 +1737,7 @@ var projectData = {
     links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
   },
   cisdscforge: {
-    eyebrow: 'Feature 03.E',
+    eyebrow: 'Feature 03.H',
     title: 'CIS<em>DSCForge</em>',
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
     body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p>',
@@ -1568,7 +1745,7 @@ var projectData = {
     links: []
   },
   aria: {
-    eyebrow: 'Feature 03.F',
+    eyebrow: 'Feature 03.I',
     title: 'Aria <em>Concierge</em>',
     tagline: 'Local-first agentic personal assistant',
     body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p>',
@@ -1576,7 +1753,7 @@ var projectData = {
     links: []
   },
   ringo: {
-    eyebrow: 'Feature 03.G',
+    eyebrow: 'Feature 03.J',
     title: 'R.I.N.G.O. <em>Platform</em>',
     tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
     body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
