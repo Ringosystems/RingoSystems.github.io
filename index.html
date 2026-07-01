@@ -40,6 +40,7 @@
   --status-wip: #e8a948;
   --status-arch: #b67dd9;
   --status-new: #f5ebd6;
+  --status-soon: #5aa8e0;
 
   --rule: rgba(245, 235, 214, 0.14);
   --rule-faint: rgba(245, 235, 214, 0.07);
@@ -567,6 +568,7 @@ main { position: relative; z-index: 3; }
 .work-item-status.active { color: var(--status-active); border: 1px solid var(--status-active); }
 .work-item-status.wip { color: var(--status-wip); border: 1px solid var(--status-wip); }
 .work-item-status.arch { color: var(--status-arch); border: 1px solid var(--status-arch); }
+.work-item-status.soon { color: var(--status-soon); border: 1px solid var(--status-soon); }
 .work-item-status.new {
   color: var(--bg); background: var(--status-new);
   border: 1px solid var(--status-new); font-weight: 600;
@@ -690,6 +692,31 @@ main { position: relative; z-index: 3; }
   .fabric-node { min-width: 100%; }
   .fabric-arrow { width: 100%; text-align: center; transform: rotate(90deg); margin: 0.1rem 0; }
 }
+
+/* MCP Servers category banner: reuses the Fabric Suite banner in a violet key */
+.fabric-suite.mcp { padding-top: 2.5rem; }
+.fabric-suite.mcp .fabric-suite-inner {
+  border-color: var(--status-arch);
+  background: linear-gradient(135deg, rgba(182, 125, 217, 0.10), transparent 62%), rgba(50, 45, 39, 0.35);
+}
+.fabric-suite.mcp .fabric-suite-eyebrow { color: var(--status-arch); }
+.fabric-suite.mcp .fabric-suite-eyebrow::before { background: var(--status-arch); }
+.fabric-suite.mcp .fabric-suite-title em,
+.fabric-suite.mcp .fabric-node-name em,
+.fabric-suite.mcp .fabric-arrow,
+.fabric-suite.mcp .fabric-suite-note .lic-free { color: var(--status-arch); }
+.fabric-suite.mcp .fabric-node { border-top-color: var(--status-arch); }
+.fabric-suite.mcp .fabric-suite-cta {
+  color: var(--bg); background: var(--status-arch);
+  border-color: var(--status-arch); box-shadow: 0 0 0 0 rgba(182, 125, 217, 0.18);
+}
+.fabric-suite.mcp .fabric-suite-cta:hover {
+  background: #9d5fc4; border-color: #9d5fc4;
+  box-shadow: 0 0 0 6px rgba(182, 125, 217, 0.18);
+}
+
+/* When a banner introduces its own product grid, tighten the seam between them */
+.work-grid.work-grid-suite { padding-top: 1.25rem; padding-bottom: 2rem; }
 
 /* ──────────── FEATURE 04 / THE ARC (timeline) ──────────── */
 .arc-wrap {
@@ -1134,6 +1161,7 @@ footer {
         <p>I have been building IT infrastructure since the late 1980s, and what is striking when I look at the arc isn&apos;t the variety of technologies &mdash; though there is plenty of that &mdash; but the consistency of the underlying instinct: <em>find the waste, remove the manual step, make the system run itself.</em></p>
         <p>It started with retail networks at <strong>Pier 1 Imports</strong>. Then <strong>Arthur Andersen</strong>, where I helped design server infrastructure and data center implementation for XM Satellite Radio, and architected directory services for the Chevron / Ultramar Diamond Shamrock energy merger. <strong>Hitachi Consulting</strong> hired me on its founding day. Seven years as Chief Technology Officer at <strong>Triencon Services</strong> &mdash; designing hybrid public-private clouds, deploying pervasive encryption, hardening Active Directory for electric grid control networks under <em>NERC CIP</em>. <strong>Citibank</strong>, as Senior Vice President of Global Infrastructure for North American Credit Cards Business Operations. <strong>Simmons Bank</strong>. And now <strong>Steeves &amp; Associates</strong>, where the work has converged on the strange and lovely intersection of cloud-native endpoint management, DSC v3, and the practice of training language models on the discipline itself.</p>
         <p>I live near Alberta Beach, where my home lab mirrors the enterprise patterns I deploy at scale &mdash; and where my cat, Chaos, continually stress-tests the exit door sensor automations. The work I am most engaged with right now sits at the intersection of <em>agentic engineering</em> and infrastructure: building tools that let tens of thousands of Intune-managed endpoints configure, secure, and remediate themselves, and training a custom LLM on the corpus of knowledge that makes that possible.</p>
+        <p>Lately that same instinct has opened a whole new line of work: <em>Model Context Protocol servers built for a specific technology stack.</em> Each one gives an AI client expert, hands-on command of one platform at a time, from Veeam Backup for Microsoft 365, to Homey Pro smart homes, to Reolink camera fleets. I ship much of this work <strong>free and open-source under the MIT license</strong>, published on Docker Hub and the public MCP Registry, because the fastest way to make infrastructure behave is to let everyone build on the same foundation.</p>
       </div>
     </article>
     <aside class="feature-margin">
@@ -1294,6 +1322,19 @@ footer {
         <span class="tag">Matter/Thread</span>
       </div>
     </article>
+
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">08</div>
+      <h3 class="toolkit-title">MCP <em>Server Engineering</em></h3>
+      <p class="toolkit-body">A new category of work: Model Context Protocol servers built for a specific technology stack, giving an AI client expert, LAN-direct command of one platform at a time. Read-heavy and safe by default, with opt-in action tiers. Shipped as hardened containers, <em>most of it free and open-source.</em></p>
+      <div class="toolkit-tags">
+        <span class="tag">MCP</span><span class="sep">&middot;</span>
+        <span class="tag">FastMCP / Python</span><span class="sep">&middot;</span>
+        <span class="tag">TypeScript</span><span class="sep">&middot;</span>
+        <span class="tag">Docker Hub</span><span class="sep">&middot;</span>
+        <span class="tag">MCP Registry</span>
+      </div>
+    </article>
   </div>
 
   <!-- ──────────── FEATURE 03 / SELECTED WORK ──────────── -->
@@ -1323,7 +1364,7 @@ footer {
     </div>
   </aside>
 
-  <div class="work-grid">
+  <div class="work-grid work-grid-suite">
     <article class="work-item reveal" onclick="openModal('repofabric')">
       <div class="work-item-header">
         <span class="work-item-num">001</span>
@@ -1389,7 +1430,27 @@ footer {
         View the one-pager <span class="arrow">&rarr;</span>
       </button>
     </article>
+  </div>
 
+  <!-- MCP Servers: platform-native MCP servers, a new category of work -->
+  <aside class="fabric-suite mcp reveal">
+    <div class="fabric-suite-inner">
+      <div class="fabric-suite-eyebrow">MCP Servers &middot; A new category of work</div>
+      <h3 class="fabric-suite-title">Expert AI hands on <em>one platform at a time.</em></h3>
+      <p class="fabric-suite-deck">A growing family of <strong>Model Context Protocol servers</strong>, each built for a specific technology stack. They give an AI client deep, LAN-direct command of one platform, read-heavy and safe by default, with any state-changing action held behind an opt-in, confirm-gated, audited tier. Point Claude at a backup estate, a smart home, or a camera fleet, and it works the platform like an expert operator would.</p>
+      <div class="fabric-suite-flow">
+        <div class="fabric-node"><span class="fabric-node-name">Tractor<em>Beeam365</em></span><span class="fabric-node-verb">Veeam Backup for M365</span></div>
+        <span class="fabric-arrow">&middot;</span>
+        <div class="fabric-node"><span class="fabric-node-name">Homey-Wan-<em>Kenobi</em></span><span class="fabric-node-verb">Homey Pro smart home</span></div>
+        <span class="fabric-arrow">&middot;</span>
+        <div class="fabric-node"><span class="fabric-node-name">Reo2-<em>D2</em></span><span class="fabric-node-verb">Reolink camera fleet</span></div>
+      </div>
+      <p class="fabric-suite-note">Each server that ships does so <span class="lic-free">free and open-source under MIT</span>, as a hardened container on Docker Hub and the public MCP Registry.</p>
+      <a href="https://github.com/Ringosystems" target="_blank" rel="noopener" class="fabric-suite-cta">Explore the open-source servers <span class="arrow">&rarr;</span></a>
+    </div>
+  </aside>
+
+  <div class="work-grid work-grid-suite">
     <article class="work-item reveal" onclick="openModal('tractorbeeam')">
       <div class="work-item-header">
         <span class="work-item-num">004</span>
@@ -1408,9 +1469,47 @@ footer {
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
 
-    <article class="work-item reveal" onclick="openModal('periscope')">
+    <article class="work-item reveal" onclick="openModal('homey')">
       <div class="work-item-header">
         <span class="work-item-num">005</span>
+        <span class="work-item-status new">Recently Launched</span>
+      </div>
+      <h3>Homey-Wan-<em>Kenobi</em></h3>
+      <p class="work-item-tagline">Your smart home&apos;s only hope for natural-language control.</p>
+      <p class="work-item-body">A <strong>self-hosted MCP server for Homey Pro</strong>, 60 tools and 3 knowledge prompts deep. It goes well past device on/off: Z-Wave and Zigbee mesh diagnostics with ranked remediations, live energy and Insights analysis, app memory and usage review, and full Flow and Advanced Flow authoring from scratch. <em>No cloud broker, no paid connector plan.</em></p>
+      <div class="work-item-tags">
+        <span>MCP</span><span class="sep">&middot;</span>
+        <span>TypeScript</span><span class="sep">&middot;</span>
+        <span>Homey Web API</span><span class="sep">&middot;</span>
+        <span>Z-Wave / Zigbee</span><span class="sep">&middot;</span>
+        <span>MIT / Open Source</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('reo2d2')">
+      <div class="work-item-header">
+        <span class="work-item-num">006</span>
+        <span class="work-item-status soon">Alpha</span>
+      </div>
+      <h3>Reo2-<em>D2</em></h3>
+      <p class="work-item-tagline">The astromech that keeps an eye on your home.</p>
+      <p class="work-item-body">An expert MCP server for <strong>Reolink cameras, doorbells, NVRs, and the Home Hub</strong>, built to run alongside Homey-Wan-Kenobi so one AI agent can author camera-driven home automations. Read-heavy analyze and diagnose tooling over the LAN: config audits, bandwidth budgeting, requirements matching, and a Homey event bridge, with an optional AI Vision plane. <em>In alpha: working today, still rough.</em></p>
+      <div class="work-item-tags">
+        <span>MCP</span><span class="sep">&middot;</span>
+        <span>Python</span><span class="sep">&middot;</span>
+        <span>reolink-aio</span><span class="sep">&middot;</span>
+        <span>Homey Bridge</span><span class="sep">&middot;</span>
+        <span>AI Vision</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+  </div>
+
+  <div class="work-grid">
+    <article class="work-item reveal" onclick="openModal('periscope')">
+      <div class="work-item-header">
+        <span class="work-item-num">007</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Peri<em>scope</em></h3>
@@ -1428,7 +1527,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringollm')">
       <div class="work-item-header">
-        <span class="work-item-num">006</span>
+        <span class="work-item-num">008</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Ringo<em>LLM</em></h3>
@@ -1446,7 +1545,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('intunegovernance')">
       <div class="work-item-header">
-        <span class="work-item-num">007</span>
+        <span class="work-item-num">009</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Intune<em>Governance</em></h3>
@@ -1464,7 +1563,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('cisdscforge')">
       <div class="work-item-header">
-        <span class="work-item-num">008</span>
+        <span class="work-item-num">010</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>CIS<em>DSCForge</em></h3>
@@ -1482,7 +1581,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('aria')">
       <div class="work-item-header">
-        <span class="work-item-num">009</span>
+        <span class="work-item-num">011</span>
         <span class="work-item-status wip">In Progress</span>
       </div>
       <h3>Aria <em>Concierge</em></h3>
@@ -1500,7 +1599,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringo')">
       <div class="work-item-header">
-        <span class="work-item-num">010</span>
+        <span class="work-item-num">012</span>
         <span class="work-item-status arch">Architecture</span>
       </div>
       <h3>R.I.N.G.O. <em>Platform</em></h3>
@@ -1684,9 +1783,9 @@ var projectData = {
     eyebrow: 'Feature 03.A',
     title: 'Repo<em>Fabric</em>',
     tagline: 'Stop downloading the same installer a thousand times.',
-    body: '<p><strong>RepoFabric</strong> is a self-hosted, browser-managed <code>winget</code> source platform &mdash; three Docker containers on a single host that present themselves to managed Windows endpoints as a native WinGet REST source, so any <code>winget install</code> on an enrolled endpoint just works.</p><p><strong>Download once. Reuse across the subnet.</strong> The installer endpoint advertises <code>PeerDist</code> (MS-PCCRC) content hashes, so BranchCache and Delivery Optimization let the second-through-Nth endpoint on a subnet pull installer blocks from a LAN peer instead of the WAN. A subnet of 50 endpoints installing Chrome costs the central host one full transfer plus 49 hash-table transfers (~15 KB each) &mdash; not fifty 100&nbsp;MB pulls. A built-in <strong>Bandwidth dashboard</strong> quantifies savings per subnet and per installer over 7 / 30 / 90 days.</p><p><strong>Azure-native control.</strong> Admins sign in with Microsoft Entra ID. Every publish, sync, promote, revert, and service action is attributed to the operator UPN (or <code>SYSTEM</code> for scheduled jobs) and lands in a <code>publish_events</code> ledger. The Activity tab is one chronological feed across every virtual repo &mdash; compliance review of <em>who shipped what, where, and when</em> is one filter away.</p><p><strong>Intune-ready in one click.</strong> Export an Intune Settings Catalog policy for the <code>DesktopAppInstaller</code> CSP plus a matching GPO script. Generated per-repo PowerShell registers the source as <em>Trusted</em>, sets silent defaults, and enables BITS Peercaching, BranchCache distributed mode, and Delivery Optimization.</p><p><strong>Curated and safe by default.</strong> Subscribe to the apps you approve; new versions auto-sync from the public <code>microsoft/winget-pkgs</code> catalog into your private source. Pair with the policy export to block the public repo, so endpoints install only vetted builds. Internal-only apps publish through an upload-first wizard that auto-fills metadata and detects silent switches.</p><p><strong>Virtual repos</strong> let a single deployment serve multiple independent WinGet repositories &mdash; Engineering, Finance, Dev-Pilot &mdash; each with its own Gitea backing store, Rewinged instance, subscription list, and audit ledger. Promotion between repos is a one-click operator action; drift detection cron + DR drill UI + daily archive snapshots round out day-two operations.</p><p><strong>Architecture:</strong> <code>repofabric-linux</code> (PowerShell + Node admin core, cron, installer file server under supervisord), <code>repofabric-gitea</code> (manifest store), <code>repofabric-rewinged</code> (WinGet REST source protocol). Stands up via <code>bootstrap.sh</code> + a browser setup wizard. Current status: <strong>0.7.9 GA</strong> on the <code>0.8.0-repofabric</code> branch &mdash; Phases A&ndash;D shipped (Linux container, virtual repos, promotion, ledger, revert, drift detection, archive snapshots, DR drill). 0.8.0 PeerDist + bandwidth measurement is in flight.</p><p><strong>Licensing:</strong> RepoFabric is <em>free and open-source</em> &mdash; the foundation of The Fabric Suite, on which the separately licensed ConfigFabric and DscForge build.</p>',
-    tech: ['WinGet REST', 'PeerDist / BranchCache', 'Delivery Optimization', 'Microsoft Entra ID', 'Intune Settings Catalog', 'PowerShell 7', 'Node.js', 'Docker / UNRAID', 'Gitea', 'rewinged', 'Nginx Proxy Manager'],
-    links: [{ label: 'The Fabric Suite', url: 'https://fabric.ringosystems.com' }, { label: 'Comparison one-pager (PDF)', url: '/assets/RepoFabric-comparison-onepager.pdf#view=Fit' }]
+    body: '<p><strong>RepoFabric</strong> is a self-hosted, browser-managed <code>winget</code> source platform &mdash; three Docker containers on a single host that present themselves to managed Windows endpoints as a native WinGet REST source, so any <code>winget install</code> on an enrolled endpoint just works.</p><p><strong>Download once. Reuse across the subnet.</strong> The installer endpoint advertises <code>PeerDist</code> (MS-PCCRC) content hashes, so BranchCache and Delivery Optimization let the second-through-Nth endpoint on a subnet pull installer blocks from a LAN peer instead of the WAN. A subnet of 50 endpoints installing Chrome costs the central host one full transfer plus 49 hash-table transfers (~15 KB each) &mdash; not fifty 100&nbsp;MB pulls. A built-in <strong>Bandwidth dashboard</strong> quantifies savings per subnet and per installer over 7 / 30 / 90 days.</p><p><strong>Azure-native control.</strong> Admins sign in with Microsoft Entra ID. Every publish, sync, promote, revert, and service action is attributed to the operator UPN (or <code>SYSTEM</code> for scheduled jobs) and lands in a <code>publish_events</code> ledger. The Activity tab is one chronological feed across every virtual repo &mdash; compliance review of <em>who shipped what, where, and when</em> is one filter away.</p><p><strong>Intune-ready in one click.</strong> Export an Intune Settings Catalog policy for the <code>DesktopAppInstaller</code> CSP plus a matching GPO script. Generated per-repo PowerShell registers the source as <em>Trusted</em>, sets silent defaults, and enables BITS Peercaching, BranchCache distributed mode, and Delivery Optimization.</p><p><strong>Curated and safe by default.</strong> Subscribe to the apps you approve; new versions auto-sync from the public <code>microsoft/winget-pkgs</code> catalog into your private source. Pair with the policy export to block the public repo, so endpoints install only vetted builds. Internal-only apps publish through an upload-first wizard that auto-fills metadata and detects silent switches.</p><p><strong>Virtual repos</strong> let a single deployment serve multiple independent WinGet repositories &mdash; Engineering, Finance, Dev-Pilot &mdash; each with its own Gitea backing store, Rewinged instance, subscription list, and audit ledger. Promotion between repos is a one-click operator action; drift detection cron + DR drill UI + daily archive snapshots round out day-two operations.</p><p><strong>Architecture:</strong> <code>repofabric-linux</code> (PowerShell + Node admin core, cron, installer file server under supervisord), <code>repofabric-gitea</code> (manifest store), <code>repofabric-rewinged</code> (WinGet REST source protocol). Stands up via <code>bootstrap.sh</code> + a browser setup wizard. Current status: <strong>officially launched at v0.9.0</strong>. It is now public on GitHub under the <strong>MIT license</strong> and published to Docker Hub, with PeerDist peer-caching, the bandwidth-savings dashboard, virtual repos, promotion, the audit ledger, revert, drift detection, archive snapshots, and DR drill all shipped. A one-command deploy stands up the whole stack behind a bundled auto-HTTPS reverse proxy.</p><p><strong>Licensing:</strong> RepoFabric is <em>free and open-source under MIT,</em> the foundation of The Fabric Suite, on which the separately licensed ConfigFabric and DscForge build.</p>',
+    tech: ['WinGet REST', 'PeerDist / BranchCache', 'Delivery Optimization', 'Microsoft Entra ID', 'Intune Settings Catalog', 'PowerShell 7', 'Node.js', 'Docker / UNRAID', 'Gitea', 'rewinged', 'Caddy / NPM', 'MIT License'],
+    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/RepoFabric-Public' }, { label: 'Docker Hub', url: 'https://hub.docker.com/r/ringosystems/repofabric' }, { label: 'The Fabric Suite', url: 'https://fabric.ringosystems.com' }, { label: 'Comparison one-pager (PDF)', url: '/assets/RepoFabric-comparison-onepager.pdf#view=Fit' }]
   },
   configfabric: {
     eyebrow: 'Feature 03.B',
@@ -1708,12 +1807,28 @@ var projectData = {
     eyebrow: 'Feature 03.D',
     title: 'Tractor<em>Beeam365-MCP</em>',
     tagline: 'Point an AI at your Microsoft 365 backups &mdash; read-only by default.',
-    body: '<p><strong>TractorBeeam365-MCP</strong> is a Model Context Protocol server for <strong>Veeam Backup for Microsoft 365 (VB365)</strong>. It talks directly to the VB365 REST API so an MCP client &mdash; Claude Code or Claude Desktop &mdash; can review your backup configuration, find protection gaps, spot trends, and verify cloud immutability &mdash; and, when you explicitly opt in, run jobs and orchestrate restores.</p><p><strong>Two tiers, safe by default.</strong> The read-only review tier is always on and physically GET-only: a one-shot <code>vb365_health_summary</code> across orgs, jobs, repositories, cloud object storage, proxies, and license; per-job success/failure drift with repo capacity-full projections; backup-coverage gap analysis that compares Microsoft Graph against what jobs actually protect; and a cloud-lock audit that cross-checks Object Lock retention at the bucket against what VB365 reports.</p><p><strong>The action and restore tier is opt-in</strong> and only registers when you set the matching <code>TB_*</code> flags. Every mutation uses a two-call confirm pattern &mdash; the first call returns a preview plus a one-time confirm token, the second executes &mdash; and every execution is appended to an append-only audit log. Full restore orchestration spans Exchange, OneDrive, SharePoint, and Teams, defaulting to the safest export target; writing back to the original location needs an explicit acknowledgement.</p><p><strong>Ships as a container</strong> on Docker Hub and the official MCP Registry, defaulting to read-only streamable-HTTP with no credentials baked in. Recommended pattern: a separate operator instance with the action flags on, and the default instance read-only.</p><p><em>Independent project &mdash; not affiliated with, endorsed by, or supported by Veeam Software. The &ldquo;Beeam&rdquo; spelling is a deliberate play on words: a tractor beam pulls your data back in.</em></p>',
-    tech: ['Model Context Protocol', 'FastMCP / Python', 'Veeam VB365 REST API', 'httpx', 'Microsoft Graph', 'Object Lock (B2 / S3)', 'Docker', 'streamable-http'],
+    body: '<p><strong>TractorBeeam365-MCP</strong> is a Model Context Protocol server for <strong>Veeam Backup for Microsoft 365 (VB365)</strong>. It talks directly to the VB365 REST API so an MCP client &mdash; Claude Code or Claude Desktop &mdash; can review your backup configuration, find protection gaps, spot trends, and verify cloud immutability &mdash; and, when you explicitly opt in, run jobs and orchestrate restores.</p><p><strong>Two tiers, safe by default.</strong> The read-only review tier is always on and physically GET-only: a one-shot <code>vb365_health_summary</code> across orgs, jobs, repositories, cloud object storage, proxies, and license; per-job success/failure drift with repo capacity-full projections; backup-coverage gap analysis that compares Microsoft Graph against what jobs actually protect; and a cloud-lock audit that cross-checks Object Lock retention at the bucket against what VB365 reports.</p><p><strong>The action and restore tier is opt-in</strong> and only registers when you set the matching <code>TB_*</code> flags. Every mutation uses a two-call confirm pattern &mdash; the first call returns a preview plus a one-time confirm token, the second executes &mdash; and every execution is appended to an append-only audit log. Full restore orchestration spans Exchange, OneDrive, SharePoint, and Teams, defaulting to the safest export target; writing back to the original location needs an explicit acknowledgement.</p><p><strong>Ships as a multi-arch container</strong> (amd64 and arm64) on Docker Hub, GitHub Container Registry, and the public MCP Registry, so it runs natively on x86 servers, Apple Silicon, ARM boxes, and Unraid. As of <strong>v2.2.0</strong> a one-command <code>docker compose</code> deploy brings up the read-only service with no credentials baked in. Recommended pattern: a separate operator instance with the action flags on, and the default instance read-only. <em>Free and open-source under the MIT license.</em></p><p><em>Independent project &mdash; not affiliated with, endorsed by, or supported by Veeam Software. The &ldquo;Beeam&rdquo; spelling is a deliberate play on words: a tractor beam pulls your data back in.</em></p>',
+    tech: ['Model Context Protocol', 'FastMCP / Python', 'Veeam VB365 REST API', 'httpx', 'Microsoft Graph', 'Object Lock (B2 / S3)', 'Docker Hub / GHCR', 'streamable-http', 'MIT License'],
     links: [{ label: 'Docker Hub', url: 'https://hub.docker.com/r/ringosystems/tractorbeeam365-mcp' }, { label: 'MCP Registry', url: 'https://registry.modelcontextprotocol.io/?search=tractorbeeam' }, { label: 'GitHub', url: 'https://github.com/Ringosystems/TractorBeeam-MCP' }]
   },
-  periscope: {
+  homey: {
     eyebrow: 'Feature 03.E',
+    title: 'Homey-Wan-<em>Kenobi</em>',
+    tagline: 'Your smart home&apos;s only hope for natural-language control.',
+    body: '<p><strong>Homey-Wan-Kenobi</strong> is a self-hosted Model Context Protocol server for <strong>Homey Pro</strong> smart homes, exposing 60 tools and 3 knowledge prompts over stdio or streamable-HTTP. The name nods to Obi-Wan Kenobi, your home&apos;s only hope for natural-language control.</p><p>Athom ships an official cloud-brokered Homey connector for device status, control, and Flow authoring. This server differs in two ways. It is <strong>self-hosted</strong>, so you run it yourself with no third-party broker and no paid AI-plan requirement, and it adds <strong>operational depth</strong> for power users.</p><p><strong>The depth, in practice.</strong> <code>diagnose_zwave_network</code> and <code>diagnose_zigbee_network</code> grade every node by last-seen age (battery-sleep aware), group transmit failures, correlate them with unavailable devices, and return severity-ranked remediations. Live power by zone and device, day/week/month/year energy reports, and timestamped Insights history let the model answer &ldquo;what is using power right now&rdquo; or &ldquo;how has the bedroom trended this week&rdquo;. <code>analyze_app_usage</code> cross-references every app against RAM, device counts, and flow references to flag safe removal candidates. A flow-card discovery engine plus full standard and Advanced Flow CRUD lets an AI author and tear down the whole cards graph from scratch, and <code>homey_api_call</code> reaches any Homey Web API endpoint so new firmware features work without waiting for a tool update.</p><p>It runs on a hardened, non-root <code>node:22-alpine</code> image whose every build and release is gated on a Trivy scan, and it is published to <strong>Docker Hub, GHCR, and the public MCP Registry</strong> as <code>io.github.Ringosystems/homey-wan-kenobi-mcp</code>. <em>Free and open-source under the MIT license.</em></p>',
+    tech: ['Model Context Protocol', 'TypeScript', 'Node 22 (Alpine)', 'Homey Web API', 'Z-Wave / Zigbee', 'Trivy-scanned', 'Docker Hub / GHCR', 'MCP Registry', 'MIT License'],
+    links: [{ label: 'Docker Hub', url: 'https://hub.docker.com/r/ringosystems/homey-wan-kenobi' }, { label: 'MCP Registry', url: 'https://registry.modelcontextprotocol.io/?search=homey-wan-kenobi' }, { label: 'GitHub', url: 'https://github.com/Ringosystems/Homey-Wan-Kenobi-MCP' }]
+  },
+  reo2d2: {
+    eyebrow: 'Feature 03.F',
+    title: 'Reo2-<em>D2</em>',
+    tagline: 'The astromech that keeps an eye on your home.',
+    body: '<p><strong>Reo2-D2</strong> is an expert Model Context Protocol server for <strong>Reolink cameras, doorbells, NVRs, and the Home Hub</strong>, reached LAN-direct with no cloud dependency. It is the Star Wars sibling to Homey-Wan-Kenobi, built to run alongside it so an AI agent holding both can author advanced, camera-driven automations on Homey.</p><p>It treats a Reolink fleet the way the Homey server treats a smart home: read-heavy <code>analyze_*</code> and <code>diagnose_*</code> expert tools with a raw API escape hatch and a bridge into Homey. Capabilities span <strong>configuration analysis</strong> (encoding, AI and detection, recording schedule, image settings per channel), <strong>network and bandwidth optimization</strong> (fleet bitrate budgeting, codec and stream advice, Wi-Fi signal versus bitrate), <strong>monitoring</strong> (snapshots, AI and motion event sampling or live push, performance, storage, fleet health), <strong>requirements matching</strong> (needs to Reolink models, existing-fleet validation), and <strong>security, reliability, and capacity analysis</strong> (hardening and CVE audit, privacy and compliance, retention forecasting, PoE and power budget, DORI coverage reasoning).</p><p>A <strong>Homey co-integration</strong> layer bridges Reolink events into Homey Flows and generates self-contained Homey-to-camera control, and an optional <strong>AI Vision Service</strong> plane can route to a containerized recognition backend (Frigate, CodeProject.AI, CompreFace, Ollama VLM) for scene description, face recognition, and license-plate reading, always preferring the cameras&apos; native onboard AI first.</p><p>Built in Python on the Reolink-authorized <code>reolink-aio</code> library, targeting Docker Hub image <code>ringosystems/reo2d2</code> and MCP Registry name <code>io.github.Ringosystems/reo2-d2-mcp</code>. <strong>Status: in alpha.</strong> The code runs today and is being refined toward a free and open-source release on Docker Hub and the MCP Registry. Not affiliated with Reolink, Homey/Athom, or Lucasfilm.</p>',
+    tech: ['Model Context Protocol', 'Python', 'reolink-aio', 'Reolink LAN API', 'Homey Bridge', 'AI Vision (Frigate / CodeProject.AI)', 'Docker'],
+    links: []
+  },
+  periscope: {
+    eyebrow: 'Feature 03.G',
     title: 'Peri<em>scope</em>',
     tagline: 'Mission control for a family of AI coding agents.',
     body: '<p><strong>Periscope</strong> is the control-plane for the RingoSystems fabric family &mdash; a self-hosted, single-screen mission-control web app for an operator coordinating a family of AI coding agents, one per git repo (RepoFabric, ConfigFabric, DscForge, and more). It is also the home for the family operating contract and the offline-LLM infrastructure.</p><p>Periscope tracks a <strong>multi-source fabric</strong>: a primary GitHub org plus arbitrary external repos. Per repo it surfaces activity (open PRs, issues, Actions runs), local-clone freshness (ahead/behind, dirty files, last fetch), and a persisted chat pane &mdash; all behind a nine-step onboarding wizard.</p><p>Beyond a dashboard it implements a <strong>two-way operating contract</strong> between Primary and its siblings. <strong>Directives</strong> (Primary to sibling) carry an urgency &mdash; <code>now</code> means &ldquo;pause what you are doing and work this immediately.&rdquo; <strong>Reports</strong> (sibling to Primary) flow through broker channels &mdash; committed status files, comments on tracking issues &mdash; so Periscope works even with no inbound URL, with cadence adapting per sibling via a warm / cold / hot state machine. An <strong>LLM service registry</strong> distributes routing config and credentials so siblings can call shared model endpoints, like the StrixHalo box running llama.cpp with GLM-4.5-Air, with Periscope as policy authority and observability sink.</p><p>Status: <strong>v1 complete</strong> &mdash; all eight phases shipped on a Next.js&nbsp;15 / React&nbsp;19 / TypeScript-strict stack with Drizzle over LibSQL, the LLM registry, the directives-and-reports contract, the cross-repo change-set engine, and the protocol specification. Build green at 32 routes, 65 unit tests green.</p>',
@@ -1721,7 +1836,7 @@ var projectData = {
     links: []
   },
   ringollm: {
-    eyebrow: 'Feature 03.F',
+    eyebrow: 'Feature 03.H',
     title: 'Ringo<em>LLM</em>',
     tagline: 'Your endpoint management co-pilot.',
     body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management &mdash; covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> &mdash; <em>code generation capability emerges from the training corpus</em> (PowerShell, KQL, Graph API examples) rather than from a Coder-variant base model. An important distinction in how the model achieves its specialization.</p><p>Multiple versions have shipped to HuggingFace as the corpus and pipeline have matured. Each release tightens the domain focus and improves the quality of the generated outputs.</p>',
@@ -1729,7 +1844,7 @@ var projectData = {
     links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
   },
   intunegovernance: {
-    eyebrow: 'Feature 03.G',
+    eyebrow: 'Feature 03.I',
     title: 'Intune<em>Governance</em>',
     tagline: 'PowerShell module for Intune fleet operations',
     body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale &mdash; the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management &mdash; where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that <em>actually works at scale</em> rather than looking good in a demo.</p>',
@@ -1737,7 +1852,7 @@ var projectData = {
     links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
   },
   cisdscforge: {
-    eyebrow: 'Feature 03.H',
+    eyebrow: 'Feature 03.J',
     title: 'CIS<em>DSCForge</em>',
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
     body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p>',
@@ -1745,7 +1860,7 @@ var projectData = {
     links: []
   },
   aria: {
-    eyebrow: 'Feature 03.I',
+    eyebrow: 'Feature 03.K',
     title: 'Aria <em>Concierge</em>',
     tagline: 'Local-first agentic personal assistant',
     body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p>',
@@ -1753,7 +1868,7 @@ var projectData = {
     links: []
   },
   ringo: {
-    eyebrow: 'Feature 03.J',
+    eyebrow: 'Feature 03.L',
     title: 'R.I.N.G.O. <em>Platform</em>',
     tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
     body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
