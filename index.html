@@ -569,6 +569,7 @@ main { position: relative; z-index: 3; }
 .work-item-status.wip { color: var(--status-wip); border: 1px solid var(--status-wip); }
 .work-item-status.arch { color: var(--status-arch); border: 1px solid var(--status-arch); }
 .work-item-status.soon { color: var(--status-soon); border: 1px solid var(--status-soon); }
+.work-item-status.back { color: var(--ink-dim); border: 1px solid var(--ink-dim); }
 .work-item-status.new {
   color: var(--bg); background: var(--status-new);
   border: 1px solid var(--status-new); font-weight: 600;
@@ -1504,12 +1505,30 @@ footer {
       </div>
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
+
+    <article class="work-item reveal" onclick="openModal('diagnoda')">
+      <div class="work-item-header">
+        <span class="work-item-num">007</span>
+        <span class="work-item-status soon">Unreleased</span>
+      </div>
+      <h3>Diag<em>noda</em></h3>
+      <p class="work-item-tagline">Root cause, the Jedi way. Diagnose it, Yoda will.</p>
+      <p class="work-item-body">An MCP server that drives <strong>Windows root-cause investigations</strong> to a confirmed answer. It ingests Intune diagnostic ZIPs, memory dumps, ProcMon and Sysmon captures, and TSS output, normalizes them into a per-case store, and reasons from symptom to proximate cause to true root cause, then verifies the fix actually worked. <em>Under active construction, not yet released.</em></p>
+      <div class="work-item-tags">
+        <span>MCP</span><span class="sep">&middot;</span>
+        <span>Node 22</span><span class="sep">&middot;</span>
+        <span>WinDbg / cdb</span><span class="sep">&middot;</span>
+        <span>Docker / Unraid</span><span class="sep">&middot;</span>
+        <span>Claude Agent SDK</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
   </div>
 
   <div class="work-grid">
     <article class="work-item reveal" onclick="openModal('periscope')">
       <div class="work-item-header">
-        <span class="work-item-num">007</span>
+        <span class="work-item-num">008</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Peri<em>scope</em></h3>
@@ -1527,12 +1546,12 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringollm')">
       <div class="work-item-header">
-        <span class="work-item-num">008</span>
-        <span class="work-item-status active">Active</span>
+        <span class="work-item-num">009</span>
+        <span class="work-item-status active">In Production</span>
       </div>
       <h3>Ringo<em>LLM</em></h3>
       <p class="work-item-tagline">Your endpoint management co-pilot.</p>
-      <p class="work-item-body">Domain-specialized LLM fine-tuned on Windows endpoint management data. Multiple versions shipped on HuggingFace. Custom training pipeline with synthetic Q&amp;A generation, quality filtering, and local GPU inference.</p>
+      <p class="work-item-body">Domain-specialized LLM fine-tuned on Windows endpoint management data. Multiple versions shipped on HuggingFace. Custom training pipeline with synthetic Q&amp;A generation, quality filtering, and local GPU inference. <em>Fully released to production, public on HuggingFace.</em></p>
       <div class="work-item-tags">
         <span>Qwen 3 8B</span><span class="sep">&middot;</span>
         <span>QLoRA</span><span class="sep">&middot;</span>
@@ -1545,7 +1564,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('intunegovernance')">
       <div class="work-item-header">
-        <span class="work-item-num">009</span>
+        <span class="work-item-num">010</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Intune<em>Governance</em></h3>
@@ -1563,12 +1582,12 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('cisdscforge')">
       <div class="work-item-header">
-        <span class="work-item-num">010</span>
-        <span class="work-item-status active">Active</span>
+        <span class="work-item-num">011</span>
+        <span class="work-item-status back">Backburner</span>
       </div>
       <h3>CIS<em>DSCForge</em></h3>
       <p class="work-item-tagline">Multi-Standard Security Baseline DSC v3 Generator</p>
-      <p class="work-item-body">An agentic Claude Project that ingests CIS Benchmarks, Microsoft OSConfig baselines, HardeningKitty finding lists, and other hardening standards to generate production-ready DSC v3 YAML configurations.</p>
+      <p class="work-item-body">An agentic Claude Project that ingests CIS Benchmarks, Microsoft OSConfig baselines, HardeningKitty finding lists, and other hardening standards to generate production-ready DSC v3 YAML configurations. <em>A back-burner project, currently unreleased.</em></p>
       <div class="work-item-tags">
         <span>Claude Project</span><span class="sep">&middot;</span>
         <span>DSC v3</span><span class="sep">&middot;</span>
@@ -1579,14 +1598,32 @@ footer {
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
 
+    <article class="work-item reveal" onclick="openModal('restrainingbolt')">
+      <div class="work-item-header">
+        <span class="work-item-num">012</span>
+        <span class="work-item-status soon">Unreleased</span>
+      </div>
+      <h3>Restraining <em>Bolt</em></h3>
+      <p class="work-item-tagline">Limit the droid without disabling it.</p>
+      <p class="work-item-body">A least-privilege investigation and remediation toolkit for Windows. It proves, with evidence, exactly which administrator rights a service or app actually uses, then removes the rest without breaking it. A differential ProcMon and AccessChk method attributes every real failure to one of four axes and hands back the single minimal grant that resolves it. <em>Built to v1.0.0 internally, not yet publicly released.</em></p>
+      <div class="work-item-tags">
+        <span>PowerShell</span><span class="sep">&middot;</span>
+        <span>ProcMon / AccessChk</span><span class="sep">&middot;</span>
+        <span>User Rights Assignment</span><span class="sep">&middot;</span>
+        <span>ACL / icacls</span><span class="sep">&middot;</span>
+        <span>Least Privilege</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
     <article class="work-item reveal" onclick="openModal('aria')">
       <div class="work-item-header">
-        <span class="work-item-num">011</span>
-        <span class="work-item-status wip">In Progress</span>
+        <span class="work-item-num">013</span>
+        <span class="work-item-status back">Backburner</span>
       </div>
       <h3>Aria <em>Concierge</em></h3>
       <p class="work-item-tagline">Local-first agentic personal assistant</p>
-      <p class="work-item-body">A self-hosted personal AI built around a temporal knowledge graph. Privacy as architecture &mdash; local processing, PII scrubbing, no data leaves the lab. The Concierge agent operates via MCP and manages its own infrastructure.</p>
+      <p class="work-item-body">A self-hosted personal AI built around a temporal knowledge graph. Privacy as architecture &mdash; local processing, PII scrubbing, no data leaves the lab. The Concierge agent operates via MCP and manages its own infrastructure. <em>On the back burner, currently unreleased.</em></p>
       <div class="work-item-tags">
         <span>Python / FastAPI</span><span class="sep">&middot;</span>
         <span>Neo4j</span><span class="sep">&middot;</span>
@@ -1599,7 +1636,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringo')">
       <div class="work-item-header">
-        <span class="work-item-num">012</span>
+        <span class="work-item-num">014</span>
         <span class="work-item-status arch">Architecture</span>
       </div>
       <h3>R.I.N.G.O. <em>Platform</em></h3>
@@ -1827,8 +1864,16 @@ var projectData = {
     tech: ['Model Context Protocol', 'Python', 'reolink-aio', 'Reolink LAN API', 'Homey Bridge', 'AI Vision (Frigate / CodeProject.AI)', 'Docker'],
     links: []
   },
-  periscope: {
+  diagnoda: {
     eyebrow: 'Feature 03.G',
+    title: 'Diag<em>noda</em>',
+    tagline: 'Root cause, the Jedi way. Diagnose it, Yoda will.',
+    body: '<p><strong>Diagnoda</strong> is a Model Context Protocol server that drives <strong>Windows root-cause investigations</strong> from raw evidence to a confirmed fix. It ingests Intune diagnostic ZIPs, memory dumps, Process Monitor and Sysmon captures, and TSS output, then normalizes everything into a queryable per-case store.</p><p>Its discipline is the point. Diagnoda separates <strong>symptom, proximate cause, and root cause</strong>, refuses to overstate confidence, and verifies that a remediation actually worked rather than assuming it did. Analyzers cover crashes, application faults, MDM and Intune health, cross-case comparison, and a stability audit, with WinDbg-style <code>!analyze -v</code> handled on a golden-snapshot Windows satellite VM.</p><p>It runs as a Linux Docker container on Unraid, speaking MCP over streamable HTTP behind bearer-token auth and reachable over Tailscale. Inference is tiered: a local grammar-constrained llama.cpp model for cheap structured work, the host agent driving the investigation, and a budgeted Anthropic escalation through the Claude Agent SDK for the hard calls. The name is a nod to Yoda, the Jedi master who finds the true cause. <strong>Status: under active construction, not yet released.</strong></p>',
+    tech: ['Model Context Protocol', 'Node 22 / TypeScript', 'Docker / Unraid', 'WinDbg / cdb', 'llama.cpp (Tier L)', 'Claude Agent SDK', 'Sysmon / ProcMon', 'Intune diagnostics', 'streamable-http'],
+    links: []
+  },
+  periscope: {
+    eyebrow: 'Feature 03.H',
     title: 'Peri<em>scope</em>',
     tagline: 'Mission control for a family of AI coding agents.',
     body: '<p><strong>Periscope</strong> is the control-plane for the RingoSystems fabric family &mdash; a self-hosted, single-screen mission-control web app for an operator coordinating a family of AI coding agents, one per git repo (RepoFabric, ConfigFabric, DscForge, and more). It is also the home for the family operating contract and the offline-LLM infrastructure.</p><p>Periscope tracks a <strong>multi-source fabric</strong>: a primary GitHub org plus arbitrary external repos. Per repo it surfaces activity (open PRs, issues, Actions runs), local-clone freshness (ahead/behind, dirty files, last fetch), and a persisted chat pane &mdash; all behind a nine-step onboarding wizard.</p><p>Beyond a dashboard it implements a <strong>two-way operating contract</strong> between Primary and its siblings. <strong>Directives</strong> (Primary to sibling) carry an urgency &mdash; <code>now</code> means &ldquo;pause what you are doing and work this immediately.&rdquo; <strong>Reports</strong> (sibling to Primary) flow through broker channels &mdash; committed status files, comments on tracking issues &mdash; so Periscope works even with no inbound URL, with cadence adapting per sibling via a warm / cold / hot state machine. An <strong>LLM service registry</strong> distributes routing config and credentials so siblings can call shared model endpoints, like the StrixHalo box running llama.cpp with GLM-4.5-Air, with Periscope as policy authority and observability sink.</p><p>Status: <strong>v1 complete</strong> &mdash; all eight phases shipped on a Next.js&nbsp;15 / React&nbsp;19 / TypeScript-strict stack with Drizzle over LibSQL, the LLM registry, the directives-and-reports contract, the cross-repo change-set engine, and the protocol specification. Build green at 32 routes, 65 unit tests green.</p>',
@@ -1836,15 +1881,15 @@ var projectData = {
     links: []
   },
   ringollm: {
-    eyebrow: 'Feature 03.H',
+    eyebrow: 'Feature 03.I',
     title: 'Ringo<em>LLM</em>',
     tagline: 'Your endpoint management co-pilot.',
-    body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management &mdash; covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> &mdash; <em>code generation capability emerges from the training corpus</em> (PowerShell, KQL, Graph API examples) rather than from a Coder-variant base model. An important distinction in how the model achieves its specialization.</p><p>Multiple versions have shipped to HuggingFace as the corpus and pipeline have matured. Each release tightens the domain focus and improves the quality of the generated outputs.</p>',
+    body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management &mdash; covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> &mdash; <em>code generation capability emerges from the training corpus</em> (PowerShell, KQL, Graph API examples) rather than from a Coder-variant base model. An important distinction in how the model achieves its specialization.</p><p>Multiple versions have shipped to HuggingFace as the corpus and pipeline have matured. Each release tightens the domain focus and improves the quality of the generated outputs.</p><p><em>Status: fully released to production, public on HuggingFace.</em></p>',
     tech: ['Qwen 3 8B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
     links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
   },
   intunegovernance: {
-    eyebrow: 'Feature 03.I',
+    eyebrow: 'Feature 03.J',
     title: 'Intune<em>Governance</em>',
     tagline: 'PowerShell module for Intune fleet operations',
     body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale &mdash; the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management &mdash; where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that <em>actually works at scale</em> rather than looking good in a demo.</p>',
@@ -1852,23 +1897,31 @@ var projectData = {
     links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
   },
   cisdscforge: {
-    eyebrow: 'Feature 03.J',
+    eyebrow: 'Feature 03.K',
     title: 'CIS<em>DSCForge</em>',
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
-    body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p>',
+    body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p><p><em>Status: a back-burner project, currently unreleased.</em></p>',
     tech: ['Claude Project', 'DSC v3', 'CIS Benchmarks', 'OSConfig', 'HardeningKitty', 'YAML', 'Intune', 'Azure Machine Configuration', 'Agentic Engineering', 'Windows Hardening', 'DISA STIGs'],
     links: []
   },
+  restrainingbolt: {
+    eyebrow: 'Feature 03.L',
+    title: 'Restraining <em>Bolt</em>',
+    tagline: 'Limit the droid without disabling it.',
+    body: '<p><strong>Restraining Bolt</strong> is a least-privilege investigation and remediation toolkit for Windows. It proves, with evidence, exactly which administrator rights a service or application actually uses, then removes the rights it does not, without breaking functionality. It replaces &ldquo;it needs admin, we think&rdquo; with a captured, reproducible answer and a review-ready fix.</p><p><strong>The method is differential.</strong> Run the identical workload twice, once with rights and once without, record every operation with Process Monitor and AccessChk, and isolate the operations that fail only in the de-privileged run. Each surviving denial names the exact object and access requested, which maps to one of four axes: a token privilege (User Rights Assignment), an object ACL that grants Administrators rather than the account, UAC integrity-level token filtering, or the log-on-as-a-service right. Each axis has one precise, minimal fix.</p><p>Two investigation tracks share that model. The <strong>services</strong> track (bench use only) diffs a service running as local admin against the same service de-privileged and emits an <code>Apply-Remediation.ps1</code> that grants back only the rights that are load-bearing. The <strong>interactive-app</strong> track diagnoses launch-time UAC elevation read-only and remediates per user and reversibly. The name is the Star Wars restraining bolt: the device that limits a droid without disabling it, which is exactly least privilege. <strong>Status: cut to v1.0.0 internally, not yet publicly released.</strong></p>',
+    tech: ['PowerShell 7', 'Process Monitor', 'AccessChk', 'User Rights Assignment', 'ACL / icacls', 'UAC / Integrity Levels', 'Windows Services', 'Least Privilege'],
+    links: []
+  },
   aria: {
-    eyebrow: 'Feature 03.K',
+    eyebrow: 'Feature 03.M',
     title: 'Aria <em>Concierge</em>',
     tagline: 'Local-first agentic personal assistant',
-    body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p>',
+    body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p><p><em>Status: on the back burner, currently unreleased.</em></p>',
     tech: ['Python / FastAPI', 'Neo4j', 'Qdrant', 'Graphiti', 'Ollama', 'LiteLLM + Presidio', 'Next.js', 'Kotlin / Jetpack Compose', 'Cloudflare Tunnel', 'MCP', 'Minisforum MS-S1 Max'],
     links: []
   },
   ringo: {
-    eyebrow: 'Feature 03.L',
+    eyebrow: 'Feature 03.N',
     title: 'R.I.N.G.O. <em>Platform</em>',
     tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
     body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
