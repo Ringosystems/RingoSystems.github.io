@@ -1432,7 +1432,7 @@ var projectData = {
     tagline: 'DSC v3 Configuration Authoring Platform',
     body: '<p><strong>DscForge</strong> is a full-stack PowerShell SPA that makes authoring DSC v3 configurations feel like a modern development experience instead of hand-editing YAML in the dark.</p><p>The platform provides a browser-based UI powered entirely by a PowerShell backend (System.Net.HttpListener), with multi-provider AI assistance via both local Ollama models and Claude Max through CLIProxyAPI. It features a complete GPO import pipeline, live parallel NuGet and WinGet search with popularity scoring, an ADMX evergreen sync engine pulling from 6 sources (Windows, Edge, Chrome, Office 365, Windows 11 25H2, Server 2025), and a managed tag system for organizing configurations.</p><p>The architecture follows a <strong>Quarry / Forge / Alloy</strong> naming convention: Quarry is where you discover and gather resources, Forge is where you shape configurations, and Alloy is where you combine and export the final product.</p><p>Current state: <strong>131 routes</strong> across 10 route files, 20 JS modules, per-source cache status, and professional DOCX documentation export.</p>',
     tech: ['PowerShell 7', 'DSC v3', 'HttpListener', 'JavaScript', 'Ollama', 'Claude API', 'NuGet v2/v3', 'WinGet', 'ADMX', 'WinForms'],
-    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/DscForge' }]
+    links: []
   },
   ringollm: {
     eyebrow: 'Feature 03.B',
@@ -1440,7 +1440,7 @@ var projectData = {
     tagline: 'Your endpoint management co-pilot.',
     body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management &mdash; covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> &mdash; <em>code generation capability emerges from the training corpus</em> (PowerShell, KQL, Graph API examples) rather than from a Coder-variant base model. An important distinction in how the model achieves its specialization.</p><p>Multiple versions have shipped to HuggingFace as the corpus and pipeline have matured. Each release tightens the domain focus and improves the quality of the generated outputs.</p>',
     tech: ['Qwen 3 8B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
-    links: [{ label: 'GitHub', url: 'https://github.com/Ringosystems/llm-data-pipeline' }, { label: 'HuggingFace', url: 'https://huggingface.co/RingoSystems/RingoLLM' }]
+    links: [{ label: 'HuggingFace v5.1', url: 'https://huggingface.co/RingoSystems/RingoLLM-v5.1-MuseGlimmer-30B-GGUF' }, { label: 'Ollama v5.1', url: 'https://ollama.com/ringosystems/ringollm-v51' }, { label: 'HuggingFace v4.2', url: 'https://huggingface.co/RingoSystems/ringollm-v42' }, { label: 'Ollama v4.2', url: 'https://ollama.com/ringosystems/ringollm-v42' }]
   },
   intunegovernance: {
     eyebrow: 'Feature 03.C',
@@ -1448,7 +1448,7 @@ var projectData = {
     tagline: 'PowerShell module for Intune fleet operations',
     body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale &mdash; the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management &mdash; where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that <em>actually works at scale</em> rather than looking good in a demo.</p>',
     tech: ['PowerShell', 'Microsoft Graph API', 'Intune', 'Windows Firewall', 'Azure Blob', 'JSON Export', 'Proactive Remediation'],
-    links: [{ label: 'GitHub', url: 'https://github.com/LD-Infrastructure/IntuneGovernance' }]
+    links: []
   },
   cisdscforge: {
     eyebrow: 'Feature 03.D',
