@@ -1649,27 +1649,9 @@ footer {
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
 
-    <article class="work-item reveal" onclick="openModal('intunegovernance')">
-      <div class="work-item-header">
-        <span class="work-item-num">014</span>
-        <span class="work-item-status active">Active</span>
-      </div>
-      <h3>Intune<em>Governance</em></h3>
-      <p class="work-item-tagline">PowerShell module for Intune fleet operations</p>
-      <p class="work-item-body">A governance module for managing Intune at enterprise scale. Firewall remediation, fleet analysis, risk scoring, compliance reporting, and automated policy generation.</p>
-      <div class="work-item-tags">
-        <span>PowerShell</span><span class="sep">&middot;</span>
-        <span>Graph API</span><span class="sep">&middot;</span>
-        <span>Intune</span><span class="sep">&middot;</span>
-        <span>JSON Export</span><span class="sep">&middot;</span>
-        <span>Azure Blob</span>
-      </div>
-      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
-    </article>
-
     <article class="work-item reveal" onclick="openModal('cisdscforge')">
       <div class="work-item-header">
-        <span class="work-item-num">015</span>
+        <span class="work-item-num">014</span>
         <span class="work-item-status back">Backburner</span>
       </div>
       <h3>CIS<em>DSCForge</em></h3>
@@ -1687,7 +1669,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('restrainingbolt')">
       <div class="work-item-header">
-        <span class="work-item-num">016</span>
+        <span class="work-item-num">015</span>
         <span class="work-item-status soon">Unreleased</span>
       </div>
       <h3>Restraining <em>Bolt</em></h3>
@@ -1705,7 +1687,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('aria')">
       <div class="work-item-header">
-        <span class="work-item-num">017</span>
+        <span class="work-item-num">016</span>
         <span class="work-item-status back">Backburner</span>
       </div>
       <h3>Aria <em>Concierge</em></h3>
@@ -1723,7 +1705,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringo')">
       <div class="work-item-header">
-        <span class="work-item-num">018</span>
+        <span class="work-item-num">017</span>
         <span class="work-item-status arch">Architecture</span>
       </div>
       <h3>R.I.N.G.O. <em>Platform</em></h3>
@@ -2007,16 +1989,8 @@ var projectData = {
     tech: ['Muse Glimmer 30B', 'Qwen3.6-27B', 'QLoRA / NF4', 'LoRA r32 &alpha;64', 'GGUF Q4_K_M', 'llama.cpp', 'llama-swap', 'Ollama', 'HuggingFace', 'Strix Halo / ROCm', 'DSC v3', 'Apache-2.0'],
     links: [{ label: 'HuggingFace v5.1', url: 'https://huggingface.co/RingoSystems/RingoLLM-v5.1-MuseGlimmer-30B-GGUF' }, { label: 'Ollama v5.1', url: 'https://ollama.com/ringosystems/ringollm-v51' }, { label: 'HuggingFace v4.2', url: 'https://huggingface.co/RingoSystems/ringollm-v42' }, { label: 'Ollama v4.2', url: 'https://ollama.com/ringosystems/ringollm-v42' }]
   },
-  intunegovernance: {
-    eyebrow: 'Feature 03.N',
-    title: 'Intune<em>Governance</em>',
-    tagline: 'PowerShell module for Intune fleet operations',
-    body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale &mdash; the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management &mdash; where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that <em>actually works at scale</em> rather than looking good in a demo.</p>',
-    tech: ['PowerShell', 'Microsoft Graph API', 'Intune', 'Windows Firewall', 'Azure Blob', 'JSON Export', 'Proactive Remediation'],
-    links: []
-  },
   cisdscforge: {
-    eyebrow: 'Feature 03.O',
+    eyebrow: 'Feature 03.N',
     title: 'CIS<em>DSCForge</em>',
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
     body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p><p><em>Status: a back-burner project, currently unreleased.</em></p>',
@@ -2024,7 +1998,7 @@ var projectData = {
     links: []
   },
   restrainingbolt: {
-    eyebrow: 'Feature 03.P',
+    eyebrow: 'Feature 03.O',
     title: 'Restraining <em>Bolt</em>',
     tagline: 'Limit the droid without disabling it.',
     body: '<p><strong>Restraining Bolt</strong> is a least-privilege investigation and remediation toolkit for Windows. It proves, with evidence, exactly which administrator rights a service or application actually uses, then removes the rights it does not, without breaking functionality. It replaces &ldquo;it needs admin, we think&rdquo; with a captured, reproducible answer and a review-ready fix.</p><p><strong>The method is differential.</strong> Run the identical workload twice, once with rights and once without, record every operation with Process Monitor and AccessChk, and isolate the operations that fail only in the de-privileged run. Each surviving denial names the exact object and access requested, which maps to one of four axes: a token privilege (User Rights Assignment), an object ACL that grants Administrators rather than the account, UAC integrity-level token filtering, or the log-on-as-a-service right. Each axis has one precise, minimal fix.</p><p>Two investigation tracks share that model. The <strong>services</strong> track (bench use only) diffs a service running as local admin against the same service de-privileged and emits an <code>Apply-Remediation.ps1</code> that grants back only the rights that are load-bearing. The <strong>interactive-app</strong> track diagnoses launch-time UAC elevation read-only and remediates per user and reversibly. The name is the Star Wars restraining bolt: the device that limits a droid without disabling it, which is exactly least privilege. <strong>Status: cut to v1.0.0 internally, not yet publicly released.</strong></p>',
@@ -2032,7 +2006,7 @@ var projectData = {
     links: []
   },
   aria: {
-    eyebrow: 'Feature 03.Q',
+    eyebrow: 'Feature 03.P',
     title: 'Aria <em>Concierge</em>',
     tagline: 'Local-first agentic personal assistant',
     body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p><p><em>Status: on the back burner, currently unreleased.</em></p>',
@@ -2040,7 +2014,7 @@ var projectData = {
     links: []
   },
   ringo: {
-    eyebrow: 'Feature 03.R',
+    eyebrow: 'Feature 03.Q',
     title: 'R.I.N.G.O. <em>Platform</em>',
     tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
     body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
