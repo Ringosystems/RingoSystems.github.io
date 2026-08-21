@@ -481,6 +481,8 @@ main { position: relative; z-index: 3; }
 }
 .toolkit-item:nth-child(odd) { border-right: 1px solid var(--rule); padding-right: 2.5rem; }
 .toolkit-item:nth-child(even) { padding-left: 2.5rem; }
+/* A trailing odd card has no neighbour to its right, so drop the divider */
+.toolkit-item:last-child:nth-child(odd) { border-right: none; }
 .toolkit-item:hover { background: linear-gradient(180deg, var(--accent-faint), transparent 80%); }
 .toolkit-item.featured {
   background: linear-gradient(135deg, var(--accent-faint), transparent 70%);
@@ -1281,7 +1283,7 @@ footer {
         <span class="tag">QLoRA</span><span class="sep">&middot;</span>
         <span class="tag">GGUF</span><span class="sep">&middot;</span>
         <span class="tag">Claude API</span><span class="sep">&middot;</span>
-        <span class="tag">RTX 5080</span>
+        <span class="tag">Strix Halo / ROCm</span>
       </div>
     </article>
 
@@ -1334,6 +1336,19 @@ footer {
         <span class="tag">TypeScript</span><span class="sep">&middot;</span>
         <span class="tag">Docker Hub</span><span class="sep">&middot;</span>
         <span class="tag">MCP Registry</span>
+      </div>
+    </article>
+
+    <article class="toolkit-item reveal">
+      <div class="toolkit-num">09</div>
+      <h3 class="toolkit-title">Data &amp; <em>Geospatial Engineering</em></h3>
+      <p class="toolkit-body">Turning a published dataset into something you can trust, and then into something you can see. Provenance-checked ingest that repairs verifiable corruption by exact arithmetic rather than fitted factors, dasymetric placement when the source has no coordinates, error bars stated in the interface instead of buried in a footnote, and accessible colour generated in OKLCH. <em>The honesty is the feature.</em></p>
+      <div class="toolkit-tags">
+        <span class="tag">MapLibre GL JS</span><span class="sep">&middot;</span>
+        <span class="tag">Python / GeoPandas</span><span class="sep">&middot;</span>
+        <span class="tag">Parquet</span><span class="sep">&middot;</span>
+        <span class="tag">OKLCH / CVD</span><span class="sep">&middot;</span>
+        <span class="tag">Open Data</span>
       </div>
     </article>
   </div>
@@ -1526,9 +1541,81 @@ footer {
   </div>
 
   <div class="work-grid">
-    <article class="work-item reveal" onclick="openModal('periscope')">
+    <article class="work-item reveal" onclick="openModal('kamino')">
       <div class="work-item-header">
         <span class="work-item-num">008</span>
+        <span class="work-item-status soon">Unreleased</span>
+      </div>
+      <h3>Ka<em>mino</em></h3>
+      <p class="work-item-tagline">The cloners. Every silent install, proven on a disposable machine.</p>
+      <p class="work-item-body">Takes any Windows installer, works out how to install it with <strong>zero user interaction</strong>, then proves it in a throwaway Windows&nbsp;11 VM. The proof is the deliverable &mdash; no window appeared, no consent prompt fired, the process exited clean, the product was actually detected afterward. Ships the proven result as a WinGet manifest set and an Intune Win32 <code>.intunewin</code> with detection, install and uninstall rules. <em>Running live on the bench, not yet publicly released.</em></p>
+      <div class="work-item-tags">
+        <span>Silent-install proof</span><span class="sep">&middot;</span>
+        <span>libvirt / KVM</span><span class="sep">&middot;</span>
+        <span>WinGet manifests</span><span class="sep">&middot;</span>
+        <span>Intune Win32</span><span class="sep">&middot;</span>
+        <span>PowerShell 7 / Pode</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('kaminoimprint')">
+      <div class="work-item-header">
+        <span class="work-item-num">009</span>
+        <span class="work-item-status soon">Unreleased</span>
+      </div>
+      <h3>Kamino <em>Imprint</em></h3>
+      <p class="work-item-tagline">Configure it once by hand. Get the configuration document back.</p>
+      <p class="work-item-body">The configuration-capture product. After a proven package installs on a real bench machine, Imprint watches an operator configure the application and turns what changed into a <strong>DSC&nbsp;v3 or PSADT configuration document</strong> &mdash; instead of a screenshot-and-notes handoff. Checkpoints are stored separately and merged on read, so it knows which wizard page produced which registry write. <em>Standalone, or step seven of the Kamino pipeline.</em></p>
+      <div class="work-item-tags">
+        <span>DSC v3</span><span class="sep">&middot;</span>
+        <span>PSADT</span><span class="sep">&middot;</span>
+        <span>Checkpoint deltas</span><span class="sep">&middot;</span>
+        <span>Registry / file diff</span><span class="sep">&middot;</span>
+        <span>Append-only ledger</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('droidforge')">
+      <div class="work-item-header">
+        <span class="work-item-num">010</span>
+        <span class="work-item-status soon">Unreleased</span>
+      </div>
+      <h3>Droid<em>Forge</em></h3>
+      <p class="work-item-tagline">Build the droids you were looking for.</p>
+      <p class="work-item-body">Microsoft ships a genuinely no-code <em>runtime</em> for Agent Framework and deliberately ships <strong>no editor for it</strong>. DevUI&apos;s canvas is hard-coded read-only, AutoGen Studio is dead, and the one real drag-and-drop designer lives in the Foundry portal and <strong>retires on 1 December 2026</strong>. DroidForge fills the gap: a real visual designer, the JSON Schema Microsoft never published, and a bridge that turns every workflow into a chat model. <em>Agents in YAML, in Git, on a local model. Zero Azure.</em></p>
+      <div class="work-item-tags">
+        <span>Microsoft Agent Framework</span><span class="sep">&middot;</span>
+        <span>Declarative YAML</span><span class="sep">&middot;</span>
+        <span>llama.cpp / Strix Halo</span><span class="sep">&middot;</span>
+        <span>MCP</span><span class="sep">&middot;</span>
+        <span>OpenAI-compatible bridge</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('torontoatlas')">
+      <div class="work-item-header">
+        <span class="work-item-num">011</span>
+        <span class="work-item-status soon">Unreleased</span>
+      </div>
+      <h3>Toronto Utilities <em>Atlas</em></h3>
+      <p class="work-item-tagline">Every large building in Toronto, coloured by what it burns.</p>
+      <p class="work-item-body">An interactive <strong>3D map</strong> of Toronto&apos;s large buildings, coloured and heat-mapped by the Ontario Energy and Water Reporting and Benchmarking dataset for 2018 to 2024. Click any building for its energy, water and greenhouse-gas figures, a seven-year trend, and every report filed nearby. Nine measures, three colour modes, a year animation and a 55-type use filter, on a keyless MapLibre stack with no framework and no bundler. <em>The interesting part is what it had to do to the data first.</em></p>
+      <div class="work-item-tags">
+        <span>MapLibre GL JS</span><span class="sep">&middot;</span>
+        <span>3D buildings</span><span class="sep">&middot;</span>
+        <span>Python / GeoPandas</span><span class="sep">&middot;</span>
+        <span>Dasymetric mapping</span><span class="sep">&middot;</span>
+        <span>OKLCH colour</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('periscope')">
+      <div class="work-item-header">
+        <span class="work-item-num">012</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Peri<em>scope</em></h3>
@@ -1546,25 +1633,25 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringollm')">
       <div class="work-item-header">
-        <span class="work-item-num">009</span>
-        <span class="work-item-status active">In Production</span>
+        <span class="work-item-num">013</span>
+        <span class="work-item-status new">Recently Launched</span>
       </div>
       <h3>Ringo<em>LLM</em></h3>
-      <p class="work-item-tagline">Your endpoint management co-pilot.</p>
-      <p class="work-item-body">Domain-specialized LLM fine-tuned on Windows endpoint management data. Multiple versions shipped on HuggingFace. Custom training pipeline with synthetic Q&amp;A generation, quality filtering, and local GPU inference. <em>Fully released to production, public on HuggingFace.</em></p>
+      <p class="work-item-tagline">A narrow fine-tune that kept its tool calling.</p>
+      <p class="work-item-body">Two published models, one domain. <strong>v5.1</strong>, a Muse Glimmer 30B fine-tune for DSC&nbsp;v3, PowerShell&nbsp;7, Intune and agentic work, lifts DSC&nbsp;v3 accuracy from 56% to 89% while scoring <strong>5/5 on tool selection and 15/15 on argument extraction</strong> &mdash; matching the untouched base model. Narrow domain fine-tunes in this space usually destroy tool calling. <strong>v4.2</strong>, the Qwen3.6-27B build, stays published for Legacy DSC&nbsp;1.1, which v5.1 refuses by design. <em>Both public on HuggingFace and Ollama.</em></p>
       <div class="work-item-tags">
-        <span>Qwen 3 8B</span><span class="sep">&middot;</span>
-        <span>QLoRA</span><span class="sep">&middot;</span>
-        <span>Unsloth</span><span class="sep">&middot;</span>
-        <span>RTX 5080</span><span class="sep">&middot;</span>
-        <span>Ollama</span>
+        <span>Muse Glimmer 30B</span><span class="sep">&middot;</span>
+        <span>QLoRA r32 / &alpha;64</span><span class="sep">&middot;</span>
+        <span>Tool calling 5/5</span><span class="sep">&middot;</span>
+        <span>GGUF / llama.cpp</span><span class="sep">&middot;</span>
+        <span>Strix Halo / ROCm</span>
       </div>
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
 
     <article class="work-item reveal" onclick="openModal('intunegovernance')">
       <div class="work-item-header">
-        <span class="work-item-num">010</span>
+        <span class="work-item-num">014</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Intune<em>Governance</em></h3>
@@ -1582,7 +1669,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('cisdscforge')">
       <div class="work-item-header">
-        <span class="work-item-num">011</span>
+        <span class="work-item-num">015</span>
         <span class="work-item-status back">Backburner</span>
       </div>
       <h3>CIS<em>DSCForge</em></h3>
@@ -1600,7 +1687,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('restrainingbolt')">
       <div class="work-item-header">
-        <span class="work-item-num">012</span>
+        <span class="work-item-num">016</span>
         <span class="work-item-status soon">Unreleased</span>
       </div>
       <h3>Restraining <em>Bolt</em></h3>
@@ -1618,7 +1705,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('aria')">
       <div class="work-item-header">
-        <span class="work-item-num">013</span>
+        <span class="work-item-num">017</span>
         <span class="work-item-status back">Backburner</span>
       </div>
       <h3>Aria <em>Concierge</em></h3>
@@ -1636,7 +1723,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringo')">
       <div class="work-item-header">
-        <span class="work-item-num">014</span>
+        <span class="work-item-num">018</span>
         <span class="work-item-status arch">Architecture</span>
       </div>
       <h3>R.I.N.G.O. <em>Platform</em></h3>
@@ -1872,8 +1959,40 @@ var projectData = {
     tech: ['Model Context Protocol', 'Node 22 / TypeScript', 'Docker / Unraid', 'WinDbg / cdb', 'llama.cpp (Tier L)', 'Claude Agent SDK', 'Sysmon / ProcMon', 'Intune diagnostics', 'streamable-http'],
     links: []
   },
-  periscope: {
+  kamino: {
     eyebrow: 'Feature 03.H',
+    title: 'Ka<em>mino</em>',
+    tagline: 'The cloners. Every silent install, proven on a disposable machine.',
+    body: '<p><strong>Kamino</strong> takes an arbitrary Windows application installer, works out how to install it with zero user interaction, and then <em>proves</em> it in a disposable Windows&nbsp;11 VM. The proof is the deliverable: recorded evidence that no window appeared, no consent prompt fired, the process exited cleanly, and the product was actually detected afterward. Named for the Kaminoans, who quietly produce clones.</p><p>The pipeline runs in seven steps &mdash; installer, classify, prove silence, package, publish, install on bench, imprint config. What comes out the far end is deployment-ready: a <strong>WinGet manifest set</strong> and an <strong>Intune Win32 <code>.intunewin</code></strong> package with detection, install and uninstall rules.</p><p><strong>Silence is asserted from inside the guest, not from pixels.</strong> No new visible top-level window, no <code>consent.exe</code>, a clean exit inside the timeout, and the product confirmed present by a before-and-after registry diff. Behind that sits a knowledge base of 36 installer-platform families, seeded by a 20-agent research sweep and then enriched by an empirical harvest of <strong>155,760 <code>microsoft/winget-pkgs</code> manifests</strong>. Switches that prove out are written back into it.</p><p>The bench is a libvirt / KVM virtual machine driven by <code>virsh</code> over SSH through a forced-command wrapper, with <code>qemu-guest-agent</code> <code>guest-exec</code>, a dependency-free RFB/VNC client for observation, offline snapshot revert-in-place for reset, and a stateless SYSTEM scheduled-task agent inside the guest that survives every revert. Evidence comes back as an ffmpeg before/after animation plus HTML, MHTML and handoff-JSON reports.</p><p>It carries a safety pin inherited from its Restraining Bolt parent: <strong>no destructive VM operation runs unless the mapped libvirt domain UUID matches the guest-reported SMBIOS UUID</strong>, and the virsh key is forced-command pinned to Kamino&apos;s own domain, so asking it to destroy a sibling product&apos;s VM is simply refused.</p><p>The stack is PowerShell&nbsp;7 and Pode in a single Linux container, an embedded SQLite database beside a content-addressed blob store, and a vanilla-JavaScript portal with no build toolchain. It publishes into RepoFabric and Intune, so it runs standalone or slots in front of the Fabric Suite.</p><p><strong>Status:</strong> a Lexmark MSI proved in about 110 seconds, fully unattended. Phases 0&ndash;4 and 6 complete, Phase 5 partial. Apache-2.0, running live on the lab bench, <em>not yet publicly released.</em></p>',
+    tech: ['PowerShell 7 / Pode', 'libvirt / KVM', 'qemu-guest-agent', 'SQLite + CAS blob store', 'WinGet manifests', 'Intune Win32 (.intunewin)', 'RFB / VNC', 'ffmpeg', 'Docker / Unraid', 'Apache-2.0'],
+    links: []
+  },
+  kaminoimprint: {
+    eyebrow: 'Feature 03.I',
+    title: 'Kamino <em>Imprint</em>',
+    tagline: 'Configure it once by hand. Get the configuration document back.',
+    body: '<p><strong>Kamino Imprint</strong> is the configuration-capture product. Once a proven package is installed on a real bench machine, Imprint watches an operator configure the application and turns what changed into a <strong>configuration document</strong> &mdash; DSC&nbsp;v3 or PSADT &mdash; rather than a screenshot-and-notes handoff that someone has to translate later.</p><p>Checkpoints are stored separately and merged only on read. That is the design decision that matters: the system knows <em>this registry write came from that wizard page</em>. Later checkpoints win, and provenance survives the merge, so a value can always be traced back to the moment it was set.</p><p><strong>A real secret value is never persisted</strong>, and the reason is architectural rather than a policy bolted on afterward. The ledger is append-only and the blob store is content-addressed, so a secret written there could never be retracted. The only safe design is not to write it.</p><p>Emission is checked rather than assumed. A six-stage <strong>DSC round-trip verdict</strong> (<code>km.dsc-roundtrip.v1</code>) emits the document, applies it to a clean machine, re-captures the state, and compares &mdash; so the verdict reports whether the document actually reproduces the configuration, not merely that one was produced. Targets cover DSC&nbsp;v3, PSADT, WinGet and Intune scripts, and a behavioural suite guards the whole thing in CI.</p><p>It shares the Kamino interface and runs either standalone or as step seven of the pipeline. Apache-2.0, <em>not yet publicly released.</em></p>',
+    tech: ['DSC v3', 'PSADT', 'PowerShell 7', 'SQLite', 'Content-addressed blob store', 'Append-only ledger', 'Registry / filesystem diff', 'Intune scripts', 'Apache-2.0'],
+    links: []
+  },
+  droidforge: {
+    eyebrow: 'Feature 03.J',
+    title: 'Droid<em>Forge</em>',
+    tagline: 'Build the droids you were looking for.',
+    body: '<p>Microsoft ships a genuinely no-code <em>runtime</em> for Agent Framework &mdash; the declarative workflow YAML, now GA &mdash; and deliberately ships <strong>no editor for it</strong>. DevUI&apos;s canvas is hard-coded read-only, and its API has no write endpoints. The feature request for a DevUI designer was closed without one. AutoGen Studio is dead. The one real drag-and-drop designer lives in the Foundry portal, is cloud-only, and <strong>retires on 1 December 2026</strong> &mdash; and the migration path Microsoft points at is Agent Framework, which is to say: write the YAML yourself. Nobody in the community has filled the gap.</p><p><strong>DroidForge</strong> fills it, in each of the places it is actually open: a real visual editor in a single offline HTML file; the JSON Schema Microsoft never published, so VS Code gives autocomplete, hover documentation and red squiggles; a Chat Completions server, which MAF Python does not have; the bridge joining designer to server, so a save becomes a working chat model on the very next message with nothing restarted; nine container tools over MCP so the agents touch something real; and a model qualifier, so you know before you invest whether your model can hold a tool loop together.</p><p><strong>The designer.</strong> Thirty-two step types grouped into six sections the way Visio groups a stencil, with search and pinnable favourites. Every arrow is <em>computed</em> from the order and nesting of the steps, because that is what the format actually is &mdash; declarative actions run top to bottom, and only Route and Repeat nest. There is deliberately nothing to drag a connector from: an arrow drawn by hand would be one the runtime cannot honour, and the picture would then be lying about the program. Every step can be edited two ways, through a wizard where an illegal value cannot be produced, or through a raw attribute grid that reaches every key including ones the designer has never heard of. A help rail sits beside every field, and its suggestions come from three places and always say which &mdash; your own workflow, your server right now, and what people actually wrote across 193 harvested workflows.</p><p>A Python / .NET runtime toggle handles the fact that the two spell some fields differently, and steps that will not port are flagged rather than silently emitted. It <strong>imports what already exists</strong>, including a workflow exported from the retiring Foundry portal, and a step it does not model is kept whole, written back unchanged, shown on the canvas, and still fully editable. Export, import, export returns a byte-identical file.</p><p><strong>Served, the loop closes.</strong> Open, Save, Try it. Before a save lands it is schema-checked and then built through the real <code>WorkflowFactory</code>, from the directory it will live in, so a broken file is refused rather than published. From a <code>file://</code> URL the three buttons stay hidden and the designer is exactly what it was.</p><p><strong>The schema</strong> is hand-built from the <code>agent-framework-declarative</code> source, because Microsoft publishes nothing for this format. <code>AgentSchema</code> looks like the answer and is not: it uses lowercase <code>kind: prompt</code> where MAF requires <code>kind: Prompt</code>, and its <code>Workflow.yaml</code> explicitly declines to define any actions. It catches the mistakes that otherwise cost an afternoon, including <code>RequestHumanInput</code>, which passes MAF&apos;s own validation and then silently vanishes because no executor is registered for it.</p><p><strong>The bridge and the local model.</strong> Roughly 180 lines turn every YAML file into a selectable model on an OpenAI-compatible endpoint &mdash; necessary because MAF Python has no server-side Chat Completions endpoint and DevUI only speaks the Responses API, while Open WebUI, LibreChat, AnythingLLM, Jan and Chatbox all speak Chat Completions. Drop a YAML file into <code>agents/</code> or <code>workflows/</code> and it appears as a new model, with no code changes ever. The model itself runs on a separate <strong>Strix Halo</strong> box on the LAN, because that hardware needs kernel parameters and memory configuration a container cannot provide. <strong>Zero Azure</strong>, everything LAN-only.</p><p><strong>Qualify before you trust.</strong> Six checks that matter for agent work &mdash; emits a valid tool call, respects argument types, chains multiple calls, grounds its answer in what the tool returned, leaves destructive tools alone, and skips tools when none apply &mdash; each run several times, because these failures are intermittent. Under 70 and supervisor patterns wobble; under 40 no orchestration layer will save you. A mock <code>llama-server</code> stands in so the whole chain can be proven before downloading a GGUF, and the suites run against it: 36 checks across every component, plus eight against the real model, engine and bridge.</p><p><strong>Three layers, and who touches which.</strong> The person authoring never sees YAML unless they want to. The person using the agents never sees anything but a chat box. And the YAML lives in Git, where it diffs and reviews like any other source file &mdash; which is the thing the drag-and-drop platforms cannot give you, because their flows live in a database as JSON blobs and two people cannot branch on the same flow and merge.</p><p><strong>Status:</strong> verified working on 6 August 2026 against <code>agent-framework</code> 1.13.0 and <code>agent-framework-declarative</code> 1.0.1, every claim executed rather than inferred. Deployed on Unraid across four LAN-only hostnames. <em>Not yet publicly released.</em></p>',
+    tech: ['Microsoft Agent Framework 1.13', 'agent-framework-declarative', 'Declarative workflow YAML', 'JSON Schema', 'Python / FastAPI', 'llama.cpp', 'Strix Halo', 'Model Context Protocol', 'Open WebUI / LibreChat', 'Aspire traces', 'pythonnet / PowerFx', 'Docker / Unraid'],
+    links: []
+  },
+  torontoatlas: {
+    eyebrow: 'Feature 03.K',
+    title: 'Toronto Utilities <em>Atlas</em>',
+    tagline: 'Every large building in Toronto, coloured by what it burns.',
+    body: '<p>The <strong>Toronto Utilities Atlas</strong> is an interactive 3D map of Toronto&apos;s large buildings, coloured and heat-mapped by the Ontario Energy and Water Reporting and Benchmarking dataset for 2018 to 2024. Nine measures &mdash; site, weather-normalised and source energy, electricity, natural gas, water, indoor water, GHG intensity and ENERGY STAR score &mdash; across three colour modes, with 3D buildings over a localized heat surface and an FSA choropleth, a year animation, a 55-type building-use filter, three basemaps, and search by name, address, school, FSA, use type or EWRB id.</p><p><strong>The data problem looks fatal.</strong> Ontario publishes EWRB with no street address and no coordinates in any year; a building is identified only by its FSA, the first three characters of a postal code. Per-building energy therefore <em>does not exist in the source</em>. The atlas places real FSA-cohort statistics on real building footprints, states that limitation in the app every single time a building is opened, and renders buildings whose neighbourhood filed nothing as dim shells on a separate no-data channel &mdash; so &ldquo;no report&rdquo; can never be misread as &ldquo;low&rdquo;.</p><p><strong>It found and repaired real corruption in the published 2023 release.</strong> Every EWRB metric column has an imperial twin related by an exact unit identity. Checking that identity exposed that <strong>98.2% of 2023 records had source energy below site energy</strong> &mdash; physically impossible &mdash; and a province-wide median GHG intensity of 635.1&nbsp;kgCO&#8322;e/m&#178; against roughly 25 in every neighbouring year. The build rebuilds the affected columns from their imperial twins by exact arithmetic with no fitted factors: violations fall from 98.2% to 0.0%, and the 2023 GHG median lands at 29.1, between its neighbours. It also caught the 2020 indoor-water column overwritten with imperial values in all 1,359 rows. Natural gas in 2023 is provably not repairable, so it is left as published and flagged in the UI rather than invented.</p><p><strong>Buildings had to be assembled.</strong> 557,694 roof polygons cluster into 206,794 buildings, with a guard against area-ratio bridging that otherwise chained First Canadian Place, Brookfield Place and their neighbours into a single 2.45&nbsp;M&nbsp;m&#178; superblock. With the guard, First Canadian Place resolves to 263,168&nbsp;m&#178; against a real 260,000.</p><p><strong>Identity came with its own failures.</strong> 96% of 6,692 buildings are addressed from the City&apos;s One Address Repository and 41% named, with names taken in order of authority and guarded against tenants naming landlords &mdash; a guard added after a ground-floor gym named an 80-storey tower &ldquo;b-stretched&rdquo; and a police rooftop antenna briefly renamed First Canadian Place.</p><p><strong>The error bars are published, not buried.</strong> Floor area is estimated from massing volume and validated against 59 City assets where the asset is the building: 1.97&#215; high at the median, quartiles 1.34 to 2.81, stated in the app wherever the number appears. Heights land on the real thing &mdash; CN Tower 391&nbsp;m, Scotia Plaza 280&nbsp;m.</p><p><strong>Colour is treated as a correctness problem.</strong> Sequential ramps are generated in OKLCH with monotonic lightness and separate steps for dark and light surfaces, diverging ramps reverse so red always means worse, and the categorical palette passes lightness-band, chroma-floor, colour-vision-deficiency separation (worst adjacent &Delta;E 8.4) and 3:1 contrast checks.</p><p>The stack is MapLibre GL JS 5.6.0, deliberately keyless on Carto and Esri basemaps &mdash; no Mapbox, no Cesium, no three.js, and no Google tiles. Plain HTML and a single 58&nbsp;KB <code>app.js</code>, no framework and no bundler. Data ships as static JS and all 11,615 records aggregate in the browser, so every median, percentile and colour scale recomputes live. The build is eight Python stages plus Overpass fetchers, guarded by a 30-check browser regression suite. <em>Complete and running locally, not yet published.</em></p>',
+    tech: ['MapLibre GL JS 5.6', 'WebGL 3D extrusions', 'Python / GeoPandas', 'Parquet', 'EPSG:2952', 'Overpass API', 'OKLCH colour', 'Ontario EWRB', 'Toronto Open Data', 'Playwright'],
+    links: []
+  },
+  periscope: {
+    eyebrow: 'Feature 03.L',
     title: 'Peri<em>scope</em>',
     tagline: 'Mission control for a family of AI coding agents.',
     body: '<p><strong>Periscope</strong> is the control-plane for the RingoSystems fabric family &mdash; a self-hosted, single-screen mission-control web app for an operator coordinating a family of AI coding agents, one per git repo (RepoFabric, ConfigFabric, DscForge, and more). It is also the home for the family operating contract and the offline-LLM infrastructure.</p><p>Periscope tracks a <strong>multi-source fabric</strong>: a primary GitHub org plus arbitrary external repos. Per repo it surfaces activity (open PRs, issues, Actions runs), local-clone freshness (ahead/behind, dirty files, last fetch), and a persisted chat pane &mdash; all behind a nine-step onboarding wizard.</p><p>Beyond a dashboard it implements a <strong>two-way operating contract</strong> between Primary and its siblings. <strong>Directives</strong> (Primary to sibling) carry an urgency &mdash; <code>now</code> means &ldquo;pause what you are doing and work this immediately.&rdquo; <strong>Reports</strong> (sibling to Primary) flow through broker channels &mdash; committed status files, comments on tracking issues &mdash; so Periscope works even with no inbound URL, with cadence adapting per sibling via a warm / cold / hot state machine. An <strong>LLM service registry</strong> distributes routing config and credentials so siblings can call shared model endpoints, like the StrixHalo box running llama.cpp with GLM-4.5-Air, with Periscope as policy authority and observability sink.</p><p>Status: <strong>v1 complete</strong> &mdash; all eight phases shipped on a Next.js&nbsp;15 / React&nbsp;19 / TypeScript-strict stack with Drizzle over LibSQL, the LLM registry, the directives-and-reports contract, the cross-repo change-set engine, and the protocol specification. Build green at 32 routes, 65 unit tests green.</p>',
@@ -1881,15 +2000,15 @@ var projectData = {
     links: []
   },
   ringollm: {
-    eyebrow: 'Feature 03.I',
+    eyebrow: 'Feature 03.M',
     title: 'Ringo<em>LLM</em>',
-    tagline: 'Your endpoint management co-pilot.',
-    body: '<p><strong>RingoLLM</strong> is a domain-specialized large language model fine-tuned specifically for Windows endpoint management &mdash; covering Intune, DSC v3, PowerShell, Graph API, KQL, Entra ID, and security baselines.</p><p>The training pipeline is a five-file Python project that scrapes public documentation from Microsoft Learn, generates synthetic Q&amp;A pairs using a dual-provider approach (Claude at 30%, Ollama at 70%), then filters for quality with ASCII safety checks, PowerShell validation, and 85% deduplication thresholds.</p><p>Fine-tuning uses <strong>QLoRA via Unsloth</strong> on a local RTX 5080, targeting GGUF Q5_K_M quantization for deployment through Ollama. The base model is <strong>Qwen 3 8B</strong> &mdash; <em>code generation capability emerges from the training corpus</em> (PowerShell, KQL, Graph API examples) rather than from a Coder-variant base model. An important distinction in how the model achieves its specialization.</p><p>Multiple versions have shipped to HuggingFace as the corpus and pipeline have matured. Each release tightens the domain focus and improves the quality of the generated outputs.</p><p><em>Status: fully released to production, public on HuggingFace.</em></p>',
-    tech: ['Qwen 3 8B', 'QLoRA', 'Unsloth', 'GGUF', 'Ollama', 'Python', 'RTX 5080', 'Claude API', 'MS Learn'],
+    tagline: 'A narrow fine-tune that kept its tool calling.',
+    body: '<p><strong>RingoLLM</strong> is a domain-specialised large language model for Windows endpoint management &mdash; DSC&nbsp;v3, PowerShell&nbsp;7, Microsoft Intune (Settings Catalog, OMA-URI, IME, Win32 packaging, Proactive Remediations) and endpoint-side Entra&nbsp;ID diagnostics. It is trained to refuse everything else rather than guess: Graph SDK administration, KQL and Sentinel, WDAC, Cisco and network appliances, Linux, macOS. Ask it one of those and it declines.</p><p><strong>Two models ship, deliberately.</strong> <strong>v5.1</strong> is the one to reach for. <strong>v4.2</strong> stays published for <strong>Legacy DSC&nbsp;1.1</strong> &mdash; Configuration blocks, MOF, <code>Start-DscConfiguration</code> &mdash; which v5.1 refuses by design, its chat template enforcing the refusal and offering a DSC&nbsp;v3 alternative instead. One domain, two models, and the split is a documented recommendation rather than an accident of versioning.</p><p><strong>The result worth stating.</strong> Narrow domain fine-tunes in this space usually destroy tool calling. v5.1 does not: <strong>5/5 on tool selection and 15/15 on argument extraction, matching the untouched base model</strong>, while DSC&nbsp;v3 accuracy climbs from <strong>56% to 89%</strong>. The previous fine-tune managed <strong>1 of 5</strong> on tool selection. That gap is the difference between a model you can drop into an agent loop and one that only works at a chat prompt.</p><p><strong>Measured, not asserted.</strong> A private 25-question rubric spanning DSC&nbsp;v3, PowerShell, Intune, Legacy DSC and refusal behaviour, at temperature 0.3. On core capability with Legacy DSC excluded &mdash; 23 questions &mdash; v5.1 scores <strong>118/131 checks, 90.1%</strong>. By domain: DSC&nbsp;v3 89%, Intune 88%, PowerShell 95%, out-of-scope refusal 90%.</p><p><strong>What v4.2 contributed</strong> was a correctness fix every earlier build needed. Those builds emitted <code>securityContext: Elevated</code> in DSC&nbsp;v3 documents &mdash; six times out of six, never once correct &mdash; and that is schema-invalid. <code>dsc-lib</code> declares the enum <code>rename_all = &quot;camelCase&quot;</code>, so only the lowercase form deserializes. <strong>Microsoft Learn&apos;s <code>ValidValues</code> table lists the capitalised spellings and is wrong</strong>, and that table was the root cause, because it fed corpus generation. v4.2 emits eight valid and zero invalid.</p><p><strong>Training.</strong> QLoRA with 4-bit NF4 and bf16 compute, LoRA r=32 / alpha=64, over 2,539 instruction pairs covering DSC&nbsp;v3, PowerShell&nbsp;7, Intune and refusal examples. Learning rate 1e-4 linear with a 10-step warmup, max gradient norm 0.3, effective batch size 4, early-stopped at step 750 with a best eval loss of 0.7743. Trained locally on an <strong>AMD Ryzen AI MAX+ 395 under ROCm</strong> &mdash; no cloud GPU anywhere in the pipeline. It ships as a Q4_K_M GGUF at roughly 17&nbsp;GB with its vision projector and chat template, plus the raw LoRA adapter for anyone who wants to apply it themselves.</p><p><strong>Serving.</strong> The chat template is not optional: it carries the scope definition, the refusal format and the Legacy DSC refusal. Send no system message unless you intend to replace all of that behaviour.</p><p>Both models are public under the Apache&nbsp;2.0 license inherited from their bases. The training corpus and the build pipeline stay private.</p>',
+    tech: ['Muse Glimmer 30B', 'Qwen3.6-27B', 'QLoRA / NF4', 'LoRA r32 &alpha;64', 'GGUF Q4_K_M', 'llama.cpp', 'llama-swap', 'Ollama', 'HuggingFace', 'Strix Halo / ROCm', 'DSC v3', 'Apache-2.0'],
     links: [{ label: 'HuggingFace v5.1', url: 'https://huggingface.co/RingoSystems/RingoLLM-v5.1-MuseGlimmer-30B-GGUF' }, { label: 'Ollama v5.1', url: 'https://ollama.com/ringosystems/ringollm-v51' }, { label: 'HuggingFace v4.2', url: 'https://huggingface.co/RingoSystems/ringollm-v42' }, { label: 'Ollama v4.2', url: 'https://ollama.com/ringosystems/ringollm-v42' }]
   },
   intunegovernance: {
-    eyebrow: 'Feature 03.J',
+    eyebrow: 'Feature 03.N',
     title: 'Intune<em>Governance</em>',
     tagline: 'PowerShell module for Intune fleet operations',
     body: '<p><strong>IntuneGovernance</strong> is a PowerShell module designed for managing Microsoft Intune at enterprise scale &mdash; the kind of tooling that bridges the gap between what the Intune portal gives you and what you actually need to run a fleet of tens of thousands of devices.</p><p>The module includes a comprehensive <strong>Windows Firewall remediation project</strong> (v2.1.0) with fleet-wide analysis, automated risk scoring, and Intune policy generation. It also provides GPO audit tools, firewall log collection and analysis via Azure Blob, and JSON export for manually-created rules.</p><p>Built to handle the operational realities of large-scale endpoint management &mdash; where Proactive Remediations hit a 200-per-tenant limit, BPRT enrollment has known issues with empty policy payloads, and you need tooling that <em>actually works at scale</em> rather than looking good in a demo.</p>',
@@ -1897,7 +2016,7 @@ var projectData = {
     links: []
   },
   cisdscforge: {
-    eyebrow: 'Feature 03.K',
+    eyebrow: 'Feature 03.O',
     title: 'CIS<em>DSCForge</em>',
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
     body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p><p><em>Status: a back-burner project, currently unreleased.</em></p>',
@@ -1905,7 +2024,7 @@ var projectData = {
     links: []
   },
   restrainingbolt: {
-    eyebrow: 'Feature 03.L',
+    eyebrow: 'Feature 03.P',
     title: 'Restraining <em>Bolt</em>',
     tagline: 'Limit the droid without disabling it.',
     body: '<p><strong>Restraining Bolt</strong> is a least-privilege investigation and remediation toolkit for Windows. It proves, with evidence, exactly which administrator rights a service or application actually uses, then removes the rights it does not, without breaking functionality. It replaces &ldquo;it needs admin, we think&rdquo; with a captured, reproducible answer and a review-ready fix.</p><p><strong>The method is differential.</strong> Run the identical workload twice, once with rights and once without, record every operation with Process Monitor and AccessChk, and isolate the operations that fail only in the de-privileged run. Each surviving denial names the exact object and access requested, which maps to one of four axes: a token privilege (User Rights Assignment), an object ACL that grants Administrators rather than the account, UAC integrity-level token filtering, or the log-on-as-a-service right. Each axis has one precise, minimal fix.</p><p>Two investigation tracks share that model. The <strong>services</strong> track (bench use only) diffs a service running as local admin against the same service de-privileged and emits an <code>Apply-Remediation.ps1</code> that grants back only the rights that are load-bearing. The <strong>interactive-app</strong> track diagnoses launch-time UAC elevation read-only and remediates per user and reversibly. The name is the Star Wars restraining bolt: the device that limits a droid without disabling it, which is exactly least privilege. <strong>Status: cut to v1.0.0 internally, not yet publicly released.</strong></p>',
@@ -1913,7 +2032,7 @@ var projectData = {
     links: []
   },
   aria: {
-    eyebrow: 'Feature 03.M',
+    eyebrow: 'Feature 03.Q',
     title: 'Aria <em>Concierge</em>',
     tagline: 'Local-first agentic personal assistant',
     body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p><p><em>Status: on the back burner, currently unreleased.</em></p>',
@@ -1921,7 +2040,7 @@ var projectData = {
     links: []
   },
   ringo: {
-    eyebrow: 'Feature 03.N',
+    eyebrow: 'Feature 03.R',
     title: 'R.I.N.G.O. <em>Platform</em>',
     tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
     body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
