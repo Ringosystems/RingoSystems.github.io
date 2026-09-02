@@ -1207,42 +1207,6 @@ footer {
       </div>
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
-
-    <article class="work-item reveal" onclick="openModal('aria')">
-      <div class="work-item-header">
-        <span class="work-item-num">004</span>
-        <span class="work-item-status wip">In Progress</span>
-      </div>
-      <h3>Aria <em>Concierge</em></h3>
-      <p class="work-item-tagline">Local-first agentic personal assistant</p>
-      <p class="work-item-body">A self-hosted personal AI built around a temporal knowledge graph. Privacy as architecture &mdash; local processing, PII scrubbing, no data leaves the lab. The Concierge agent operates via MCP and manages its own infrastructure.</p>
-      <div class="work-item-tags">
-        <span>Python / FastAPI</span><span class="sep">&middot;</span>
-        <span>Neo4j</span><span class="sep">&middot;</span>
-        <span>Qdrant</span><span class="sep">&middot;</span>
-        <span>Ollama</span><span class="sep">&middot;</span>
-        <span>MCP</span>
-      </div>
-      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
-    </article>
-
-    <article class="work-item reveal" onclick="openModal('ringo')">
-      <div class="work-item-header">
-        <span class="work-item-num">005</span>
-        <span class="work-item-status arch">Architecture</span>
-      </div>
-      <h3>R.I.N.G.O. <em>Platform</em></h3>
-      <p class="work-item-tagline">Resource Instrumentation Normalization &amp; Governance Orchestration</p>
-      <p class="work-item-body">Azure Function-based middleman for DSC v3 configuration delivery. SCEPman cert auth, tiered processing, and Proactive Remediation compliance bridge. Typically under <em>$7 CAD/month</em> regardless of seat count.</p>
-      <div class="work-item-tags">
-        <span>Azure Functions</span><span class="sep">&middot;</span>
-        <span>SCEPman</span><span class="sep">&middot;</span>
-        <span>Blob Storage</span><span class="sep">&middot;</span>
-        <span>DSC v3</span><span class="sep">&middot;</span>
-        <span>Entra Groups</span>
-      </div>
-      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
-    </article>
   </div>
 
   <!-- ──────────── FEATURE 04 / THE ARC ──────────── -->
@@ -1439,22 +1403,6 @@ var projectData = {
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
     body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p>',
     tech: ['Claude Project', 'DSC v3', 'CIS Benchmarks', 'OSConfig', 'HardeningKitty', 'YAML', 'Intune', 'Azure Machine Configuration', 'Agentic Engineering', 'Windows Hardening', 'DISA STIGs'],
-    links: []
-  },
-  aria: {
-    eyebrow: 'Feature 03.D',
-    title: 'Aria <em>Concierge</em>',
-    tagline: 'Local-first agentic personal assistant',
-    body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p>',
-    tech: ['Python / FastAPI', 'Neo4j', 'Qdrant', 'Graphiti', 'Ollama', 'LiteLLM + Presidio', 'Next.js', 'Kotlin / Jetpack Compose', 'Cloudflare Tunnel', 'MCP', 'Minisforum MS-S1 Max'],
-    links: []
-  },
-  ringo: {
-    eyebrow: 'Feature 03.E',
-    title: 'R.I.N.G.O. <em>Platform</em>',
-    tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
-    body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
-    tech: ['Azure Functions', 'SCEPman', 'Azure Blob', 'DSC v3', 'Entra ID', 'Proactive Remediation', 'Device Certificates', 'Registry Sentinels'],
     links: []
   }
 };
