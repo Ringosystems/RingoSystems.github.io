@@ -481,8 +481,6 @@ main { position: relative; z-index: 3; }
 }
 .toolkit-item:nth-child(odd) { border-right: 1px solid var(--rule); padding-right: 2.5rem; }
 .toolkit-item:nth-child(even) { padding-left: 2.5rem; }
-/* A trailing odd card has no neighbour to its right, so drop the divider */
-.toolkit-item:last-child:nth-child(odd) { border-right: none; }
 .toolkit-item:hover { background: linear-gradient(180deg, var(--accent-faint), transparent 80%); }
 .toolkit-item.featured {
   background: linear-gradient(135deg, var(--accent-faint), transparent 70%);
@@ -1336,19 +1334,6 @@ footer {
         <span class="tag">TypeScript</span><span class="sep">&middot;</span>
         <span class="tag">Docker Hub</span><span class="sep">&middot;</span>
         <span class="tag">MCP Registry</span>
-      </div>
-    </article>
-
-    <article class="toolkit-item reveal">
-      <div class="toolkit-num">09</div>
-      <h3 class="toolkit-title">Data &amp; <em>Geospatial Engineering</em></h3>
-      <p class="toolkit-body">Turning a published dataset into something you can trust, and then into something you can see. Provenance-checked ingest that repairs verifiable corruption by exact arithmetic rather than fitted factors, dasymetric placement when the source has no coordinates, error bars stated in the interface instead of buried in a footnote, and accessible colour generated in OKLCH. <em>The honesty is the feature.</em></p>
-      <div class="toolkit-tags">
-        <span class="tag">MapLibre GL JS</span><span class="sep">&middot;</span>
-        <span class="tag">Python / GeoPandas</span><span class="sep">&middot;</span>
-        <span class="tag">Parquet</span><span class="sep">&middot;</span>
-        <span class="tag">OKLCH / CVD</span><span class="sep">&middot;</span>
-        <span class="tag">Open Data</span>
       </div>
     </article>
   </div>
