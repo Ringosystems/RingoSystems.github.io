@@ -1613,9 +1613,27 @@ footer {
       <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
     </article>
 
-    <article class="work-item reveal" onclick="openModal('periscope')">
+    <article class="work-item reveal" onclick="openModal('kyber')">
       <div class="work-item-header">
         <span class="work-item-num">012</span>
+        <span class="work-item-status wip">Closed Pilot</span>
+      </div>
+      <h3>Kyber on <em>Understory</em></h3>
+      <p class="work-item-tagline">A knowledge system you will actually keep using.</p>
+      <p class="work-item-body">A personal knowledge system built around one hard-won lesson: an earlier attempt, same person and same hardware and same purpose, was finished and then <strong>never adopted</strong>, because it was not simple enough to use. So the success metric here is adoption, not capability, and the day-one path needs no running infrastructure at all. The substrate is plain markdown, YAML and <code>[[wikilinks]]</code> in git &mdash; every tool is a view over it and is allowed to die. <em>In closed pilot, under active development.</em></p>
+      <div class="work-item-tags">
+        <span>Markdown + git substrate</span><span class="sep">&middot;</span>
+        <span>PWA / WebAPK</span><span class="sep">&middot;</span>
+        <span>Understory (Apache-2.0)</span><span class="sep">&middot;</span>
+        <span>Local ASR</span><span class="sep">&middot;</span>
+        <span>Offline-first</span>
+      </div>
+      <div class="work-item-cta">Read the feature <span class="arrow">&rarr;</span></div>
+    </article>
+
+    <article class="work-item reveal" onclick="openModal('periscope')">
+      <div class="work-item-header">
+        <span class="work-item-num">013</span>
         <span class="work-item-status active">Active</span>
       </div>
       <h3>Peri<em>scope</em></h3>
@@ -1633,7 +1651,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringollm')">
       <div class="work-item-header">
-        <span class="work-item-num">013</span>
+        <span class="work-item-num">014</span>
         <span class="work-item-status new">Recently Launched</span>
       </div>
       <h3>Ringo<em>LLM</em></h3>
@@ -1651,7 +1669,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('cisdscforge')">
       <div class="work-item-header">
-        <span class="work-item-num">014</span>
+        <span class="work-item-num">015</span>
         <span class="work-item-status back">Backburner</span>
       </div>
       <h3>CIS<em>DSCForge</em></h3>
@@ -1669,7 +1687,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('restrainingbolt')">
       <div class="work-item-header">
-        <span class="work-item-num">015</span>
+        <span class="work-item-num">016</span>
         <span class="work-item-status soon">Unreleased</span>
       </div>
       <h3>Restraining <em>Bolt</em></h3>
@@ -1687,7 +1705,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('aria')">
       <div class="work-item-header">
-        <span class="work-item-num">016</span>
+        <span class="work-item-num">017</span>
         <span class="work-item-status back">Backburner</span>
       </div>
       <h3>Aria <em>Concierge</em></h3>
@@ -1705,7 +1723,7 @@ footer {
 
     <article class="work-item reveal" onclick="openModal('ringo')">
       <div class="work-item-header">
-        <span class="work-item-num">017</span>
+        <span class="work-item-num">018</span>
         <span class="work-item-status arch">Architecture</span>
       </div>
       <h3>R.I.N.G.O. <em>Platform</em></h3>
@@ -1973,8 +1991,16 @@ var projectData = {
     tech: ['MapLibre GL JS 5.6', 'WebGL 3D extrusions', 'Python / GeoPandas', 'Parquet', 'EPSG:2952', 'Overpass API', 'OKLCH colour', 'Ontario EWRB', 'Toronto Open Data', 'Playwright'],
     links: [{ label: 'Open the Atlas', url: 'https://toronto.ringosystems.com' }]
   },
-  periscope: {
+  kyber: {
     eyebrow: 'Feature 03.L',
+    title: 'Kyber on <em>Understory</em>',
+    tagline: 'A knowledge system you will actually keep using.',
+    body: '<p><strong>Kyber</strong> is a personal, agentic knowledge and memory system, and it is deliberately a <em>learning instrument</em> rather than a production one. It exists to answer a question by running it instead of researching it: what do you actually need from a system that catalogues relationships, as opposed to what a survey of such systems says you need.</p><p><strong>One prior failure governs the whole design.</strong> An earlier attempt &mdash; same person, same hardware, same purpose &mdash; was built, finished, and then never adopted, because it was not simple enough to use day to day. That single fact outranks every research finding in the project, because it is not evidence that memory systems are hard in general, it is evidence that <em>this</em> failure mode is the one that actually occurs here. The consequences are treated as binding: simplicity is not a preference that can be traded away, the day-one path must require no running infrastructure at all, and the question at month three is &ldquo;am I still using it?&rdquo; rather than &ldquo;what can it do?&rdquo; A nine-judge panel scored all three candidate architectures at a mean of <strong>5.1 out of 10 on simplicity</strong> &mdash; the previous outcome being predicted in advance, early enough to design against it.</p><p><strong>Substrate over tooling.</strong> The asset is a folder of markdown: plain files, YAML front matter, <code>[[wikilinks]]</code>, and git. Every tool is a view over that substrate and is explicitly allowed to die. That one decision is what makes every other decision cheap, because nothing downstream can hold the content hostage.</p><p><strong>Where Understory fits, and where it does not.</strong> <a href="https://github.com/thecodacus/understory" target="_blank" rel="noopener">Understory</a> is an Apache-2.0, plain-markdown, self-wiring graph engine that runs against a local model. It was assessed against basic-memory, Graphiti, mem0, Letta, cognee and the official MCP memory server, with licences checked and several candidates rejected on that basis alone. The verdict is deliberately narrow: <strong>good as a lens, never as the system of record</strong>, and not viable as a corporate standard. It is rung four of a six-rung adoption ladder rather than rung zero, because it earns its place only once &ldquo;I know it is in there and search will not show me the connection&rdquo; becomes a real, felt problem.</p><p><strong>The front door is a PWA, installed as a WebAPK.</strong> A survey of twenty open-source capture front doors found nothing that both captures well and stores plain markdown &mdash; the genre barely exists, so the self-hosted answer is always assembled. Telegram ranked first on taps and was rejected anyway, because the metric is not lowest-taps, it is <em>lowest-taps among surfaces already in use</em>. That distinction is the difference between a tool that gets adopted and one that does not, and it is the same axis the earlier attempt died on.</p><p><strong>Offline capture is mandatory, not a nicety.</strong> The front door has to work from anywhere, including places with no connectivity, so it runs a service worker with an IndexedDB queue and Background Sync &mdash; and the receipt distinguishes <em>queued</em> from <em>landed</em>, which is the client-side twin of writing durably before processing. Two data-loss defects were found and closed during the build: three IndexedDB clients sharing one database under incompatible schemas, and multi-file shares silently concatenating.</p><p><strong>A constraint you only find by building.</strong> Edge is the browser in use, but Edge on Android does not mint WebAPKs &mdash; it creates shortcuts, and a shortcut cannot register a share target. So Chrome installs the app exactly once and is then never opened again, staying enabled only because a WebAPK extracts its runtime library from the Chrome APK at launch.</p><p><strong>Extraction stays local.</strong> Speech-to-text runs a 0.6B ASR model on the existing llama-swap endpoint, round-trip tested at roughly <strong>30&#215; real time with no new container</strong>. Nothing is pushed out to a third-party service to be converted; artifacts a service already produces may be taken, and anything else is converted on own infrastructure.</p><p><strong>The operational hardening came from reading the engine&apos;s source, not its documentation.</strong> Never enable the dream interval: it is an unsupervised, delete-authorised agent loop whose only recovery path is broken in the shipped image, because the Dockerfile installs no <code>git</code>. Pin the model explicitly, because the local router returns no <code>status</code> field and autodiscovery therefore falls through to a model that is not loaded, costing a multi-minute swap on every cold query. Pin the image by digest, since the project has zero releases, zero tags and a single maintainer, so <code>:latest</code> moves under you.</p><p><strong>Provenance.</strong> The project was seeded by a research pass of <strong>147 agents across five multi-agent workflows</strong>, roughly 13.6 million subagent tokens. Every load-bearing claim was then adversarially verified through three independent lenses, and a claim ledger records which survived, which were corrected, and which were refuted outright &mdash; including several of the project&apos;s own earlier conclusions, which is the point of keeping the ledger.</p><p><em>Status: in closed pilot, under active development.</em></p>',
+    tech: ['Markdown / YAML / wikilinks', 'git', 'Understory (Apache-2.0)', 'PWA / WebAPK', 'Service Worker + IndexedDB', 'Background Sync', 'llama-swap', 'Qwen3-ASR 0.6B', 'Docker / Unraid', 'Local-first'],
+    links: [{ label: 'Understory (upstream)', url: 'https://github.com/thecodacus/understory' }]
+  },
+  periscope: {
+    eyebrow: 'Feature 03.M',
     title: 'Peri<em>scope</em>',
     tagline: 'Mission control for a family of AI coding agents.',
     body: '<p><strong>Periscope</strong> is the control-plane for the RingoSystems fabric family &mdash; a self-hosted, single-screen mission-control web app for an operator coordinating a family of AI coding agents, one per git repo (RepoFabric, ConfigFabric, DscForge, and more). It is also the home for the family operating contract and the offline-LLM infrastructure.</p><p>Periscope tracks a <strong>multi-source fabric</strong>: a primary GitHub org plus arbitrary external repos. Per repo it surfaces activity (open PRs, issues, Actions runs), local-clone freshness (ahead/behind, dirty files, last fetch), and a persisted chat pane &mdash; all behind a nine-step onboarding wizard.</p><p>Beyond a dashboard it implements a <strong>two-way operating contract</strong> between Primary and its siblings. <strong>Directives</strong> (Primary to sibling) carry an urgency &mdash; <code>now</code> means &ldquo;pause what you are doing and work this immediately.&rdquo; <strong>Reports</strong> (sibling to Primary) flow through broker channels &mdash; committed status files, comments on tracking issues &mdash; so Periscope works even with no inbound URL, with cadence adapting per sibling via a warm / cold / hot state machine. An <strong>LLM service registry</strong> distributes routing config and credentials so siblings can call shared model endpoints, like the StrixHalo box running llama.cpp with GLM-4.5-Air, with Periscope as policy authority and observability sink.</p><p>Status: <strong>v1 complete</strong> &mdash; all eight phases shipped on a Next.js&nbsp;15 / React&nbsp;19 / TypeScript-strict stack with Drizzle over LibSQL, the LLM registry, the directives-and-reports contract, the cross-repo change-set engine, and the protocol specification. Build green at 32 routes, 65 unit tests green.</p>',
@@ -1982,7 +2008,7 @@ var projectData = {
     links: []
   },
   ringollm: {
-    eyebrow: 'Feature 03.M',
+    eyebrow: 'Feature 03.N',
     title: 'Ringo<em>LLM</em>',
     tagline: 'A narrow fine-tune that kept its tool calling.',
     body: '<p><strong>RingoLLM</strong> is a domain-specialised large language model for Windows endpoint management &mdash; DSC&nbsp;v3, PowerShell&nbsp;7, Microsoft Intune (Settings Catalog, OMA-URI, IME, Win32 packaging, Proactive Remediations) and endpoint-side Entra&nbsp;ID diagnostics. It is trained to refuse everything else rather than guess: Graph SDK administration, KQL and Sentinel, WDAC, Cisco and network appliances, Linux, macOS. Ask it one of those and it declines.</p><p><strong>Two models ship, deliberately.</strong> <strong>v5.1</strong> is the one to reach for. <strong>v4.2</strong> stays published for <strong>Legacy DSC&nbsp;1.1</strong> &mdash; Configuration blocks, MOF, <code>Start-DscConfiguration</code> &mdash; which v5.1 refuses by design, its chat template enforcing the refusal and offering a DSC&nbsp;v3 alternative instead. One domain, two models, and the split is a documented recommendation rather than an accident of versioning.</p><p><strong>The result worth stating.</strong> Narrow domain fine-tunes in this space usually destroy tool calling. v5.1 does not: <strong>5/5 on tool selection and 15/15 on argument extraction, matching the untouched base model</strong>, while DSC&nbsp;v3 accuracy climbs from <strong>56% to 89%</strong>. The previous fine-tune managed <strong>1 of 5</strong> on tool selection. That gap is the difference between a model you can drop into an agent loop and one that only works at a chat prompt.</p><p><strong>Measured, not asserted.</strong> A private 25-question rubric spanning DSC&nbsp;v3, PowerShell, Intune, Legacy DSC and refusal behaviour, at temperature 0.3. On core capability with Legacy DSC excluded &mdash; 23 questions &mdash; v5.1 scores <strong>118/131 checks, 90.1%</strong>. By domain: DSC&nbsp;v3 89%, Intune 88%, PowerShell 95%, out-of-scope refusal 90%.</p><p><strong>What v4.2 contributed</strong> was a correctness fix every earlier build needed. Those builds emitted <code>securityContext: Elevated</code> in DSC&nbsp;v3 documents &mdash; six times out of six, never once correct &mdash; and that is schema-invalid. <code>dsc-lib</code> declares the enum <code>rename_all = &quot;camelCase&quot;</code>, so only the lowercase form deserializes. <strong>Microsoft Learn&apos;s <code>ValidValues</code> table lists the capitalised spellings and is wrong</strong>, and that table was the root cause, because it fed corpus generation. v4.2 emits eight valid and zero invalid.</p><p><strong>Training.</strong> QLoRA with 4-bit NF4 and bf16 compute, LoRA r=32 / alpha=64, over 2,539 instruction pairs covering DSC&nbsp;v3, PowerShell&nbsp;7, Intune and refusal examples. Learning rate 1e-4 linear with a 10-step warmup, max gradient norm 0.3, effective batch size 4, early-stopped at step 750 with a best eval loss of 0.7743. Trained locally on an <strong>AMD Ryzen AI MAX+ 395 under ROCm</strong> &mdash; no cloud GPU anywhere in the pipeline. It ships as a Q4_K_M GGUF at roughly 17&nbsp;GB with its vision projector and chat template, plus the raw LoRA adapter for anyone who wants to apply it themselves.</p><p><strong>Serving.</strong> The chat template is not optional: it carries the scope definition, the refusal format and the Legacy DSC refusal. Send no system message unless you intend to replace all of that behaviour.</p><p>Both models are public under the Apache&nbsp;2.0 license inherited from their bases. The training corpus and the build pipeline stay private.</p>',
@@ -1990,7 +2016,7 @@ var projectData = {
     links: [{ label: 'HuggingFace v5.1', url: 'https://huggingface.co/RingoSystems/RingoLLM-v5.1-MuseGlimmer-30B-GGUF' }, { label: 'Ollama v5.1', url: 'https://ollama.com/ringosystems/ringollm-v51' }, { label: 'HuggingFace v4.2', url: 'https://huggingface.co/RingoSystems/ringollm-v42' }, { label: 'Ollama v4.2', url: 'https://ollama.com/ringosystems/ringollm-v42' }]
   },
   cisdscforge: {
-    eyebrow: 'Feature 03.N',
+    eyebrow: 'Feature 03.O',
     title: 'CIS<em>DSCForge</em>',
     tagline: 'Multi-Standard Security Baseline DSC v3 Generator',
     body: '<p><strong>CISDSCForge</strong> is an agentic engineering project built as a persistent Claude Project &mdash; a purpose-built AI workspace that ingests published security hardening standards and generates production-ready DSC v3 YAML configurations for Windows endpoints.</p><p>The project currently ingests and translates controls from multiple authoritative sources:</p><p><strong>CIS Benchmarks</strong> &mdash; The Center for Internet Security&apos;s widely adopted security benchmarks for Windows 10/11 Enterprise and Windows Server, covering hundreds of registry, audit policy, and security settings per OS version.</p><p><strong>Microsoft OSConfig</strong> &mdash; The Windows Server 2025 security baseline stack with 300+ settings, drift control, and scenario-based configuration for Member Server, Workgroup Member, and Domain Controller roles.</p><p><strong>HardeningKitty</strong> &mdash; The open-source PowerShell hardening framework by scip AG, with finding lists spanning Microsoft Security Baselines, CIS Benchmarks, DoD STIGs, and BSI SiSyPHuS guidelines.</p><p>The architecture is designed to be <em>easily extensible</em> &mdash; any structured hardening standard with identifiable controls and registry/policy mappings can be added as a new source. Rather than manually mapping hundreds of controls to DSC v3 resources, CISDSCForge uses domain-specific skills, structured context, and iterative validation to produce configurations that are operationally sound for enterprise Intune and Azure Machine Configuration deployments.</p><p>This is agentic engineering in practice: <strong>AI as a collaborating infrastructure engineer, not just a text generator.</strong></p><p><em>Status: a back-burner project, currently unreleased.</em></p>',
@@ -1998,7 +2024,7 @@ var projectData = {
     links: []
   },
   restrainingbolt: {
-    eyebrow: 'Feature 03.O',
+    eyebrow: 'Feature 03.P',
     title: 'Restraining <em>Bolt</em>',
     tagline: 'Limit the droid without disabling it.',
     body: '<p><strong>Restraining Bolt</strong> is a least-privilege investigation and remediation toolkit for Windows. It proves, with evidence, exactly which administrator rights a service or application actually uses, then removes the rights it does not, without breaking functionality. It replaces &ldquo;it needs admin, we think&rdquo; with a captured, reproducible answer and a review-ready fix.</p><p><strong>The method is differential.</strong> Run the identical workload twice, once with rights and once without, record every operation with Process Monitor and AccessChk, and isolate the operations that fail only in the de-privileged run. Each surviving denial names the exact object and access requested, which maps to one of four axes: a token privilege (User Rights Assignment), an object ACL that grants Administrators rather than the account, UAC integrity-level token filtering, or the log-on-as-a-service right. Each axis has one precise, minimal fix.</p><p>Two investigation tracks share that model. The <strong>services</strong> track (bench use only) diffs a service running as local admin against the same service de-privileged and emits an <code>Apply-Remediation.ps1</code> that grants back only the rights that are load-bearing. The <strong>interactive-app</strong> track diagnoses launch-time UAC elevation read-only and remediates per user and reversibly. The name is the Star Wars restraining bolt: the device that limits a droid without disabling it, which is exactly least privilege. <strong>Status: cut to v1.0.0 internally, not yet publicly released.</strong></p>',
@@ -2006,7 +2032,7 @@ var projectData = {
     links: []
   },
   aria: {
-    eyebrow: 'Feature 03.P',
+    eyebrow: 'Feature 03.Q',
     title: 'Aria <em>Concierge</em>',
     tagline: 'Local-first agentic personal assistant',
     body: '<p><strong>Aria Concierge</strong> is a local-first, self-hosted agentic personal assistant centered on a temporal personal knowledge graph. Built on the principle that personal AI should not require sending personal data to anyone else&apos;s servers.</p><p>The stack runs on a <strong>Minisforum MS-S1 Max</strong> (Strix Halo, 128 GB RAM): Python / FastAPI for the orchestration layer, <strong>Neo4j</strong> for the temporal knowledge graph, <strong>Qdrant</strong> for vector search, <strong>Graphiti</strong> for graph operations, and <strong>Ollama</strong> for local model inference. <strong>LiteLLM</strong> provides a unified inference proxy, with <strong>Presidio</strong> handling PII scrubbing on every request that touches an external model.</p><p>The dashboard is a Next.js application; an Android client built in Kotlin and Jetpack Compose handles the mobile surface. Cloudflare Tunnel provides remote access without opening ports.</p><p>The Concierge agent itself operates via <strong>MCP</strong> and manages its own infrastructure &mdash; provisioning containers, updating its own data sources, and adapting its tool inventory based on context. <em>Privacy as architecture, not feature.</em></p><p><em>Status: on the back burner, currently unreleased.</em></p>',
@@ -2014,7 +2040,7 @@ var projectData = {
     links: []
   },
   ringo: {
-    eyebrow: 'Feature 03.Q',
+    eyebrow: 'Feature 03.R',
     title: 'R.I.N.G.O. <em>Platform</em>',
     tagline: 'Resource Instrumentation Normalization &amp; Governance Orchestration',
     body: '<p>The <strong>RINGO platform</strong> is an Azure-hosted pull architecture for DSC v3 configuration delivery to Windows endpoints. It acts as a middleman between your configuration repo and the fleet, using device certificates from SCEPman for zero-trust authentication.</p><p>Configurations are stored in Azure Blob Storage and organized via static Entra groups following the naming convention <strong>CFG-DSC-{Tier}-{ConfigName}</strong>. Processing follows a sequential tier model (Base &rarr; Role &rarr; App) with a 60-minute pull interval.</p><p>Registry sentinels provide a compliance bridge to Intune&apos;s Proactive Remediation framework, enabling visibility into DSC compliance without requiring a native integration. The web admin portal runs as an Azure container app.</p><p>Estimated pilot cost: <em>typically under $7 CAD/month regardless of seat count.</em></p>',
