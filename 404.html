@@ -825,6 +825,12 @@ footer {
 .modal-body p { margin-bottom: 1rem; }
 .modal-body strong { color: var(--ink); font-weight: 500; }
 .modal-body em { color: var(--accent); font-style: italic; }
+.modal-body a {
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px dashed rgba(20,185,134,0.4); padding-bottom: 1px;
+  transition: color 0.3s var(--ease), border-bottom-color 0.3s var(--ease);
+}
+.modal-body a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 .modal-tech-full {
   margin-top: 2rem; padding-top: 1.5rem;
