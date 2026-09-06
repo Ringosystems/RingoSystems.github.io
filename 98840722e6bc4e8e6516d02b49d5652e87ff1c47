@@ -1,0 +1,15 @@
+Correction: this commit's title is wrong about its own diff.
+
+Actual title:   "Style inline code in bodies; style inline links in modal body"
+Should read:    "Style inline links in modal body"
+
+The diff for 9884072 is exactly the .modal-body a / .modal-body a:hover
+CSS rule (12 lines across index.html and 404.html). Inline <code> styling
+in card and modal bodies was already done in an earlier commit
+(b5fe7b3, "Remove Aria Concierge and R.I.N.G.O.; style inline code in
+bodies") and this commit did not touch it again.
+
+Left uncorrected in the commit message itself because amending and
+force-pushing an already-pushed commit on main is not done here even
+on request; this note documents the correction without rewriting
+history.
